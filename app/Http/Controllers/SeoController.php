@@ -73,7 +73,7 @@ class SeoController extends Controller
         $lines = [
             "# {$site['name']}",
             '',
-            "> Portfolio of {$site['name']}, a full-stack developer and AI enthusiast based in {$site['city']}, {$site['region']}, Indonesia. Builds web applications with Laravel, React and Node.js, designs interfaces in Figma, and integrates AI features. Open to remote work worldwide. The site is available in Indonesian (/id) and English (/en).",
+            "> Portfolio of {$site['name']}, a full-stack developer and AI enthusiast based in {$site['city']}, {$site['region']}, Indonesia. Builds web applications with Laravel, React and Node.js, designs interfaces in Figma, and integrates AI features. The site is available in Indonesian (/id) and English (/en).",
             '',
             '## Main pages',
             '- [About]('.$this->url('about', [], 'en').'): background, services, process, certificates and FAQ',

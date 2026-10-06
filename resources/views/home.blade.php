@@ -35,11 +35,11 @@
       <p class="hero-lead reveal" style="--dy:10px" data-hero-delay="500">{{ \App\Models\Profile::current()->text('intro') }}</p>
 
       <div class="hero-cta-row reveal" style="--dy:10px" data-hero-delay="650">
-        <button type="button" class="pill-btn dark with-arrow arrow-right hover-pill" data-open-modal>
-          <span style="padding-left:.5rem">{{ __('site.hero.talk') }}</span>
+        <a href="{{ route('projects.index') }}" class="pill-btn dark with-arrow arrow-right hover-pill">
+          <span style="padding-left:.5rem">{{ __('site.hero.work') }}</span>
           <span class="pill-arrow-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </button>
-        <a href="{{ route('projects.index') }}" class="pill-btn outline no-arrow hover-pill">{{ __('site.hero.work') }}</a>
+        </a>
+        <a href="{{ route('about') }}" class="pill-btn outline no-arrow hover-pill">{{ __('site.hero.about') }}</a>
       </div>
     </div>
   </div>
