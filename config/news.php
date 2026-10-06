@@ -1,17 +1,31 @@
 <?php
 
 return [
-    // Public RSS/Atom feeds. Only headline, short excerpt and a link back to the publisher are stored.
+    // Indonesian public RSS/Atom feeds. Only headline, short excerpt and a link back to the publisher are stored.
+    // 'filter' => true keeps only items matching the keywords below (general tech outlets).
+    // 'filter' => false keeps every item (already developer-focused).
     'sources' => [
-        'Hacker News' => 'https://hnrss.org/frontpage?points=100',
-        'DEV Community' => 'https://dev.to/feed',
-        'Laravel News' => 'https://feed.laravel-news.com/',
-        'TechCrunch' => 'https://techcrunch.com/feed/',
-        'The Verge' => 'https://www.theverge.com/rss/tech/index.xml',
+        'Dicoding' => ['url' => 'https://www.dicoding.com/blog/feed/', 'filter' => false],
+        'Liputan6 Tekno' => ['url' => 'https://feed.liputan6.com/rss/tekno', 'filter' => true],
+        'CNN Indonesia Teknologi' => ['url' => 'https://www.cnnindonesia.com/teknologi/rss', 'filter' => true],
+        'Antara Tekno' => ['url' => 'https://www.antaranews.com/rss/tekno.xml', 'filter' => true],
+        'JagatReview' => ['url' => 'https://www.jagatreview.com/feed/', 'filter' => true],
     ],
 
-    // Max items kept per fetch per source, and how long old items are retained.
-    'per_source' => 10,
+    // Relevance to web/full-stack development, UI/UX and AI integration. Whole-word, case-insensitive.
+    'keywords' => [
+        'ai', 'kecerdasan buatan', 'chatgpt', 'openai', 'gemini', 'claude', 'llm', 'machine learning', 'chatbot',
+        'developer', 'programmer', 'pemrograman', 'coding', 'software', 'perangkat lunak', 'open source', 'github',
+        'laravel', 'php', 'javascript', 'python', 'react', 'api', 'website', 'web', 'framework', 'database',
+        'cloud', 'server', 'hosting', 'startup', 'ui', 'ux', 'desain', 'figma',
+        'keamanan siber', 'siber', 'peretasan', 'data pribadi', 'google', 'microsoft',
+    ],
+
+    // Max items read per source per fetch, and how long old items are retained.
+    'per_source' => 15,
     'keep_days' => 30,
     'timeout' => 10,
+
+    // Auto refresh when someone opens the site and data is older than this (minutes). Works without cron.
+    'refresh_minutes' => 60,
 ];

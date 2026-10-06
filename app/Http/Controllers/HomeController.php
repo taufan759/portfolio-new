@@ -7,11 +7,14 @@ use App\Models\Certificate;
 use App\Models\NewsItem;
 use App\Models\Post;
 use App\Models\Project;
+use App\Support\NewsFetcher;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        app()->terminating(fn () => app(NewsFetcher::class)->refreshIfStale());
+
         return view('home', [
             'projects' => Project::where('is_published', true)->orderBy('sort')->get(),
             'certificates' => Certificate::orderBy('sort')->get(),

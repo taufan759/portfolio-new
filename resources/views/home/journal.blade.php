@@ -39,7 +39,7 @@
               <span class="journal-meta">{{ $item->published_at?->diffForHumans(null, true, true) }}</span>
             </a>
           @empty
-            <p class="journal-empty">News feed updates automatically.</p>
+            <p class="journal-empty">Berita diperbarui otomatis.</p>
           @endforelse
         </div>
       </div>

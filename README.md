@@ -8,7 +8,7 @@ Designed to stay light on shared hosting (cPanel): no Node build step, WebP imag
 - Public site: home (hero with liquid cursor reveal, portfolio filter, certificates, journal), `/blog`, `/books`, `/news`
 - Admin at `/admin`: manage projects, certificates, books, blog posts (Markdown), read contact messages
 - Image uploads are resized and converted to WebP automatically
-- `news:fetch` reads public RSS feeds hourly (headline + short excerpt + link to the publisher)
+- Tech news: Indonesian outlets (Dicoding, Liputan6, CNN Indonesia, Antara, JagatReview) filtered by keywords relevant to web dev, AI and UI/UX (`config/news.php`). Refreshes hourly via cron, and also automatically when the site is visited and data is older than `refresh_minutes`, so it works even without cron.
 
 ## Local development
 
