@@ -38,8 +38,8 @@ class Seo
             'url' => url('/'),
             'image' => asset($site['og_image']),
             'email' => $site['email'],
-            'jobTitle' => __('site.seo.job_title'),
-            'description' => __('site.seo.default_description'),
+            'jobTitle' => \App\Models\Profile::current()->text('headline'),
+            'description' => \App\Models\Profile::current()->text('intro'),
             'address' => [
                 '@type' => 'PostalAddress',
                 'addressLocality' => $site['city'],

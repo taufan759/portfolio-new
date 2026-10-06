@@ -11,6 +11,7 @@
   <div class="shell page-inner">
     @include('partials.breadcrumbs', ['crumbs' => [[__('site.breadcrumb_home'), route('home')], [__('site.blog.eyebrow'), route('blog.index')]]])
     <h1 class="page-h1">{{ __('site.blog.h1') }}</h1>
+    <p class="page-lead">{{ __('site.blog.lead') }}</p>
     <div class="post-grid">
       @forelse ($posts as $post)
         <a href="{{ route('blog.show', ['slug' => $post->slug]) }}" class="post-card">

@@ -23,7 +23,7 @@
   <div class="shell hero-grid">
     <div class="hero-left">
       <div class="hero-eyebrow-row reveal" style="--dy:10px" data-hero-delay="200">
-        <span class="dot"></span><span>{{ __('site.hero.eyebrow') }}</span>
+        <span class="dot"></span><span>{{ \App\Models\Profile::current()->text('headline') }}</span>
       </div>
 
       <h1 class="hero-h1 reveal" data-hero-delay="250">
@@ -32,7 +32,7 @@
         <span class="line-clip"><span class="line-inner" style="transition-delay:240ms">{{ __('site.hero.l3') }}</span></span>
       </h1>
 
-      <p class="hero-lead reveal" style="--dy:10px" data-hero-delay="500">{{ __('site.hero.lead') }}</p>
+      <p class="hero-lead reveal" style="--dy:10px" data-hero-delay="500">{{ \App\Models\Profile::current()->text('intro') }}</p>
 
       <div class="hero-cta-row reveal" style="--dy:10px" data-hero-delay="650">
         <button type="button" class="pill-btn dark with-arrow arrow-right hover-pill" data-open-modal>

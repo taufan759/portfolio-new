@@ -309,3 +309,32 @@ html[data-theme="dark"] .theme-toggle .t-moon{display:block}
 .hero-watermark{font-size:9rem}
 @media (min-width:1024px){.hero-watermark{font-size:11rem}}
 #home{color:var(--fg)}
+
+/* ================= ABOUT (profile) ================= */
+.about-role{margin-top:.25rem;font-size:1rem;color:rgb(var(--fg-rgb) / .6)}
+.about-intro .about-lede{margin-top:1.25rem;max-width:44rem;font-size:1.125rem;line-height:1.55;font-weight:500;color:var(--fg)}
+.about-facts{display:grid;grid-template-columns:1fr;gap:1rem 2rem;margin:1.75rem 0 1.5rem;padding:1.25rem 0;border-block:1px solid var(--line)}
+@media (min-width:640px){.about-facts{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.about-facts{grid-template-columns:repeat(4,1fr)}}
+.about-facts dt{font-size:.6875rem;text-transform:uppercase;letter-spacing:.06em;color:rgb(var(--fg-rgb) / .45)}
+.about-facts dd{margin-top:.25rem;font-size:.875rem;line-height:1.45}
+.about-story .prose{max-width:44rem;margin-top:1rem;font-size:.9375rem}
+.focus-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.25rem}
+@media (min-width:640px){.focus-grid{grid-template-columns:repeat(2,1fr)}}
+.focus-card{padding:1.25rem;border-radius:1rem;background:var(--surface);box-shadow:0 0 0 1px var(--line)}
+.focus-index{font-size:.75rem;color:rgb(var(--fg-rgb) / .4)}
+.focus-card h3{margin:.375rem 0;font-size:1.0625rem;font-weight:600}
+.focus-card p{font-size:.875rem;line-height:1.55;color:rgb(var(--fg-rgb) / .65)}
+.chip-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.chip-list li{padding:.375rem .875rem;border-radius:9999px;border:1px solid var(--line);background:var(--bg);font-size:.8125rem}
+.chip-list.plain li{background:transparent;color:rgb(var(--fg-rgb) / .75)}
+.chip-gap{margin-top:2.25rem}
+
+/* ================= PROJECT LIST (filters + pagination) ================= */
+.filter-bar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.filter-chip{display:inline-flex;align-items:center;gap:.5rem;padding:.4375rem .875rem;border-radius:9999px;border:1px solid var(--line);color:rgb(var(--fg-rgb) / .65);font-size:.8125rem;font-weight:500;transition:background .25s,color .25s,border-color .25s}
+.filter-chip span{font-size:.6875rem;opacity:.6}
+.filter-chip:hover,.filter-chip.active{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}
+.list-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.75rem}
+.list-foot .pager{margin-top:0}
+.hero-lead{max-width:28rem}

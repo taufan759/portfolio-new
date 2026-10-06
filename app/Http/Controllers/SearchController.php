@@ -21,7 +21,7 @@ class SearchController extends Controller
             $items[] = $this->item(__('site.nav.'.$key), __('site.search.page_desc.'.$key), route($route), 'page');
         }
 
-        foreach (Project::where('is_published', true)->orderBy('sort')->get() as $p) {
+        foreach (Project::listed()->get() as $p) {
             $items[] = $this->item($p->title, (string) $p->t('description'), route('projects.show', ['slug' => $p->slug]), 'project', implode(' ', $p->tags ?? []).' '.$p->kind);
         }
 

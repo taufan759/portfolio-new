@@ -16,6 +16,9 @@ return [
         'GitHub' => 'https://github.com/taufan759',
         'Instagram' => 'https://www.instagram.com/taufanakbr_/',
     ],
+    'skills' => ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'React.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'Bootstrap', 'Firebase', 'Figma', 'Git & GitHub'],
+    // Shown on the About page under "Organizations and programs".
+    'orgs' => ['Universitas Bina Sarana Informatika', 'GreatEdu', 'DBS Foundation', 'Dicoding Indonesia', 'Kementerian Agama', 'Adaptable Consulting', 'PT Nibras Berkah Mulia'],
     'knows_about' => ['Laravel', 'PHP', 'React', 'Node.js', 'MySQL', 'Tailwind CSS', 'Figma', 'UI/UX Design', 'AI Integration', 'Web Development'],
     'og_image' => 'images/hero/before.webp',
 ];

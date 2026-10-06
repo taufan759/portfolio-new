@@ -37,11 +37,30 @@ Untuk menambah admin lain, di tinker: `\App\Models\User::create(['name' => 'Nama
 | Menu | Fungsi |
 |---|---|
 | Dashboard | Ringkasan dan tombol **Fetch headlines now** (ambil berita teknologi sekarang) |
+| Profile | Teks perkenalan Anda: headline, intro beranda, ringkasan dan cerita di halaman About, lokasi, pendidikan, ketersediaan, dan daftar skill |
 | Projects | Tambah, ubah, hapus proyek. Satu proyek = satu halaman `/projects/{slug}` |
 | Certificates | Sertifikat yang tampil di halaman About |
 | Books | Daftar buku. Status `reading` tampil di beranda sebagai "Sedang dibaca" |
 | Blog posts | Tulisan blog (Markdown) |
 | Messages | Pesan dari form kontak (hanya baca) |
+
+## Profile (teks tentang Anda)
+
+Menu **Profile** langsung membuka satu formulir. Setiap teks punya kolom Inggris dan kolom Indonesia (`_id`).
+
+- Kolom yang dikosongkan otomatis memakai teks bawaan di `lang/en/site.php` dan `lang/id/site.php` (bagian `profile`), jadi situs selalu tampil lengkap.
+- `story` ditulis dengan **Markdown** (pisahkan paragraf dengan baris kosong).
+- `skills` diisi dipisah koma dan sama untuk kedua bahasa.
+- Daftar "Organizations and programs" di About ada di `config/site.php` (kunci `orgs`).
+
+## Mengelola banyak proyek
+
+- **Urutan:** angka `sort` lebih kecil tampil lebih dulu. Jika angkanya sama (misalnya semua 0), proyek yang paling baru dibuat tampil di atas.
+- **Beranda:** hanya menampilkan 4 proyek yang dicentang `is_featured`. Jika yang dicentang kurang dari 4, sisanya diisi proyek terbaru.
+- **Halaman Proyek:** 12 proyek per halaman dengan penomoran, serta filter kategori beserta jumlahnya. Kategori yang kosong tidak ditampilkan.
+- **Pencarian (Ctrl/Cmd+K)** mencakup semua proyek yang dipublikasikan.
+- **Kategori** tersedia tiga: `fullstack`, `uiux`, `ai`. Untuk menambah kategori baru, ubah daftar pilihan di `config/admin.php`, `ProjectController::CATEGORIES`, dan teks di `lang/*/site.php` (kunci `projects`).
+- Gambar proyek disarankan rasio 2:1 (misalnya 1200x600). Bagian atas gambar yang ditampilkan di kartu.
 
 ## Dua bahasa (ID / EN)
 

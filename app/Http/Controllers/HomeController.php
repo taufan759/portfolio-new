@@ -10,18 +10,26 @@ use App\Support\NewsFetcher;
 
 class HomeController extends Controller
 {
+    private const FEATURED = 4;
+
     public function index()
     {
         // Keep the tech news fresh without needing cron; runs after the response is sent.
         app()->terminating(fn () => app(NewsFetcher::class)->refreshIfStale());
 
-        // Only a few items per section; each has an "All" link to its own page.
-        $projects = Project::where('is_published', true);
+        // Home only previews each section; the full lists live on their own pages.
+        $featured = Project::listed()->where('is_featured', true)->limit(self::FEATURED)->get();
+
+        if ($featured->count() < self::FEATURED) {
+            $filler = Project::listed()->whereNotIn('id', $featured->pluck('id'))->limit(self::FEATURED - $featured->count())->get();
+            $featured = $featured->concat($filler);
+        }
+
         $posts = Post::where('is_published', true);
 
         return view('home', [
-            'projectCount' => (clone $projects)->count(),
-            'projects' => $projects->orderBy('sort')->limit(4)->get(),
+            'projectCount' => Project::where('is_published', true)->count(),
+            'projects' => $featured,
             'postCount' => (clone $posts)->count(),
             'posts' => $posts->latest('published_at')->limit(4)->get(),
             'books' => Book::where('status', 'reading')->latest('id')->limit(2)->get(),

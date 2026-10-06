@@ -18,6 +18,14 @@ class ResourceController extends Controller
     public function index(string $resource)
     {
         $def = $this->def($resource);
+
+        // A single-record resource (Profile) opens straight in its edit form.
+        if ($def['single'] ?? false) {
+            $item = $def['model']::first() ?? $def['model']::create([]);
+
+            return redirect()->route('admin.edit', [$resource, $item->id]);
+        }
+
         [$col, $dir] = $def['order'];
         $rows = $def['model']::orderBy($col, $dir)->paginate(20);
 
@@ -64,6 +72,7 @@ class ResourceController extends Controller
     public function destroy(string $resource, int $id)
     {
         $def = $this->def($resource);
+        abort_if($def['single'] ?? false, 404);
         $def['model']::findOrFail($id)->delete();
 
         return back()->with('status', 'Deleted.');

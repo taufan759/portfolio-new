@@ -1,3 +1,4 @@
+@php($profile = \App\Models\Profile::current())
 @extends('layouts.site')
 @section('title', __('site.about.title'))
 @section('description', __('site.about.description'))
@@ -8,69 +9,71 @@
 @endpush
 
 @section('content')
-<!-- ================= INTRO ================= -->
+<!-- ================= INTRODUCTION ================= -->
 <section class="page-main">
   <div class="shell page-inner about-intro">
     @include('partials.breadcrumbs', ['crumbs' => [[__('site.breadcrumb_home'), route('home')], [__('site.about.eyebrow'), route('about')]]])
-    <h1 class="page-h1">{{ __('site.about.h1') }}</h1>
-    <div class="about-copy">
-      <p class="about-lede">{{ __('site.about.p1') }}</p>
-      <p>{{ __('site.about.p2') }}</p>
-      <p class="journal-meta" style="white-space:normal">{{ __('site.about.location') }}</p>
-      <div class="about-detail">
-        <span>GPA 3.98/4.00</span><span class="sep">·</span><span>TOEFL 563</span><span class="sep">·</span><span>{{ __('site.about.edu') }}</span>
-      </div>
-      <div class="about-find-label">{{ __('site.about.find') }}</div>
-      <div class="about-links">
-        @foreach (config('site.social') as $label => $url)
-          <a href="{{ $url }}" target="_blank" rel="me noopener" class="pill-btn outline no-arrow hover-pill">{{ $label }}</a>
-        @endforeach
-        <a href="{{ config('site.resume') }}" target="_blank" rel="noopener" class="pill-btn dark no-arrow hover-pill">{{ __('site.nav.resume') }}</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <h1 class="page-h1">{{ config('site.name') }}</h1>
+    <p class="about-role">{{ $profile->text('headline') }}</p>
+    <p class="about-lede">{{ $profile->text('summary') }}</p>
 
-<!-- ================= SERVICES ================= -->
-<section id="services">
-  <div class="shell services-inner">
-    <h2 class="services-h2 reveal"><span class="line-clip"><span class="line-inner">{{ __('site.about.services') }}</span></span></h2>
-    <ul>
-      @foreach (__('site.about.service_items') as $i => [$name, $desc])
-        <li class="service-item reveal" style="--dy:24px" data-delay="{{ $i * 80 }}">
-          <div class="service-row-inner">
-            <span class="service-index">{{ sprintf('%02d', $i + 1) }}</span>
-            <h3 class="service-title">{{ $name }}</h3>
-            <p class="service-desc">{{ $desc }}</p>
-          </div>
-        </li>
+    <dl class="about-facts">
+      <div><dt>{{ __('site.about.facts.location') }}</dt><dd>{{ $profile->text('location') }}</dd></div>
+      <div><dt>{{ __('site.about.facts.education') }}</dt><dd>{{ $profile->text('education') }}</dd></div>
+      <div><dt>{{ __('site.about.facts.languages') }}</dt><dd>{{ __('site.about.languages_value') }}</dd></div>
+      <div><dt>{{ __('site.about.facts.availability') }}</dt><dd>{{ $profile->text('availability') }}</dd></div>
+    </dl>
+
+    <div class="about-find-label">{{ __('site.about.find') }}</div>
+    <div class="about-links">
+      @foreach (config('site.social') as $label => $url)
+        <a href="{{ $url }}" target="_blank" rel="me noopener" class="pill-btn outline no-arrow hover-pill">{{ $label }}</a>
       @endforeach
-    </ul>
+      <a href="{{ config('site.resume') }}" target="_blank" rel="noopener" class="pill-btn dark no-arrow hover-pill">{{ __('site.nav.resume') }}</a>
+    </div>
   </div>
 </section>
 
-<!-- ================= PROCESS ================= -->
-<section class="process-section" id="process">
-  <div class="process-grid-bg"></div>
-  <div class="process-glow"></div>
-  <div class="shell process-inner">
-    <div class="process-head">
-      <h2 class="process-h2 reveal"><span class="line-clip"><span class="line-inner">{{ __('site.about.process') }}</span></span></h2>
-    </div>
-    <ul class="process-list">
-      @foreach (__('site.about.process_items') as $i => [$name, $desc])
-        <li class="process-step reveal" style="--dy:28px" data-delay="{{ $i * 120 }}">
-          <span class="process-index">{{ sprintf('%02d', $i + 1) }}</span>
+<!-- ================= BACKGROUND ================= -->
+<section class="home-sec alt">
+  <div class="shell home-inner about-story">
+    <h2 class="home-h2">{{ __('site.about.story') }}</h2>
+    <div class="prose">{!! \Illuminate\Support\Str::markdown($profile->text('story'), ['html_input' => 'strip', 'allow_unsafe_links' => false]) !!}</div>
+  </div>
+</section>
+
+<!-- ================= AREAS OF FOCUS ================= -->
+<section class="home-sec">
+  <div class="shell home-inner">
+    <h2 class="home-h2">{{ __('site.about.focus') }}</h2>
+    <ul class="focus-grid">
+      @foreach (__('site.about.focus_items') as $i => [$name, $desc])
+        <li class="focus-card reveal" style="--dy:20px" data-delay="{{ $i * 70 }}">
+          <span class="focus-index">{{ sprintf('%02d', $i + 1) }}</span>
           <h3>{{ $name }}</h3>
           <p>{{ $desc }}</p>
         </li>
-        @unless ($loop->last)<li class="process-connector" aria-hidden="true"><span class="process-connector-line"></span></li>@endunless
       @endforeach
     </ul>
   </div>
 </section>
 
-<!-- ================= STATS ================= -->
+<!-- ================= TOOLS & ORGANIZATIONS ================= -->
+<section class="home-sec alt">
+  <div class="shell home-inner">
+    <h2 class="home-h2">{{ __('site.about.skills') }}</h2>
+    <ul class="chip-list">
+      @foreach ($profile->skillList() as $skill)<li>{{ $skill }}</li>@endforeach
+    </ul>
+
+    <h2 class="home-h2 chip-gap">{{ __('site.about.orgs') }}</h2>
+    <ul class="chip-list plain">
+      @foreach (config('site.orgs') as $org)<li>{{ $org }}</li>@endforeach
+    </ul>
+  </div>
+</section>
+
+<!-- ================= AT A GLANCE ================= -->
 <section class="stats-section">
   <div class="shell stats-outer">
     <div class="stats-panel reveal" style="--dy:40px;--sc:.99">
@@ -87,7 +90,7 @@
   </div>
 </section>
 
-<!-- ================= CERTIFICATES ================= -->
+<!-- ================= CERTIFICATIONS ================= -->
 <section id="certificates">
   <div class="shell certificates-inner">
     <div class="eyebrow reveal">{{ __('site.about.certs') }}</div>
@@ -112,7 +115,7 @@
 </section>
 
 <!-- ================= FAQ ================= -->
-<section class="faq-section">
+<section class="faq-section" id="faq">
   <div class="shell page-inner">
     <h2 class="page-h2 faq-h2">{{ __('site.about.faq') }}</h2>
     <div class="faq">
