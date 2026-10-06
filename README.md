@@ -11,6 +11,10 @@ Designed to stay light on shared hosting (cPanel): no Node build step, WebP imag
 - Image uploads are resized and converted to WebP automatically
 - Tech news: Indonesian outlets filtered for web dev / AI / UI-UX (`config/news.php`), refreshed hourly via cron and on page visits
 
+## Admin
+
+Login, daftar menu, ganti password, dan panduan konten dua bahasa: [docs/ADMIN.md](docs/ADMIN.md)
+
 ## UI
 
 - Light and dark theme (toggle in the header; follows the system setting until you choose), compact header with icon buttons
