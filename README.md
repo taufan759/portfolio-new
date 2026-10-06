@@ -11,6 +11,12 @@ Designed to stay light on shared hosting (cPanel): no Node build step, WebP imag
 - Image uploads are resized and converted to WebP automatically
 - Tech news: Indonesian outlets filtered for web dev / AI / UI-UX (`config/news.php`), refreshed hourly via cron and on page visits
 
+## UI
+
+- Light and dark theme (toggle in the header; follows the system setting until you choose), compact header with icon buttons
+- Global search (Ctrl/Cmd+K) over pages, projects, posts, books and FAQ
+- Floating music player (`config/music.php`); streams load only after pressing play
+
 ## SEO / AEO / GEO
 
 - Per-page title, description, canonical, hreflang (id/en/x-default), Open Graph and Twitter tags
@@ -22,6 +28,7 @@ Designed to stay light on shared hosting (cPanel): no Node build step, WebP imag
 ## Local development
 
 ```bash
+# create an empty MySQL database named `portfolio` first (e.g. in TablePlus or Herd)
 composer install
 cp .env.example .env
 php artisan key:generate

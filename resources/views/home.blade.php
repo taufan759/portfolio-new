@@ -1,5 +1,7 @@
 @extends('layouts.site')
 
+@section('body_class', 'page-home')
+
 @section('loader')
 @include('partials.loader')
 @endsection

@@ -29,7 +29,9 @@
 <meta name="description" content="{{ $pageDescription }}" />
 <meta name="robots" content="{{ $robots }}" />
 <meta name="author" content="{{ config('site.name') }}" />
+<meta name="color-scheme" content="light dark" />
 <meta name="theme-color" content="#0a0a0a" />
+<script>(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
 <link rel="canonical" href="{{ $canonical }}" />
 @unless ($onlyLocale)
 <link rel="alternate" hreflang="id" href="{{ $urlFor('id') }}" />
@@ -59,7 +61,7 @@
 {!! \App\Support\Seo::siteScript() !!}
 @stack('jsonld')
 </head>
-<body>
+<body class="@yield('body_class')">
 <a href="#main" class="skip-link">{{ __('site.skip') }}</a>
 
 @yield('loader')

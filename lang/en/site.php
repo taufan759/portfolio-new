@@ -102,6 +102,7 @@ return [
         'send' => 'Send request', 'sending' => 'Sending…', 'failed' => 'Failed - try again',
         'done_h' => 'Message received', 'done_p' => "Thanks for reaching out — I'll get back to you within one business day.",
     ],
+    'theme' => ['toggle' => 'Toggle light / dark theme'],
     'search' => [
         'button' => 'Search', 'placeholder' => 'Search pages, projects, blog...', 'empty' => 'No results for', 'hint' => 'Type to search',
         'close' => 'Close search', 'loading' => 'Loading…',

@@ -102,6 +102,7 @@ return [
         'send' => 'Kirim permintaan', 'sending' => 'Mengirim…', 'failed' => 'Gagal - coba lagi',
         'done_h' => 'Pesan diterima', 'done_p' => 'Terima kasih sudah menghubungi — saya akan membalas dalam satu hari kerja.',
     ],
+    'theme' => ['toggle' => 'Ganti tema terang / gelap'],
     'search' => [
         'button' => 'Cari', 'placeholder' => 'Cari halaman, proyek, blog...', 'empty' => 'Tidak ada hasil untuk', 'hint' => 'Ketik untuk mencari',
         'close' => 'Tutup pencarian', 'loading' => 'Memuat…',

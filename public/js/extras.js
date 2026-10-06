@@ -11,6 +11,21 @@ function store(key, value){
   } catch(e){ return null; }
 }
 
+/* ================= THEME ================= */
+(function theme(){
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+  function apply(t){ root.setAttribute('data-theme', t); }
+  if(btn) btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    apply(next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+  });
+  // Follow the system setting until the visitor picks a theme by hand.
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  if(mq.addEventListener) mq.addEventListener('change', e => { let saved = null; try { saved = localStorage.getItem('theme'); } catch(_){} if(!saved) apply(e.matches ? 'dark' : 'light'); });
+})();
+
 /* ================= SEARCH ================= */
 (function search(){
   const root = document.getElementById('search');
