@@ -49,49 +49,32 @@
   </div>
 </section>
 
-<!-- ================= SELECTED PROJECTS ================= -->
-<section id="works">
-  <div class="shell works-inner">
-    <div class="works-head">
-      <h2 class="works-h2 reveal"><span class="line-clip"><span class="line-inner">{{ __('site.home.projects') }}</span></span></h2>
-      <a href="{{ route('projects.index') }}" class="journal-more">{{ __('site.home.projects_all') }}</a>
-    </div>
-    <ul class="works-grid">
-      @foreach ($projects as $i => $project)
-        @include('projects.card', ['project' => $project, 'i' => $i])
+<!-- ================= OVERVIEW OF EVERY MENU ================= -->
+<section id="overview">
+  <div class="shell overview-inner">
+    <h2 class="overview-h2 reveal"><span class="line-clip"><span class="line-inner">{{ __('site.home.overview') }}</span></span></h2>
+    @php
+      $cards = [
+        ['about', 'about', __('site.nav.about'), null],
+        ['projects.index', 'projects', __('site.nav.projects'), __('site.home.count_projects', ['count' => $projectCount])],
+        ['blog.index', 'blog', __('site.nav.blog'), $post ? __('site.home.latest').': '.$post->t('title') : __('site.home.soon')],
+        ['books.index', 'books', __('site.nav.books'), $book ? __('site.home.reading_now').': '.$book->title : __('site.home.soon')],
+        ['news.index', 'news', __('site.nav.news'), $news ? __('site.home.latest').': '.$news->title : null],
+      ];
+    @endphp
+    <ul class="overview-grid">
+      @foreach ($cards as $i => [$route, $key, $label, $detail])
+        <li class="reveal" style="--dy:24px" data-delay="{{ $i * 70 }}">
+          <a href="{{ route($route) }}" class="overview-card">
+            <span class="overview-index">{{ sprintf('%02d', $i + 1) }}</span>
+            <h3>{{ $label }}</h3>
+            <p>{{ __('site.home.ov.'.$key) }}</p>
+            @if ($detail)<span class="overview-detail">{{ $detail }}</span>@endif
+            <span class="overview-open">{{ __('site.home.open') }} <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
       @endforeach
     </ul>
-  </div>
-</section>
-
-<!-- ================= READING & WRITING ================= -->
-<section id="journal">
-  <div class="shell journal-inner">
-    <div class="journal-grid two">
-      <div class="journal-col reveal" style="--dy:24px">
-        <div class="journal-col-head"><h2>{{ __('site.home.reading') }}</h2><a href="{{ route('books.index') }}" class="journal-more">{{ __('site.home.reading_all') }}</a></div>
-        @forelse ($books as $book)
-          <div class="journal-row">
-            <span class="journal-title">{{ $book->title }}<small>{{ $book->author }}</small></span>
-            <span class="journal-meta">{{ __('site.home.reading_label') }}</span>
-          </div>
-        @empty
-          <p class="journal-empty">{{ __('site.home.reading_empty') }}</p>
-        @endforelse
-      </div>
-
-      <div class="journal-col reveal" style="--dy:24px" data-delay="90">
-        <div class="journal-col-head"><h2>{{ __('site.home.writing') }}</h2><a href="{{ route('blog.index') }}" class="journal-more">{{ __('site.home.writing_all') }}</a></div>
-        @forelse ($posts as $post)
-          <a href="{{ route('blog.show', ['slug' => $post->slug]) }}" class="journal-row">
-            <span class="journal-title">{{ $post->t('title') }}</span>
-            <span class="journal-meta">{{ $post->published_at?->translatedFormat('d M Y') }}</span>
-          </a>
-        @empty
-          <p class="journal-empty">{{ __('site.home.writing_empty') }}</p>
-        @endforelse
-      </div>
-    </div>
   </div>
 </section>
 @endsection

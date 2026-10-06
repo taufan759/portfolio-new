@@ -25,6 +25,15 @@ return [
         'reading' => 'Currently reading', 'reading_all' => 'Bookshelf →', 'reading_empty' => 'My reading list is coming soon.',
         'writing' => 'Writing & thoughts', 'writing_all' => 'All posts →', 'writing_empty' => 'First posts are on the way.',
         'reading_label' => 'Reading',
+        'overview' => 'Explore',
+        'ov' => [
+            'about' => 'Who I am, what I do, my process, certificates, and answers to common questions.',
+            'projects' => 'Web apps, interface designs and AI products, each with its own page.',
+            'blog' => 'Notes on building software, in Indonesian and English.',
+            'books' => 'What I am reading, what I have finished, and what is next.',
+            'news' => 'Tech headlines from Indonesian media, filtered for web, AI and UI/UX.',
+        ],
+        'count_projects' => ':count projects', 'latest' => 'Latest', 'reading_now' => 'Reading now', 'soon' => 'Coming soon', 'open' => 'Open',
     ],
     'about' => [
         'title' => 'About — Muhammad Taufan Akbar',

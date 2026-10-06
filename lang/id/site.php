@@ -25,6 +25,15 @@ return [
         'reading' => 'Sedang dibaca', 'reading_all' => 'Rak buku →', 'reading_empty' => 'Daftar bacaan saya segera hadir.',
         'writing' => 'Tulisan & pemikiran', 'writing_all' => 'Semua tulisan →', 'writing_empty' => 'Tulisan pertama segera hadir.',
         'reading_label' => 'Dibaca',
+        'overview' => 'Jelajahi',
+        'ov' => [
+            'about' => 'Siapa saya, apa yang saya kerjakan, proses kerja, sertifikat, dan jawaban atas pertanyaan umum.',
+            'projects' => 'Aplikasi web, desain antarmuka, dan produk AI, masing-masing punya halaman sendiri.',
+            'blog' => 'Catatan membangun perangkat lunak, dalam bahasa Indonesia dan Inggris.',
+            'books' => 'Yang sedang saya baca, yang sudah selesai, dan yang akan dibaca.',
+            'news' => 'Berita teknologi dari media Indonesia, disaring untuk web, AI, dan UI/UX.',
+        ],
+        'count_projects' => ':count proyek', 'latest' => 'Terbaru', 'reading_now' => 'Sedang dibaca', 'soon' => 'Segera hadir', 'open' => 'Buka',
     ],
     'about' => [
         'title' => 'Tentang — Muhammad Taufan Akbar',
