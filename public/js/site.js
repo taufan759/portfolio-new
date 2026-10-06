@@ -67,9 +67,7 @@ function loaderTick(now){
   loaderFill.style.width = progress + '%';
   loaderCount.textContent = String(progress).padStart(3, '0');
   if(t < 1){
-    if(loader){ stopScroll(); requestAnimationFrame(loaderTick); }
-else { setTimeout(()=>{ introReady = true; heroReadyCallbacks.forEach(fn=>fn()); }, 50); }
-heroReadyCallbacks.push(()=>{ if(location.hash){ const t = document.getElementById(location.hash.slice(1)); if(t) setTimeout(()=> scrollToId(location.hash.slice(1)), 100); } });
+    requestAnimationFrame(loaderTick);
   } else {
     loader.classList.add('exit');
     setTimeout(()=>{
@@ -80,7 +78,9 @@ heroReadyCallbacks.push(()=>{ if(location.hash){ const t = document.getElementBy
     }, 700);
   }
 }
-requestAnimationFrame(loaderTick);
+if(loader){ stopScroll(); requestAnimationFrame(loaderTick); }
+else { setTimeout(()=>{ introReady = true; heroReadyCallbacks.forEach(fn=>fn()); }, 50); }
+heroReadyCallbacks.push(()=>{ if(location.hash && document.getElementById(location.hash.slice(1))) setTimeout(()=> scrollToId(location.hash.slice(1)), 100); });
 
 /* ================= REVEALS ================= */
 // hero-gated reveals: fire on ready + fixed delay
@@ -106,6 +106,7 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
 /* ================= ABOUT WORD REVEAL ================= */
 (function buildAboutH2(){
   const h2 = document.getElementById('about-h2');
+  if(!h2) return;
   const segments = [
     { text: 'I build scalable, user-centered applications — from e-commerce platforms to ', cls: '' },
     { text: 'government information systems — backed by research, design, and a growing focus on AI.', cls: 'muted' }

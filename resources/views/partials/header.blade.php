@@ -12,7 +12,8 @@
         <li class="hover-nav"><button class="nav-label" data-scrollto="works">Work</button></li>
         <li class="hover-nav"><button class="nav-label" data-scrollto="services">Services<span class="nav-caret">▾</span></button></li>
         <li class="hover-nav"><button class="nav-label" data-scrollto="about">About</button></li>
-        <li class="hover-nav"><a class="nav-label" href="https://drive.google.com/drive/folders/1bDK-e6YDXH5vUbCRGXRegsVNTZWDlOQ2?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
+        <li class="hover-nav"><a class="nav-label" href="{{ route('blog.index') }}">Blog</a></li>
+        <li class="hover-nav"><a class="nav-label" href="{{ route('books.index') }}">Books</a></li>
         <li class="hover-nav"><button class="nav-label" data-open-modal>Contact</button></li>
       </ul>
     </nav>
