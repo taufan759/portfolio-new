@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SeoController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Http\Request;
@@ -37,6 +38,7 @@ Route::prefix('{locale}')->where(['locale' => 'id|en'])->middleware(SetLocale::c
     Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
     Route::get('books', [BookController::class, 'index'])->name('books.index');
     Route::get('news', [NewsController::class, 'index'])->name('news.index');
+    Route::get('search.json', [SearchController::class, 'index'])->name('search.index');
 });
 
 use App\Http\Controllers\Admin\AuthController;

@@ -72,10 +72,13 @@
 @include('partials.footer')
 @include('partials.navmenu', ['urlFor' => $urlFor, 'otherLocale' => $otherLocale])
 @include('partials.modal')
+@include('partials.search')
+@include('partials.player')
 
 <script type="importmap">
 { "imports": { "lenis": "https://unpkg.com/lenis@1.3.23/dist/lenis.mjs" } }
 </script>
 <script type="module" src="{{ asset('js/site.js') }}?v={{ filemtime(public_path('js/site.js')) }}"></script>
+<script type="module" src="{{ asset('js/extras.js') }}?v={{ filemtime(public_path('js/extras.js')) }}"></script>
 </body>
 </html>

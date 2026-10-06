@@ -102,5 +102,19 @@ return [
         'send' => 'Send request', 'sending' => 'Sending…', 'failed' => 'Failed - try again',
         'done_h' => 'Message received', 'done_p' => "Thanks for reaching out — I'll get back to you within one business day.",
     ],
+    'search' => [
+        'button' => 'Search', 'placeholder' => 'Search pages, projects, blog...', 'empty' => 'No results for', 'hint' => 'Type to search',
+        'close' => 'Close search', 'loading' => 'Loading…',
+        'types' => ['page' => 'Page', 'project' => 'Project', 'blog' => 'Blog', 'book' => 'Book', 'faq' => 'FAQ'],
+        'page_desc' => [
+            'home' => 'Landing page', 'about' => 'About me', 'projects' => 'All projects',
+            'blog' => 'Notes on building software', 'books' => 'My reading list', 'news' => 'Curated tech news',
+        ],
+    ],
+    'player' => [
+        'label' => 'Music player', 'now' => 'Now playing', 'paused' => 'Paused', 'play' => 'Play', 'pause' => 'Pause',
+        'open' => 'Open music player', 'close' => 'Close', 'loading' => 'Loading…', 'error' => 'Stream unavailable, try another',
+        'mute' => 'Mute', 'unmute' => 'Unmute', 'channels' => 'Channels', 'credit' => 'Streams by SomaFM',
+    ],
     'breadcrumb_home' => 'Home',
 ];

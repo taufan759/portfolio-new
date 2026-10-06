@@ -102,5 +102,19 @@ return [
         'send' => 'Kirim permintaan', 'sending' => 'Mengirim…', 'failed' => 'Gagal - coba lagi',
         'done_h' => 'Pesan diterima', 'done_p' => 'Terima kasih sudah menghubungi — saya akan membalas dalam satu hari kerja.',
     ],
+    'search' => [
+        'button' => 'Cari', 'placeholder' => 'Cari halaman, proyek, blog...', 'empty' => 'Tidak ada hasil untuk', 'hint' => 'Ketik untuk mencari',
+        'close' => 'Tutup pencarian', 'loading' => 'Memuat…',
+        'types' => ['page' => 'Halaman', 'project' => 'Proyek', 'blog' => 'Blog', 'book' => 'Buku', 'faq' => 'FAQ'],
+        'page_desc' => [
+            'home' => 'Halaman utama', 'about' => 'Tentang saya', 'projects' => 'Semua proyek',
+            'blog' => 'Catatan membangun perangkat lunak', 'books' => 'Daftar bacaan saya', 'news' => 'Berita teknologi pilihan',
+        ],
+    ],
+    'player' => [
+        'label' => 'Pemutar musik', 'now' => 'Sedang diputar', 'paused' => 'Dijeda', 'play' => 'Putar', 'pause' => 'Jeda',
+        'open' => 'Buka pemutar musik', 'close' => 'Tutup', 'loading' => 'Memuat…', 'error' => 'Siaran tidak tersedia, coba yang lain',
+        'mute' => 'Bisukan', 'unmute' => 'Bunyikan', 'channels' => 'Saluran', 'credit' => 'Siaran oleh SomaFM',
+    ],
     'breadcrumb_home' => 'Beranda',
 ];

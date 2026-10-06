@@ -16,6 +16,11 @@
     </nav>
 
     <div class="header-right">
+      <button type="button" class="search-btn" data-open-search aria-label="{{ __('site.search.button') }}">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="search-btn-label">{{ __('site.search.button') }}</span>
+        <kbd class="search-kbd">Ctrl K</kbd>
+      </button>
       <div class="lang-switch" role="group" aria-label="{{ __('site.nav.language') }}">
         @foreach (['id' => 'ID', 'en' => 'EN'] as $code => $label)
           <a href="{{ $urlFor($code) }}" hreflang="{{ $code }}" lang="{{ $code }}" @if (app()->getLocale() === $code) aria-current="true" class="on" @endif>{{ $label }}</a>

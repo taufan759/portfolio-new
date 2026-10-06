@@ -42,6 +42,8 @@ function startScroll(){
   document.documentElement.style.removeProperty('height');
 }
 
+window.__scroll = { stop: stopScroll, start: startScroll };
+
 function scrollToId(id){
   const el = document.getElementById(id);
   if(!el) return;
@@ -57,7 +59,8 @@ function scrollToId(id){
 /* ================= LOADER ================= */
 let loader = document.getElementById('loader');
 try {
-  if(loader && sessionStorage.getItem('loaderSeen')){ loader.remove(); loader = null; }
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(loader && (reducedMotion || sessionStorage.getItem('loaderSeen'))){ loader.remove(); loader = null; }
   else if(loader){ sessionStorage.setItem('loaderSeen','1'); }
 } catch(e){}
 const loaderFill = document.getElementById('loader-fill');
