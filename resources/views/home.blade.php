@@ -49,32 +49,111 @@
   </div>
 </section>
 
-<!-- ================= OVERVIEW OF EVERY MENU ================= -->
-<section id="overview">
-  <div class="shell overview-inner">
-    <h2 class="overview-h2 reveal"><span class="line-clip"><span class="line-inner">{{ __('site.home.overview') }}</span></span></h2>
-    @php
-      $cards = [
-        ['about', 'about', __('site.nav.about'), null],
-        ['projects.index', 'projects', __('site.nav.projects'), __('site.home.count_projects', ['count' => $projectCount])],
-        ['blog.index', 'blog', __('site.nav.blog'), $post ? __('site.home.latest').': '.$post->t('title') : __('site.home.soon')],
-        ['books.index', 'books', __('site.nav.books'), $book ? __('site.home.reading_now').': '.$book->title : __('site.home.soon')],
-        ['news.index', 'news', __('site.nav.news'), $news ? __('site.home.latest').': '.$news->title : null],
-      ];
-    @endphp
-    <ul class="overview-grid">
-      @foreach ($cards as $i => [$route, $key, $label, $detail])
+<!-- ================= ABOUT TEASER ================= -->
+<section class="home-sec" id="about-teaser">
+  <div class="shell home-inner home-about">
+    <div>
+      <h2 class="home-h2">{{ __('site.home.about_h') }}</h2>
+      <p class="home-p">{{ __('site.home.about_p') }}</p>
+    </div>
+    <a href="{{ route('about') }}" class="pill-btn dark with-arrow arrow-right hover-pill">
+      <span style="padding-left:.5rem">{{ __('site.home.about_cta') }}</span>
+      <span class="pill-arrow-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= PROJECTS PREVIEW ================= -->
+<section class="home-sec alt" id="works">
+  <div class="shell home-inner">
+    <div class="home-head">
+      <div>
+        <h2 class="home-h2">{{ __('site.nav.projects') }}</h2>
+        <p class="home-p">{{ __('site.home.projects_p') }}</p>
+      </div>
+      <a href="{{ route('projects.index') }}" class="home-all">{{ __('site.home.all_count', ['count' => $projectCount]) }} →</a>
+    </div>
+    <ul class="mini-grid">
+      @foreach ($projects as $i => $project)
         <li class="reveal" style="--dy:24px" data-delay="{{ $i * 70 }}">
-          <a href="{{ route($route) }}" class="overview-card">
-            <span class="overview-index">{{ sprintf('%02d', $i + 1) }}</span>
-            <h3>{{ $label }}</h3>
-            <p>{{ __('site.home.ov.'.$key) }}</p>
-            @if ($detail)<span class="overview-detail">{{ $detail }}</span>@endif
-            <span class="overview-open">{{ __('site.home.open') }} <span aria-hidden="true">→</span></span>
+          <a href="{{ route('projects.show', ['slug' => $project->slug]) }}" class="mini-card">
+            <img src="{{ asset($project->image) }}" alt="{{ $project->title }}" width="1000" height="500" loading="lazy" decoding="async">
+            <div class="mini-body">
+              <span class="journal-meta">{{ $project->kind }}</span>
+              <h3>{{ $project->title }}</h3>
+              <p>{{ $project->t('description') }}</p>
+              <div class="mini-tags">@foreach (array_slice($project->tags ?? [], 0, 3) as $tag)<span>{{ $tag }}</span>@endforeach</div>
+            </div>
           </a>
         </li>
       @endforeach
     </ul>
+  </div>
+</section>
+
+<!-- ================= CURRENTLY READING ================= -->
+<section class="home-sec" id="reading">
+  <div class="shell home-inner">
+    <div class="home-head">
+      <h2 class="home-h2">{{ __('site.books.reading') }}</h2>
+      <a href="{{ route('books.index') }}" class="home-all">{{ __('site.home.reading_all') }}</a>
+    </div>
+    <div class="book-list">
+      @forelse ($books as $book)
+        <div class="book-row">
+          <div><strong>{{ $book->title }}</strong><small>{{ $book->author }}</small></div>
+        </div>
+      @empty
+        <p class="journal-empty">{{ __('site.home.reading_empty') }}</p>
+      @endforelse
+    </div>
+  </div>
+</section>
+
+<!-- ================= WRITING PREVIEW ================= -->
+<section class="home-sec alt" id="writing">
+  <div class="shell home-inner">
+    <div class="home-head">
+      <div>
+        <h2 class="home-h2">{{ __('site.home.writing') }}</h2>
+        <p class="home-p">{{ __('site.home.writing_p') }}</p>
+      </div>
+      @if ($postCount > 0)<a href="{{ route('blog.index') }}" class="home-all">{{ __('site.home.all_count', ['count' => $postCount]) }} →</a>@endif
+    </div>
+    <div class="post-list">
+      @forelse ($posts as $post)
+        <a href="{{ route('blog.show', ['slug' => $post->slug]) }}" class="post-row">
+          <div>
+            <time class="journal-meta" datetime="{{ $post->published_at?->toDateString() }}">{{ $post->published_at?->translatedFormat('d M Y') }}</time>
+            <h3>{{ $post->t('title') }}</h3>
+            @if (filled($post->t('excerpt')))<p>{{ $post->t('excerpt') }}</p>@endif
+          </div>
+          <span class="journal-more">{{ __('site.home.read_more') }} →</span>
+        </a>
+      @empty
+        <p class="journal-empty">{{ __('site.home.writing_empty') }}</p>
+      @endforelse
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWS PREVIEW ================= -->
+<section class="home-sec" id="news">
+  <div class="shell home-inner">
+    <div class="home-head">
+      <h2 class="home-h2">{{ __('site.home.news_h') }}</h2>
+      <a href="{{ route('news.index') }}" class="home-all">{{ __('site.home.news_all') }}</a>
+    </div>
+    <div class="book-list">
+      @forelse ($news as $item)
+        <a href="{{ $item->url }}" target="_blank" rel="noopener nofollow" class="book-row">
+          <div><strong>{{ $item->title }}</strong><small>{{ $item->source }}</small></div>
+          <span class="journal-meta">{{ $item->published_at?->diffForHumans(null, true, true) }}</span>
+        </a>
+      @empty
+        <p class="journal-empty">{{ __('site.news.empty') }}</p>
+      @endforelse
+    </div>
   </div>
 </section>
 @endsection

@@ -109,21 +109,35 @@ a.nav-menu-item:hover .nav-menu-label,button.nav-menu-item:hover .nav-menu-label
 /* ================= SMALL FIXES ================= */
 button.animated-link{padding:0;text-align:left}
 
-/* ================= HOME OVERVIEW ================= */
-#overview{background:#fff}
-.overview-inner{padding:4rem 1.25rem 5rem}
-@media (min-width:640px){.overview-inner{padding-inline:2rem}}
-@media (min-width:1024px){.overview-inner{padding-block:6rem 7rem}}
-.overview-h2{margin-bottom:2.5rem;font-size:2.25rem;font-weight:600;letter-spacing:-.02em;width:fit-content}
-@media (min-width:640px){.overview-h2{font-size:3rem}}
-.overview-grid{display:grid;grid-template-columns:1fr;gap:1rem}
-@media (min-width:768px){.overview-grid{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:1100px){.overview-grid{grid-template-columns:repeat(3,1fr)}}
-.overview-card{display:flex;flex-direction:column;gap:.625rem;height:100%;min-height:15rem;padding:1.5rem;border-radius:1.25rem;background:#f1f0ee;box-shadow:0 0 0 1px #e6e5e2;transition:transform .35s var(--ease-hover),box-shadow .35s var(--ease-hover),background .35s}
-.overview-card:hover{transform:translateY(-4px);background:#fff;box-shadow:0 0 0 1px #0a0a0a}
-.overview-index{font-size:.8125rem;color:rgba(17,17,17,.4)}
-.overview-card h3{font-size:1.5rem;font-weight:600;letter-spacing:-.02em}
-.overview-card p{font-size:.9375rem;line-height:1.5;color:rgba(17,17,17,.65)}
-.overview-detail{margin-top:auto;padding-top:.75rem;border-top:1px solid #e6e5e2;font-size:.8125rem;font-weight:500;color:rgba(17,17,17,.75);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.overview-open{font-size:.8125rem;font-weight:500;color:#b15f2c}
-.overview-card:not(:has(.overview-detail)) .overview-open{margin-top:auto}
+/* ================= HOME SECTIONS ================= */
+.home-sec{background:#fff}
+.home-sec.alt{background:#f7f6f4}
+.home-inner{padding:4rem 1.25rem}
+@media (min-width:640px){.home-inner{padding-inline:2rem}}
+@media (min-width:1024px){.home-inner{padding-block:5.5rem}}
+.home-h2{font-size:2rem;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+@media (min-width:640px){.home-h2{font-size:2.5rem}}
+.home-p{margin-top:.625rem;max-width:34rem;font-size:.9375rem;line-height:1.55;color:rgba(17,17,17,.6)}
+.home-about{display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem}
+@media (min-width:768px){.home-about{flex-direction:row;align-items:center;justify-content:space-between}}
+.home-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:2rem}
+.home-all{font-size:.875rem;font-weight:500;color:rgba(17,17,17,.6);transition:color .3s}
+.home-all:hover{color:#b15f2c}
+.mini-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media (min-width:768px){.mini-grid{grid-template-columns:repeat(2,1fr)}}
+.mini-grid>li{height:100%}
+.mini-card{display:flex;flex-direction:column;height:100%;overflow:hidden;border-radius:1.25rem;background:#fff;box-shadow:0 0 0 1px #e6e5e2;transition:transform .35s var(--ease-hover),box-shadow .35s var(--ease-hover)}
+.mini-card:hover{transform:translateY(-4px);box-shadow:0 0 0 1px #0a0a0a}
+.mini-card img{width:100%;aspect-ratio:2/1;object-fit:cover;object-position:top center}
+.mini-body{display:flex;flex-direction:column;gap:.375rem;padding:1.25rem}
+.mini-body h3{font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
+.mini-body p{font-size:.875rem;line-height:1.5;color:rgba(17,17,17,.6);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mini-tags{display:flex;flex-wrap:wrap;gap:.375rem;margin-top:.5rem}
+.mini-tags span{border:1px solid #e6e5e2;border-radius:9999px;padding:.25rem .75rem;font-size:.75rem;color:rgba(17,17,17,.65)}
+.post-list{display:flex;flex-direction:column}
+.post-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid #e6e5e2;transition:padding .3s var(--ease-hover)}
+.post-row:first-child{border-top:1px solid #e6e5e2}
+.post-row:hover{padding-left:.5rem}
+.post-row h3{margin:.25rem 0;font-size:1.125rem;font-weight:600;line-height:1.3}
+.post-row p{max-width:44rem;font-size:.875rem;line-height:1.5;color:rgba(17,17,17,.6);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.post-row .journal-more{white-space:nowrap;margin-top:.25rem}
