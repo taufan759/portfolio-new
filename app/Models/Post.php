@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title','slug','excerpt','body','cover','published_at','is_published'];
+    use Translatable;
+
+    protected $fillable = ['title','title_id','slug','excerpt','excerpt_id','body','body_id','cover','published_at','is_published'];
 
     protected $casts = ['published_at'=>'datetime','is_published'=>'boolean'];
 }

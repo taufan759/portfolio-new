@@ -1,30 +1,76 @@
+@php
+  $locale = app()->getLocale();
+  $route = Route::current();
+  $routeName = $route?->getName();
+  $routeParams = $route?->parameters() ?? [];
+  $urlFor = fn (string $l) => $routeName ? route($routeName, array_merge($routeParams, ['locale' => $l])) : url('/'.$l);
+
+  // A page that exists in one language only points its canonical there and skips hreflang.
+  $onlyLocale = trim($__env->yieldContent('only_locale'));
+  $canonical = $urlFor($onlyLocale ?: $locale);
+  if ((int) request('page') > 1) {
+      $canonical .= '?page='.(int) request('page');
+  }
+
+  $pageTitle = trim($__env->yieldContent('title')) ?: __('site.seo.default_title');
+  $pageDescription = trim($__env->yieldContent('description')) ?: __('site.seo.default_description');
+  $ogImage = asset(trim($__env->yieldContent('og_image')) ?: config('site.og_image'));
+  $robots = trim($__env->yieldContent('robots')) ?: 'index,follow,max-image-preview:large';
+  $ogType = trim($__env->yieldContent('og_type')) ?: 'website';
+  $otherLocale = $locale === 'id' ? 'en' : 'id';
+@endphp
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ $locale }}">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<title>@yield('title', 'Muhammad Taufan Akbar — Full-Stack Developer & AI Enthusiast')</title>
-<meta name="description" content="@yield('description', 'Portfolio of Muhammad Taufan Akbar, a Full-Stack Developer & AI Enthusiast building scalable web products, thoughtful interfaces, and intelligent applications.')" />
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $pageDescription }}" />
+<meta name="robots" content="{{ $robots }}" />
+<meta name="author" content="{{ config('site.name') }}" />
 <meta name="theme-color" content="#0a0a0a" />
+<link rel="canonical" href="{{ $canonical }}" />
+@unless ($onlyLocale)
+<link rel="alternate" hreflang="id" href="{{ $urlFor('id') }}" />
+<link rel="alternate" hreflang="en" href="{{ $urlFor('en') }}" />
+<link rel="alternate" hreflang="x-default" href="{{ $urlFor('en') }}" />
+@endunless
+<meta property="og:site_name" content="{{ config('site.name') }}" />
+<meta property="og:type" content="{{ $ogType }}" />
+<meta property="og:title" content="{{ $pageTitle }}" />
+<meta property="og:description" content="{{ $pageDescription }}" />
+<meta property="og:url" content="{{ $canonical }}" />
+<meta property="og:image" content="{{ $ogImage }}" />
+<meta property="og:locale" content="{{ $locale === 'id' ? 'id_ID' : 'en_US' }}" />
+@unless ($onlyLocale)
+<meta property="og:locale:alternate" content="{{ $otherLocale === 'id' ? 'id_ID' : 'en_US' }}" />
+@endunless
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ $pageTitle }}" />
+<meta name="twitter:description" content="{{ $pageDescription }}" />
+<meta name="twitter:image" content="{{ $ogImage }}" />
+<link rel="icon" href="{{ asset('favicon.ico') }}" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/site.css') }}?v={{ filemtime(public_path('css/site.css')) }}">
 <link rel="stylesheet" href="{{ asset('css/pages.css') }}?v={{ filemtime(public_path('css/pages.css')) }}">
+{!! \App\Support\Seo::siteScript() !!}
+@stack('jsonld')
 </head>
 <body>
-<a href="#main" class="skip-link">Skip to content</a>
+<a href="#main" class="skip-link">{{ __('site.skip') }}</a>
 
 @yield('loader')
-@include('partials.header')
+@include('partials.header', ['urlFor' => $urlFor, 'otherLocale' => $otherLocale])
 
 <main id="main">
 @yield('content')
 </main>
 
 @include('partials.footer')
-@include('partials.navmenu')
+@include('partials.navmenu', ['urlFor' => $urlFor, 'otherLocale' => $otherLocale])
 @include('partials.modal')
 
 <script type="importmap">

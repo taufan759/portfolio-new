@@ -50,3 +50,61 @@ a.journal-row:hover{padding-left:.5rem}
 .prose a{color:#b15f2c;text-decoration:underline}
 .prose pre{overflow-x:auto;padding:1rem;border-radius:.875rem;background:#0a0a0a;color:#fff;font-size:.875rem}
 .prose code{font-size:.9em}
+
+/* ================= HEADER (consistent on every page) ================= */
+.primary-nav a.nav-label[aria-current="page"],.primary-nav button.nav-label[aria-current="page"]{opacity:1;box-shadow:inset 0 -2px 0 #b15f2c}
+.lang-switch{display:flex;align-items:center;border:1px solid rgba(230,229,226,.8);background:rgba(255,255,255,.4);backdrop-filter:blur(4px);border-radius:.875rem;padding:.25rem;font-size:.75rem;font-weight:600;letter-spacing:.04em}
+.lang-switch a{padding:.375rem .625rem;border-radius:.625rem;color:rgba(17,17,17,.55);transition:background .3s,color .3s}
+.lang-switch a:hover{color:#111}
+.lang-switch a.on{background:#0a0a0a;color:#fff}
+.nm-lang{display:flex;gap:1rem}
+.nm-lang a{color:rgba(255,255,255,.45)}
+.nm-lang a.on,.nm-lang a:hover{color:#fff}
+a.nav-menu-item:hover .nav-menu-label,button.nav-menu-item:hover .nav-menu-label{color:#fff}
+
+/* ================= HOME ================= */
+.hero-lead{max-width:34rem;font-size:1rem;line-height:1.55;color:rgba(17,17,17,.72)}
+@media (min-width:640px){.hero-lead{font-size:1.0625rem}}
+.hero-cta-row .pill-btn.outline{padding:.75rem 1.25rem}
+.journal-grid.two{grid-template-columns:1fr}
+@media (min-width:1024px){.journal-grid.two{grid-template-columns:repeat(2,1fr);gap:4rem}}
+.journal-col-head h2{font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
+#works .works-head .journal-more{margin-top:-.5rem}
+
+/* ================= BREADCRUMBS ================= */
+.breadcrumbs ol{display:flex;flex-wrap:wrap;gap:.375rem;font-size:.8125rem;color:rgba(17,17,17,.5)}
+.breadcrumbs li+li::before{content:"/";margin-right:.375rem;color:rgba(17,17,17,.3)}
+.breadcrumbs a:hover{color:#b15f2c}
+.breadcrumbs [aria-current]{color:rgba(17,17,17,.8)}
+.breadcrumbs + .page-h1,.breadcrumbs + .eyebrow{margin-top:1.25rem}
+
+/* ================= PROJECTS ================= */
+.works-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.project-page{max-width:60rem}
+.project-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1rem 2rem;margin:1.5rem 0;padding:1.25rem 0;border-block:1px solid #e6e5e2}
+.project-meta dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:rgba(17,17,17,.45)}
+.project-meta dd{margin-top:.25rem;font-weight:500}
+.project-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;margin-top:2.5rem}
+.article-cover{object-fit:cover}
+
+/* ================= ABOUT ================= */
+.about-intro .page-h1{max-width:22ch}
+.about-copy{display:flex;flex-direction:column;gap:1.25rem;max-width:46rem;font-size:1.0625rem;line-height:1.65;color:rgba(17,17,17,.75)}
+.about-lede{font-size:1.375rem;line-height:1.45;font-weight:500;color:#111;letter-spacing:-.01em}
+.about-detail{display:flex;flex-wrap:wrap;gap:.25rem .5rem;font-size:.875rem;color:rgba(17,17,17,.6)}
+.about-find-label{margin-top:.75rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:rgba(17,17,17,.45)}
+.about-links{display:flex;flex-wrap:wrap;gap:.625rem}
+.about-links .pill-btn{padding:.75rem 1.25rem}
+.process-head .eyebrow{justify-content:center}
+.faq-section{background:#fff}
+.faq-h2{margin-top:4rem}
+.faq{max-width:46rem;margin-top:1rem;border-bottom:1px solid #e6e5e2}
+.faq details{border-top:1px solid #e6e5e2;padding:1.125rem 0}
+.faq summary{display:flex;justify-content:space-between;gap:1rem;font-weight:600;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:400;color:rgba(17,17,17,.5)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:.75rem;max-width:40rem;line-height:1.65;color:rgba(17,17,17,.7)}
+
+/* ================= SMALL FIXES ================= */
+button.animated-link{padding:0;text-align:left}

@@ -1,34 +1,30 @@
 <!-- ================= HEADER ================= -->
-<header id="site-header" class="reveal" style="--dy:-14px" data-hero-delay="150">
+<header id="site-header">
   <div class="shell header-inner">
-    <button class="brand-btn hover-brand" data-scrollto="home">
-      <svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>
-      <span>Taufan</span>
-    </button>
+    <a class="brand-btn hover-brand" href="{{ route('home') }}" aria-label="{{ config('site.name') }} — {{ __('site.nav.home') }}">
+      <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>
+      <span>{{ config('site.short_name') }}</span>
+    </a>
 
-    <nav class="primary-nav" aria-label="Primary">
+    <nav class="primary-nav" aria-label="{{ __('site.nav.primary') }}">
       <ul>
-        <li class="hover-nav"><button class="nav-label" data-scrollto="home" aria-current="page">Home</button></li>
-        <li class="hover-nav"><button class="nav-label" data-scrollto="works">Work</button></li>
-        <li class="hover-nav"><button class="nav-label" data-scrollto="services">Services<span class="nav-caret">▾</span></button></li>
-        <li class="hover-nav"><button class="nav-label" data-scrollto="about">About</button></li>
-        <li class="hover-nav"><a class="nav-label" href="{{ route('blog.index') }}">Blog</a></li>
-        <li class="hover-nav"><a class="nav-label" href="{{ route('books.index') }}">Books</a></li>
-        <li class="hover-nav"><button class="nav-label" data-open-modal>Contact</button></li>
+        @foreach ([['about', 'about', 'about'], ['projects.index', 'projects.*', 'projects'], ['blog.index', 'blog.*', 'blog'], ['books.index', 'books.*', 'books'], ['news.index', 'news.*', 'news']] as [$name, $pattern, $key])
+          <li class="hover-nav"><a class="nav-label" href="{{ route($name) }}" @if (request()->routeIs($pattern)) aria-current="page" @endif>{{ __('site.nav.'.$key) }}</a></li>
+        @endforeach
+        <li class="hover-nav"><button class="nav-label" type="button" data-open-modal>{{ __('site.nav.contact') }}</button></li>
       </ul>
     </nav>
 
     <div class="header-right">
-      <div class="clock-chip">
-        <span class="clock-label">Local time</span>
-        <span class="clock-time" id="clock-time">9:41am</span>
-        <span class="clock-sep">•</span>
-        <span class="clock-date" id="clock-date">12 March, 2025</span>
+      <div class="lang-switch" role="group" aria-label="{{ __('site.nav.language') }}">
+        @foreach (['id' => 'ID', 'en' => 'EN'] as $code => $label)
+          <a href="{{ $urlFor($code) }}" hreflang="{{ $code }}" lang="{{ $code }}" @if (app()->getLocale() === $code) aria-current="true" class="on" @endif>{{ $label }}</a>
+        @endforeach
       </div>
-      <button class="menu-btn hover-menu" id="open-nav-menu">
+      <button class="menu-btn hover-menu" id="open-nav-menu" type="button" aria-label="{{ __('site.nav.menu') }}">
         <span class="menu-btn-inner">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-          <span class="menu-word">Menu</span>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <span class="menu-word">{{ __('site.nav.menu') }}</span>
         </span>
       </button>
     </div>

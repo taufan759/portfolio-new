@@ -18,6 +18,12 @@ const lenis = new Lenis({ smoothWheel: true });
 function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
 
+/* ================= HEADER ================= */
+const siteHeader = document.getElementById('site-header');
+function updateHeader(){ siteHeader.classList.toggle('scrolled', window.scrollY > 24); }
+updateHeader();
+addEventListener('scroll', updateHeader, { passive: true });
+
 /* ================= SCROLL LOCK ================= */
 let scrollEnabled = true;
 function stopScroll(){
@@ -38,7 +44,7 @@ function startScroll(){
 
 function scrollToId(id){
   const el = document.getElementById(id);
-  if(!el){ window.location.href = '/#' + id; return; }
+  if(!el) return;
   const wasEnabled = scrollEnabled;
   if(wasEnabled) lenis.stop();
   setTimeout(()=>{
@@ -47,12 +53,13 @@ function scrollToId(id){
   }, 50);
   setTimeout(()=>{ if(wasEnabled) lenis.start(); }, 100);
 }
-document.querySelectorAll('[data-scrollto]').forEach(el=>{
-  el.addEventListener('click', ()=> scrollToId(el.getAttribute('data-scrollto')));
-});
 
 /* ================= LOADER ================= */
-const loader = document.getElementById('loader');
+let loader = document.getElementById('loader');
+try {
+  if(loader && sessionStorage.getItem('loaderSeen')){ loader.remove(); loader = null; }
+  else if(loader){ sessionStorage.setItem('loaderSeen','1'); }
+} catch(e){}
 const loaderFill = document.getElementById('loader-fill');
 const loaderCount = document.getElementById('loader-count');
 let introReady = false;
@@ -102,95 +109,6 @@ const io = new IntersectionObserver((entries)=>{
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.observe(el));
-
-/* ================= ABOUT WORD REVEAL ================= */
-(function buildAboutH2(){
-  const h2 = document.getElementById('about-h2');
-  if(!h2) return;
-  const segments = [
-    { text: 'I build scalable, user-centered applications — from e-commerce platforms to ', cls: '' },
-    { text: 'government information systems — backed by research, design, and a growing focus on AI.', cls: 'muted' }
-  ];
-  let wordIndex = 0;
-  segments.forEach(seg=>{
-    const words = seg.text.split(' ');
-    words.forEach((w, i)=>{
-      if(w === '') return;
-      const clip = document.createElement('span');
-      clip.className = 'word-clip';
-      const inner = document.createElement('span');
-      inner.className = 'word-inner' + (seg.cls ? ' ' + seg.cls : '');
-      inner.textContent = w + (i < words.length - 1 ? ' ' : '');
-      inner.style.transitionDelay = (wordIndex * 35) + 'ms';
-      clip.appendChild(inner);
-      h2.appendChild(clip);
-      wordIndex++;
-    });
-  });
-  io.observe(h2.closest('.reveal') || h2);
-  h2.classList.add('reveal');
-  io.observe(h2);
-})();
-
-/* ================= CLOCK ================= */
-function pad(n){ return String(n).padStart(2, '0'); }
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-function updateClock(){
-  const now = new Date();
-  const h = now.getHours();
-  const displayH = (h % 12) || 12;
-  const meridiem = h < 12 ? 'am' : 'pm';
-  const timeStr = `${displayH}:${pad(now.getMinutes())}${meridiem}`;
-  const dateStr = `${now.getDate()} ${MONTHS[now.getMonth()]}, ${now.getFullYear()}`;
-  const timeEl = document.getElementById('clock-time');
-  const dateEl = document.getElementById('clock-date');
-  if(timeEl) timeEl.textContent = timeStr;
-  if(dateEl) dateEl.textContent = dateStr;
-  const nm = document.getElementById('nm-clock');
-  if(nm) nm.textContent = 'Local time — ' + timeStr;
-}
-updateClock();
-setInterval(updateClock, 1000);
-
-/* ================= HERO CARD CAROUSEL ================= */
-const heroItems = [
-  { caption: 'Full-Stack Development', title: 'Built to scale.' },
-  { caption: 'UI/UX Design', title: 'Designed with care.' },
-  { caption: 'AI Integration', title: 'Powered by intelligence.' }
-];
-let heroIndex = 0;
-const slot = document.getElementById('hero-card-slot');
-const dotsWrap = document.getElementById('hero-card-dots');
-function renderHeroCard(dir){
-  const item = heroItems[heroIndex];
-  const outgoing = slot.querySelector('.hero-card-item');
-  if(outgoing){
-    outgoing.style.transform = dir === 1 ? 'translateY(-14px)' : 'translateY(14px)';
-    outgoing.style.opacity = '0';
-    setTimeout(()=> outgoing.remove(), 500);
-  }
-  const el = document.createElement('div');
-  el.className = 'hero-card-item ' + (dir === 1 ? 'enter-from-right' : 'enter-from-left');
-  el.innerHTML = `<div class="hero-card-caption">${item.caption}</div><div class="hero-card-title">${item.title}</div>`;
-  slot.appendChild(el);
-  requestAnimationFrame(()=>{
-    requestAnimationFrame(()=>{
-      el.classList.add('active');
-      el.style.transform = 'translateY(0)';
-      el.style.opacity = '1';
-    });
-  });
-  [...dotsWrap.children].forEach((d,i)=> d.classList.toggle('active', i === heroIndex));
-}
-function advanceHero(step){
-  heroIndex = (heroIndex + step + heroItems.length) % heroItems.length;
-  renderHeroCard(step >= 0 ? 1 : -1);
-}
-if(document.getElementById('hero-next')){
-document.getElementById('hero-next').addEventListener('click', (e)=>{ e.stopPropagation(); advanceHero(1); });
-document.getElementById('hero-prev').addEventListener('click', (e)=>{ e.stopPropagation(); advanceHero(-1); });
-document.getElementById('hero-carousel').addEventListener('click', ()=> advanceHero(1));
-}
 
 /* ================= LIQUID REVEAL ================= */
 (function liquidReveal(){
@@ -309,7 +227,7 @@ document.getElementById('hero-carousel').addEventListener('click', ()=> advanceH
 })();
 
 /* ================= WORKS FILTER ================= */
-const applyWorksFilter = (function worksFilter(){
+(function worksFilter(){
   const buttons = [...document.querySelectorAll('.works-filter-btn')];
   const items = [...document.querySelectorAll('#works-grid > li:not(#works-empty)')];
   const emptyState = document.getElementById('works-empty');
@@ -324,16 +242,7 @@ const applyWorksFilter = (function worksFilter(){
     emptyState.hidden = visibleCount > 0;
   }
   buttons.forEach(btn=> btn.addEventListener('click', ()=> setFilter(btn.getAttribute('data-filter'))));
-  return setFilter;
 })();
-
-document.querySelectorAll('[data-filter-goto]').forEach(el=>{
-  el.addEventListener('click', (e)=>{
-    e.preventDefault();
-    applyWorksFilter(el.getAttribute('data-filter-goto'));
-    scrollToId('works');
-  });
-});
 
 /* ================= STATS COUNT-UP ================= */
 (function statsCountUp(){
@@ -380,13 +289,6 @@ function closeNavMenu(){
 function onNavMenuKey(e){ if(e.key === 'Escape') closeNavMenu(); }
 document.getElementById('open-nav-menu').addEventListener('click', openNavMenu);
 document.getElementById('close-nav-menu').addEventListener('click', closeNavMenu);
-navMenu.querySelectorAll('[data-scrollto]').forEach(el=>{
-  el.addEventListener('click', ()=>{
-    const id = el.getAttribute('data-scrollto');
-    closeNavMenu();
-    scrollToId(id);
-  });
-});
 document.getElementById('nm-start-project').addEventListener('click', ()=>{
   closeNavMenu();
   openModal();
@@ -412,13 +314,13 @@ function closeModal(){
     formState.hidden = false;
     successState.hidden = true;
     requestForm.reset();
-    submitLabel.textContent = 'Send request';
+    submitLabel.textContent = requestForm.dataset.send;
   }, 300);
 }
 function onModalKey(e){ if(e.key === 'Escape') closeModal(); }
 
 document.querySelectorAll('[data-open-modal]').forEach(el=>{
-  el.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+  el.addEventListener('click', (e)=>{ e.preventDefault(); if(navMenu.classList.contains('open')) closeNavMenu(); openModal(); });
 });
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal-success-close').addEventListener('click', closeModal);
@@ -427,7 +329,7 @@ document.getElementById('modal-panel').addEventListener('click', (e)=> e.stopPro
 
 requestForm.addEventListener('submit', async (e)=>{
   e.preventDefault();
-  submitLabel.textContent = 'Sending…';
+  submitLabel.textContent = requestForm.dataset.sending;
   try {
     const res = await fetch(requestForm.dataset.action, {
       method: 'POST',
@@ -438,6 +340,6 @@ requestForm.addEventListener('submit', async (e)=>{
     formState.hidden = true;
     successState.hidden = false;
   } catch(err){
-    submitLabel.textContent = 'Failed - try again';
+    submitLabel.textContent = requestForm.dataset.failed;
   }
 });

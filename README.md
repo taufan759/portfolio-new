@@ -5,10 +5,19 @@ Designed to stay light on shared hosting (cPanel): no Node build step, WebP imag
 
 ## Features
 
-- Public site: home (hero with liquid cursor reveal, portfolio filter, certificates, journal), `/blog`, `/books`, `/news`
-- Admin at `/admin`: manage projects, certificates, books, blog posts (Markdown), read contact messages
+- Bilingual (Indonesian + English) at `/id/...` and `/en/...`; `/` redirects by saved choice or browser language
+- Minimal home, with separate pages: `/about`, `/projects` (+ a page per project), `/blog`, `/books`, `/news`
+- Admin at `/admin`: manage projects, certificates, books, blog posts (Markdown), read contact messages. Each content type has English fields (main) and `_id` Indonesian fields
 - Image uploads are resized and converted to WebP automatically
-- Tech news: Indonesian outlets (Dicoding, Liputan6, CNN Indonesia, Antara, JagatReview) filtered by keywords relevant to web dev, AI and UI/UX (`config/news.php`). Refreshes hourly via cron, and also automatically when the site is visited and data is older than `refresh_minutes`, so it works even without cron.
+- Tech news: Indonesian outlets filtered for web dev / AI / UI-UX (`config/news.php`), refreshed hourly via cron and on page visits
+
+## SEO / AEO / GEO
+
+- Per-page title, description, canonical, hreflang (id/en/x-default), Open Graph and Twitter tags
+- JSON-LD: Person, WebSite, ProfilePage, AboutPage, FAQPage (About), CreativeWork (projects), BlogPosting (posts), BreadcrumbList
+- `/sitemap.xml` (with hreflang alternates), `/robots.txt`, and `/llms.txt` (plain-text summary for AI crawlers) are generated dynamically
+- Content that exists in one language only gets its canonical on that language and no hreflang; `/news` is `noindex` (aggregated third-party headlines)
+- Set `APP_URL` to the real domain in production, since canonicals, sitemap and JSON-LD use it
 
 ## Local development
 

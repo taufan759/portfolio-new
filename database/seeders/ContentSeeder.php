@@ -24,10 +24,23 @@ class ContentSeeder extends Seeder
             ['Sea Catering', 'fullstack', 'Catering', 2024, 'A catering application to manage menus, customer orders, and event bookings with an intuitive interface.', ['React.js', 'Firebase', 'Tailwind'], 'project-11', 'https://github.com/taufan759/Sea_Catering'],
             ['Miton', 'fullstack', 'Management', 2024, 'A government financial statement web app handling data management, reporting, and transparent presentation.', ['Laravel', 'Bootstrap', 'WebSocket'], 'project-12', null],
         ];
+        // Indonesian descriptions, keyed by slug.
+        $descriptionsId = [
+            'miemiebrownie' => 'Platform e-commerce lengkap dengan katalog produk, keranjang, dan integrasi pembayaran Midtrans yang aman.',
+            'adaptable-consulting' => 'Website konsultan profesional dengan desain modern, showcase layanan, dan fitur interaksi klien.',
+            'sd-lumingser-01' => 'Sistem informasi sekolah dengan manajemen pengumuman dan alat konten untuk guru, orang tua, dan siswa.',
+            'bipemas' => 'Desain UX end-to-end untuk platform donasi: riset, pemetaan perjalanan pengguna, dan prototipe high-fidelity.',
+            'greensaver' => 'Desain aplikasi mobile untuk pengelolaan sampah cerdas dengan pemetaan lokasi, pemindaian, dan fitur keterlibatan pengguna.',
+            'ptsp-sulsel' => 'Sistem informasi publik yang mendukung layanan terpadu pemerintah dengan desain transparan dan mudah diakses.',
+            'senada' => 'Dashboard keuangan pribadi dengan pelacakan pengeluaran, penganggaran, dan pemantauan investasi.',
+            'sea-catering' => 'Aplikasi katering untuk mengelola menu, pesanan pelanggan, dan reservasi acara dengan antarmuka yang intuitif.',
+            'miton' => 'Aplikasi web laporan keuangan pemerintah yang menangani manajemen data, pelaporan, dan penyajian yang transparan.',
+        ];
+
         foreach ($projects as $i => [$title, $cat, $kind, $year, $desc, $tags, $img, $url]) {
             Project::updateOrCreate(['slug' => Str::slug($title)], [
                 'title' => $title, 'category' => $cat, 'kind' => $kind, 'year' => $year,
-                'description' => $desc, 'tags' => $tags, 'image' => "images/projects/{$img}.webp",
+                'description' => $desc, 'description_id' => $descriptionsId[Str::slug($title)] ?? null, 'tags' => $tags, 'image' => "images/projects/{$img}.webp",
                 'url' => $url, 'sort' => $i, 'is_published' => true,
             ]);
         }

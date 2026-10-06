@@ -45,7 +45,7 @@ small{color:#777}
     <a href="{{ route('admin.index', $key) }}" class="{{ request()->route('resource') === $key ? 'on' : '' }}">{{ $def['label'] }}</a>
   @endforeach
   <span class="sp"></span>
-  <a href="{{ route('home') }}" target="_blank">View site</a>
+  <a href="{{ url('/') }}" target="_blank">View site</a>
   <form method="post" action="{{ route('admin.logout') }}">@csrf<button class="btn ghost" style="padding:.25rem .75rem">Logout</button></form>
 </div>
 @endauth

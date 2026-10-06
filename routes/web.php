@@ -1,18 +1,43 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SeoController;
+use App\Http\Middleware\SetLocale;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
-Route::get('/books', [BookController::class, 'index'])->name('books.index');
-Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+// "/" sends visitors to their language: saved choice, then browser language, then Indonesian.
+Route::get('/', function (Request $request) {
+    $saved = $request->cookie('lang');
+    $locale = in_array($saved, SetLocale::LOCALES, true)
+        ? $saved
+        : ($request->getPreferredLanguage(SetLocale::LOCALES) ?? 'id');
+
+    return redirect('/'.$locale, 302);
+})->name('root');
+
+Route::get('sitemap.xml', [SeoController::class, 'sitemap']);
+Route::get('robots.txt', [SeoController::class, 'robots']);
+Route::get('llms.txt', [SeoController::class, 'llms']);
+
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
+
+Route::prefix('{locale}')->where(['locale' => 'id|en'])->middleware(SetLocale::class)->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('about', [AboutController::class, 'index'])->name('about');
+    Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
+    Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+    Route::get('books', [BookController::class, 'index'])->name('books.index');
+    Route::get('news', [NewsController::class, 'index'])->name('news.index');
+});
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;

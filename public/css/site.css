@@ -118,7 +118,8 @@ svg.icon{width:1em;height:1em;display:inline-block;vertical-align:middle;flex-sh
 .tag-chip{display:inline-flex;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:9999px;padding:.5rem 1rem;font-size:.875rem}
 
 /* ================= HEADER ================= */
-#site-header{position:absolute;inset-inline:0;top:0;z-index:50}
+#site-header{position:fixed;inset-inline:0;top:0;z-index:50;transition:background .3s ease,backdrop-filter .3s ease,box-shadow .3s ease}
+#site-header.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 #e6e5e2}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.25rem}
 @media (min-width:640px){.header-inner{padding:1.5rem 2rem}}
 .brand-btn{display:flex;align-items:center;gap:.5rem;font-size:1.125rem;font-weight:600;letter-spacing:-.01em}

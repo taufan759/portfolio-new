@@ -1,11 +1,15 @@
 @extends('layouts.site')
-@section('title', 'Tech news — Muhammad Taufan Akbar')
+@section('title', __('site.news.title'))
+@section('description', __('site.news.lead'))
+{{-- Aggregated third-party headlines add no original value; keep them out of the index but let crawlers follow links. --}}
+@section('robots', 'noindex,follow')
+
 @section('content')
 <section class="page-main">
   <div class="shell page-inner">
-    <div class="eyebrow">Tech news</div>
-    <h1 class="page-h1">Berita teknologi pilihan</h1>
-    <p class="page-lead">Dikumpulkan otomatis dari media teknologi Indonesia dan disaring sesuai bidang saya: web development, AI, dan UI/UX. Setiap tautan menuju sumber aslinya.</p>
+    @include('partials.breadcrumbs', ['crumbs' => [[__('site.breadcrumb_home'), route('home')], [__('site.news.eyebrow'), route('news.index')]]])
+    <h1 class="page-h1">{{ __('site.news.h1') }}</h1>
+    <p class="page-lead">{{ __('site.news.lead') }}</p>
     <div class="book-list">
       @forelse ($news as $item)
         <a href="{{ $item->url }}" target="_blank" rel="noopener nofollow" class="book-row">
@@ -13,7 +17,7 @@
           <span class="journal-meta">{{ $item->published_at?->diffForHumans() }}</span>
         </a>
       @empty
-        <p class="journal-empty">Belum ada berita. Daftar ini diperbarui otomatis.</p>
+        <p class="journal-empty">{{ __('site.news.empty') }}</p>
       @endforelse
     </div>
     <div class="pager">{{ $news->links('pagination::simple-default') }}</div>

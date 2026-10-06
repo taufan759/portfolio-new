@@ -115,7 +115,9 @@ class NewsFetcher
             $date = (string) ($item->pubDate ?? $item->published ?? $item->updated ?? '');
 
             try {
-                $publishedAt = $date !== '' ? Carbon::parse($date) : now();
+                // Dates without a timezone are Indonesian local time; never store a date in the future.
+                $publishedAt = $date !== '' ? Carbon::parse($date, 'Asia/Jakarta')->utc() : now();
+                $publishedAt = $publishedAt->isFuture() ? now() : $publishedAt;
             } catch (\Throwable) {
                 $publishedAt = now();
             }
