@@ -68,9 +68,9 @@
   @if ($related->isNotEmpty())
     <section class="shell works-inner">
       <h2 class="page-h2">{{ __('site.projects.more') }}</h2>
-      <ul class="works-grid">
+      <ul class="mini-grid">
         @foreach ($related as $i => $p)
-          @include('projects.card', ['project' => $p, 'i' => $i])
+          @include('projects.mini', ['project' => $p, 'i' => $i])
         @endforeach
       </ul>
     </section>

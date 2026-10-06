@@ -72,19 +72,9 @@
       </div>
       <a href="{{ route('projects.index') }}" class="home-all">{{ __('site.home.all_count', ['count' => $projectCount]) }} →</a>
     </div>
-    <ul class="mini-grid">
+    <ul class="mini-grid four">
       @foreach ($projects as $i => $project)
-        <li class="reveal" style="--dy:24px" data-delay="{{ $i * 70 }}">
-          <a href="{{ route('projects.show', ['slug' => $project->slug]) }}" class="mini-card">
-            <img src="{{ asset($project->image) }}" alt="{{ $project->title }}" width="1000" height="500" loading="lazy" decoding="async">
-            <div class="mini-body">
-              <span class="journal-meta">{{ $project->kind }}</span>
-              <h3>{{ $project->title }}</h3>
-              <p>{{ $project->t('description') }}</p>
-              <div class="mini-tags">@foreach (array_slice($project->tags ?? [], 0, 3) as $tag)<span>{{ $tag }}</span>@endforeach</div>
-            </div>
-          </a>
-        </li>
+        @include('projects.mini', ['project' => $project, 'i' => $i])
       @endforeach
     </ul>
   </div>

@@ -27,10 +27,10 @@
       @endforeach
     </div>
 
-    <ul class="works-grid" id="works-grid">
+    <ul class="mini-grid" id="works-grid">
       <li class="works-empty" id="works-empty" hidden>{{ __('site.projects.empty') }}</li>
       @foreach ($projects as $i => $project)
-        @include('projects.card', ['project' => $project, 'i' => $i])
+        @include('projects.mini', ['project' => $project, 'i' => $i])
       @endforeach
     </ul>
   </div>
