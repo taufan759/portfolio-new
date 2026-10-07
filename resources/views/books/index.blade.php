@@ -12,8 +12,9 @@
         <h2 class="page-h2">{{ __('site.books.'.$status) }}</h2>
         <div class="book-list">
           @foreach ($books[$status] as $book)
-            <div class="book-row">
-              <div>
+            <div class="book-row has-cover">
+              @if ($book->cover)<img class="book-cover" src="{{ asset($book->cover) }}" alt="{{ $book->title }}" width="56" height="84" loading="lazy" decoding="async">@endif
+              <div class="book-info">
                 <strong>{{ $book->title }}</strong>
                 <small>{{ $book->author }}</small>
                 @if (filled($book->t('notes')))<p>{{ $book->t('notes') }}</p>@endif

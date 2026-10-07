@@ -403,3 +403,9 @@ html[data-theme="dark"] .theme-toggle .t-moon{display:block}
   #liquid-base{transition:opacity .55s ease}
   .liquid-wrap.flipped #liquid-base{opacity:0}
 }
+
+/* ================= BOOK COVERS ================= */
+.book-row.has-cover{align-items:center;justify-content:flex-start;gap:1rem}
+.book-cover{flex-shrink:0;width:3.5rem;height:5.25rem;object-fit:cover;border-radius:.375rem;box-shadow:0 1px 3px rgba(0,0,0,.18),0 0 0 1px var(--line)}
+.book-info{min-width:0}
+.book-row.has-cover .journal-meta{margin-left:auto}

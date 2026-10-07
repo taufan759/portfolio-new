@@ -91,8 +91,9 @@
     </div>
     <div class="book-list">
       @forelse ($books as $book)
-        <div class="book-row">
-          <div><strong>{{ $book->title }}</strong><small>{{ $book->author }}</small></div>
+        <div class="book-row has-cover">
+          @if ($book->cover)<img class="book-cover" src="{{ asset($book->cover) }}" alt="{{ $book->title }}" width="56" height="84" loading="lazy" decoding="async">@endif
+          <div class="book-info"><strong>{{ $book->title }}</strong><small>{{ $book->author }}</small></div>
         </div>
       @empty
         <p class="journal-empty">{{ __('site.home.reading_empty') }}</p>
