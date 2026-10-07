@@ -62,7 +62,7 @@ class Seo
             '@type' => 'Person',
             '@id' => self::personId(),
             'name' => $site['name'],
-            'alternateName' => $site['short_name'],
+            'alternateName' => $site['name_variants'],
             'url' => self::origin(),
             'image' => self::absolute(asset($site['og_image'])),
             'email' => $site['email'],

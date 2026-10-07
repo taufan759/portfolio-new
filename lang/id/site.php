@@ -16,7 +16,7 @@ return [
         'headline' => 'Software Engineer & Penggiat AI',
         'intro' => 'Saya Muhammad Taufan Akbar, software engineer di Lunaray Beauty Factory, Bandung, Indonesia. Saya membangun perangkat lunak untuk web dan aplikasi, dan bekerja langsung dengan AI: chatbot, otomasi alur kerja, dan pipeline data.',
         'summary' => 'Saya membangun perangkat lunak dari hulu ke hilir, dari aplikasi web hingga aplikasi, dan senang memakai AI secara praktis: chatbot berbasis model AI, otomasi alur kerja dengan n8n, pipeline konten yang membaca sitemap dan menulis ulang artikel, serta praktik machine learning dengan dataset di Kaggle.',
-        'story' => "Saya adalah software engineer yang berbasis di Bandung, Jawa Barat, dan bekerja di Lunaray Beauty Factory. Saya tidak terikat pada satu stack atau platform: saya membangun aplikasi web, aplikasi, dan alat internal, dan mengerjakan sebuah masalah dari ide dan desain antarmuka, back end, data, sampai rilis.\n\nBagian yang terus tumbuh dari pekerjaan saya adalah integrasi AI. Saya pernah membangun chatbot di atas model AI, menghubungkan AI ke alur kerja otomatis dengan n8n, dan menyusun pipeline yang menemukan artikel lewat sitemap, mengambil isinya, lalu menulis ulang dalam bahasa Indonesia, dengan sumber seperti Search Engine Journal dan Search Engine Land. Untuk memahami apa yang terjadi di balik layar, saya juga belajar machine learning sedikit demi sedikit, bekerja dengan dataset di Kaggle.\n\nProyek sebelumnya antara lain platform e-commerce, sistem informasi sekolah, dan portal layanan publik pemerintah, dan saya terus belajar lewat program seperti Coding Camp Dicoding bersama DBS Foundation dan Studi Independen Kampus Merdeka. Kode saya ada di GitHub, tempat saya aktif sepanjang 2026.",
+        'story' => "Saya adalah software engineer yang berbasis di Bandung, Jawa Barat, dan bekerja di Lunaray Beauty Factory. Saya tidak terikat pada satu stack atau platform: saya membangun aplikasi web, aplikasi, dan alat internal, dan mengerjakan sebuah masalah dari ide dan desain antarmuka, back end, data, sampai rilis.\n\nBagian yang terus tumbuh dari pekerjaan saya adalah integrasi AI. Saya pernah membangun chatbot di atas model AI, menghubungkan AI ke alur kerja otomatis dengan n8n, dan menyusun pipeline yang menemukan artikel lewat sitemap, mengambil isinya, lalu menulis ulang dalam bahasa Indonesia, dengan sumber seperti Search Engine Journal dan Search Engine Land. Untuk memahami apa yang terjadi di balik layar, saya juga belajar machine learning sedikit demi sedikit, bekerja dengan dataset di Kaggle.\n\nDi luar meja kerja, saya ikut dalam berbagai event industri: Cosmobeauty bersama Lunaray, tempat saya memperkenalkan Cantik.ai (AI employee untuk para ahli) dan skin analyzer berbasis AI; Unpad Innovation Days 2026 di booth skincare bersama Fakultas Farmasi; ICI 2026 bersama LABCOS Unpad; serta workshop Pertamina bersama Danantara.\n\nProyek sebelumnya antara lain platform e-commerce, sistem informasi sekolah, dan portal layanan publik pemerintah, dan saya terus belajar lewat program seperti Coding Camp Dicoding bersama DBS Foundation dan Studi Independen Kampus Merdeka. Kode saya ada di GitHub, tempat saya aktif sepanjang 2026.",
         'location' => 'Bandung, Jawa Barat, Indonesia',
         'education' => 'Sistem Informasi, Universitas Bina Sarana Informatika (IPK 3,98/4,00)',
         'availability' => 'Software Engineer di Lunaray Beauty Factory, Bandung',
@@ -35,7 +35,7 @@ return [
         'projects_p' => 'Pilihan aplikasi web, desain antarmuka, dan produk berbantuan AI.',
         'gallery_h' => 'Galeri', 'gallery_p' => 'Momen dari presentasi, acara, dan kegiatan.',
         'partners_h' => 'Tempat kerja dan kolaborasi', 'partners_p' => 'Organisasi tempat saya bekerja, berkolaborasi, atau belajar.',
-        'writing_p' => 'Catatan seputar pengembangan perangkat lunak, desain, dan teknologi.', 'news_h' => 'Berita teknologi', 'news_all' => 'Semua berita →',
+        'writing_p' => 'Catatan tentang AI, rekayasa perangkat lunak, dan belajar secara terbuka.', 'news_h' => 'Berita teknologi', 'news_all' => 'Semua berita →',
         'all_count' => 'Semua (:count)', 'read_more' => 'Baca', 'soon' => 'Segera hadir',
     ],
     'about' => [
@@ -54,6 +54,7 @@ return [
         ],
         'skills' => 'Alat dan teknologi',
         'orgs' => 'Kolaborasi dan program', 'workplaces' => 'Tempat kerja',
+        'events_h' => 'Event dan kegiatan', 'events_p' => 'Pameran, workshop, dan acara kampus yang pernah saya ikuti.',
         'github_h' => 'GitHub', 'github_p' => ':repos repositori publik sejak :since. Aktivitas terakhir: :last.', 'github_open' => 'Buka profil GitHub',
         'stats' => 'Sekilas',
         'stat_items' => ['Proyek dibuat', 'Sertifikasi', 'Tahun pengalaman', 'Teknologi'],
@@ -88,8 +89,8 @@ return [
         'close' => 'Tutup', 'prev' => 'Foto sebelumnya', 'next' => 'Foto berikutnya',
     ],
     'blog' => [
-        'title' => 'Tulisan — Muhammad Taufan Akbar', 'description' => 'Catatan seputar pengembangan perangkat lunak, desain web, dan AI oleh Muhammad Taufan Akbar.',
-        'eyebrow' => 'Tulisan', 'h1' => 'Tulisan', 'lead' => 'Catatan seputar pengembangan perangkat lunak, desain, dan teknologi.',
+        'title' => 'Tulisan — Muhammad Taufan Akbar', 'description' => 'Tulisan tentang AI, chatbot, otomasi, machine learning, dan rekayasa perangkat lunak oleh Muhammad Taufan Akbar.',
+        'eyebrow' => 'Tulisan', 'h1' => 'Tulisan', 'lead' => 'Catatan tentang AI, rekayasa perangkat lunak, dan belajar secara terbuka, ditambah beberapa refleksi pribadi.',
         'empty' => 'Belum ada tulisan yang diterbitkan.', 'back' => '← Semua tulisan', 'originally' => 'Pertama kali terbit di :site',
     ],
     'books' => [

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certificate;
+use App\Models\Event;
 use App\Models\Partner;
 use App\Support\GitHub;
 
@@ -16,6 +17,7 @@ class AboutController extends Controller
         return view('about', [
             'certificates' => Certificate::orderBy('sort')->get(),
             'partners' => Partner::listed()->get(),
+            'events' => Event::listed()->get(),
             'github' => GitHub::cached(),
         ]);
     }

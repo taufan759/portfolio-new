@@ -58,6 +58,28 @@
   </div>
 </section>
 
+@if ($events->isNotEmpty())
+<!-- ================= EVENTS ================= -->
+<section class="home-sec">
+  <div class="shell home-inner">
+    <h2 class="home-h2">{{ __('site.about.events_h') }}</h2>
+    <p class="home-p">{{ __('site.about.events_p') }}</p>
+    <ul class="event-list">
+      @foreach ($events as $event)
+        <li class="reveal" style="--dy:16px">
+          <div class="event-year">{{ $event->year ?: ($event->held_at?->format('Y')) }}</div>
+          <div class="event-body">
+            <h3>{{ $event->t('title') }}</h3>
+            <p class="event-meta">{{ collect([$event->t('role'), $event->organizer, $event->location])->filter()->implode(' · ') }}</p>
+            @if (filled($event->t('description')))<p>{{ $event->t('description') }}</p>@endif
+          </div>
+        </li>
+      @endforeach
+    </ul>
+  </div>
+</section>
+@endif
+
 <!-- ================= TOOLS & ORGANIZATIONS ================= -->
 <section class="home-sec alt">
   <div class="shell home-inner">

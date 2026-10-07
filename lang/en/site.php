@@ -16,7 +16,7 @@ return [
         'headline' => 'Software Engineer & AI Enthusiast',
         'intro' => 'I am Muhammad Taufan Akbar, a software engineer at Lunaray Beauty Factory in Bandung, Indonesia. I build software across web and apps, and I work hands-on with AI: chatbots, workflow automation and data pipelines.',
         'summary' => 'I build software end to end, from web applications to apps, and I like putting AI to practical use: chatbots built on AI models, workflow automation with n8n, content pipelines that read sitemaps and rewrite articles, and hands-on machine learning with datasets on Kaggle.',
-        'story' => "I am a software engineer based in Bandung, West Java, working at Lunaray Beauty Factory. I am not tied to a single stack or platform: I build web applications, apps and internal tools, and I take a problem from idea and interface design through the back end, data and deployment.\n\nA growing part of my work is AI integration. I have built chatbots on top of AI models, connected AI into automated workflows with n8n, and put together a pipeline that discovers articles through sitemaps, extracts them and rewrites them in Indonesian, with sources such as Search Engine Journal and Search Engine Land. To understand what happens under the hood, I also study machine learning in small steps, working with datasets on Kaggle.\n\nEarlier projects include an e-commerce platform, a school information system and a government public-service portal, and I keep learning through programs such as Dicoding's Coding Camp with DBS Foundation and the Kampus Merdeka independent study. My code lives on GitHub, where I have been active in 2026.",
+        'story' => "I am a software engineer based in Bandung, West Java, working at Lunaray Beauty Factory. I am not tied to a single stack or platform: I build web applications, apps and internal tools, and I take a problem from idea and interface design through the back end, data and deployment.\n\nA growing part of my work is AI integration. I have built chatbots on top of AI models, connected AI into automated workflows with n8n, and put together a pipeline that discovers articles through sitemaps, extracts them and rewrites them in Indonesian, with sources such as Search Engine Journal and Search Engine Land. To understand what happens under the hood, I also study machine learning in small steps, working with datasets on Kaggle.\n\nBeyond the desk, I have taken part in industry events: Cosmobeauty with Lunaray, where I introduced Cantik.ai (AI employees for experts) and an AI-based skin analyzer; Unpad Innovation Days 2026 at the skincare booth with the Faculty of Pharmacy; ICI 2026 with LABCOS Unpad; and a Pertamina workshop with Danantara.\n\nEarlier projects include an e-commerce platform, a school information system and a government public-service portal, and I keep learning through programs such as Dicoding's Coding Camp with DBS Foundation and the Kampus Merdeka independent study. My code lives on GitHub, where I have been active in 2026.",
         'location' => 'Bandung, West Java, Indonesia',
         'education' => 'Information Systems, Universitas Bina Sarana Informatika (GPA 3.98/4.00)',
         'availability' => 'Software Engineer at Lunaray Beauty Factory, Bandung',
@@ -35,7 +35,7 @@ return [
         'projects_p' => 'A selection of web applications, interface designs and AI-assisted products.',
         'gallery_h' => 'Gallery', 'gallery_p' => 'Moments from talks, events and activities.',
         'partners_h' => 'Workplaces and collaborations', 'partners_p' => 'Organizations I have worked with or learned through.',
-        'writing_p' => 'Notes on software development, design and technology.', 'news_h' => 'Tech news', 'news_all' => 'All news →',
+        'writing_p' => 'Notes on AI, software engineering and learning in public.', 'news_h' => 'Tech news', 'news_all' => 'All news →',
         'all_count' => 'All (:count)', 'read_more' => 'Read', 'soon' => 'Coming soon',
     ],
     'about' => [
@@ -54,6 +54,7 @@ return [
         ],
         'skills' => 'Tools and technologies',
         'orgs' => 'Collaborations and programs', 'workplaces' => 'Workplace',
+        'events_h' => 'Events and activities', 'events_p' => 'Expos, workshops and campus events I have taken part in.',
         'github_h' => 'GitHub', 'github_p' => ':repos public repositories since :since. Latest activity: :last.', 'github_open' => 'Open GitHub profile',
         'stats' => 'At a glance',
         'stat_items' => ['Projects built', 'Certifications', 'Years of experience', 'Technologies'],
@@ -88,8 +89,8 @@ return [
         'close' => 'Close', 'prev' => 'Previous photo', 'next' => 'Next photo',
     ],
     'blog' => [
-        'title' => 'Writing — Muhammad Taufan Akbar', 'description' => 'Notes on software development, web design and AI by Muhammad Taufan Akbar.',
-        'eyebrow' => 'Writing', 'h1' => 'Writing', 'lead' => 'Notes on software development, design and technology.',
+        'title' => 'Writing — Muhammad Taufan Akbar', 'description' => 'Articles on AI, chatbots, automation, machine learning and software engineering by Muhammad Taufan Akbar.',
+        'eyebrow' => 'Writing', 'h1' => 'Writing', 'lead' => 'Notes on AI, software engineering and learning in public, plus a few personal reflections.',
         'empty' => 'No articles have been published yet.', 'back' => '← All posts', 'originally' => 'Originally published on :site',
     ],
     'books' => [

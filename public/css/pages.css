@@ -494,3 +494,12 @@ html[data-theme="dark"] .hero-statusbar{border-top-color:rgb(var(--fg-rgb) / .12
 .repo-meta{display:flex;align-items:center;gap:.75rem;flex-shrink:0;font-size:.75rem;color:rgb(var(--fg-rgb) / .5)}
 .repo-lang{padding:.125rem .5rem;border:1px solid var(--line);border-radius:9999px;color:rgb(var(--fg-rgb) / .7)}
 @media (max-width:520px){.repo-lang{display:none}}
+
+/* ================= EVENTS (About) ================= */
+.event-list{display:flex;flex-direction:column;margin-top:1.25rem;border-top:1px solid var(--line)}
+.event-list li{display:grid;grid-template-columns:4.5rem minmax(0,1fr);gap:1rem;padding:1.125rem 0;border-bottom:1px solid var(--line)}
+.event-year{font-size:.875rem;font-weight:600;color:var(--accent-ui);font-variant-numeric:tabular-nums}
+.event-body h3{font-size:1.0625rem;font-weight:600;line-height:1.3}
+.event-meta{margin-top:.125rem;font-size:.8125rem;color:rgb(var(--fg-rgb) / .55)}
+.event-body p:not(.event-meta){margin-top:.5rem;max-width:44rem;font-size:.9375rem;line-height:1.55;color:rgb(var(--fg-rgb) / .75)}
+@media (max-width:520px){.event-list li{grid-template-columns:1fr;gap:.25rem}}

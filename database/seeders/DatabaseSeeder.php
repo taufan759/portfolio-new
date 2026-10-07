@@ -17,5 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ContentSeeder::class);
         $this->call(BookSeeder::class);
+        $this->call(PartnerSeeder::class);
+        $this->call(EventSeeder::class);
+        $this->call(PostSeeder::class);
     }
 }

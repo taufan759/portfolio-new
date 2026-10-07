@@ -63,7 +63,7 @@ Route::prefix('admin')->group(function () {
         Route::post('news/fetch', [DashboardController::class, 'fetchNews'])->name('admin.news.fetch');
         Route::post('gallery-bulk', [GalleryBulkController::class, 'store'])->name('admin.gallery.bulk');
 
-        Route::prefix('{resource}')->where(['resource' => 'projects|certificates|books|posts|profile|gallery|partners|messages'])->group(function () {
+        Route::prefix('{resource}')->where(['resource' => 'projects|certificates|books|posts|profile|events|gallery|partners|messages'])->group(function () {
             Route::get('/', [ResourceController::class, 'index'])->name('admin.index');
             Route::get('create', [ResourceController::class, 'create'])->name('admin.create');
             Route::post('/', [ResourceController::class, 'store'])->name('admin.store');

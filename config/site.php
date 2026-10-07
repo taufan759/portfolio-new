@@ -3,6 +3,7 @@
 return [
     'name' => 'Muhammad Taufan Akbar',
     'short_name' => 'Taufan',
+    'name_variants' => ['Taufan Akbar', 'M. Taufan Akbar', 'Taufan', 'taufan759'],
     'email' => 'taufan759@gmail.com',
     'phone' => '+6289653600997',
     'phone_display' => '0896-5360-0997',

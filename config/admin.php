@@ -2,6 +2,7 @@
 
 use App\Models\Book;
 use App\Models\Certificate;
+use App\Models\Event;
 use App\Models\GalleryItem;
 use App\Models\Message;
 use App\Models\Partner;
@@ -106,6 +107,26 @@ return [
             ['availability', 'text', 'rules' => 'nullable|max:200', 'help' => 'Shown as "Current role", e.g. Software Engineer at Lunaray Beauty Factory, Bandung'],
             ['availability_id', 'text', 'rules' => 'nullable|max:200'],
             ['skills', 'tags', 'rules' => 'nullable|max:600', 'help' => 'Tools and technologies, comma separated. Same list for both languages'],
+        ],
+    ],
+    'events' => [
+        'model' => Event::class,
+        'label' => 'Events',
+        'order' => ['year', 'desc'],
+        'columns' => ['title', 'organizer', 'year', 'is_published'],
+        'fields' => [
+            ['title', 'text', 'rules' => 'required|max:200', 'help' => 'Event name, English'],
+            ['title_id', 'text', 'rules' => 'nullable|max:200', 'help' => 'Indonesian'],
+            ['organizer', 'text', 'rules' => 'nullable|max:200', 'help' => 'Organizer or partner'],
+            ['location', 'text', 'rules' => 'nullable|max:160', 'help' => 'e.g. JIExpo Kemayoran, Jakarta'],
+            ['role', 'text', 'rules' => 'nullable|max:160', 'help' => 'Your part, English, e.g. Speaker, Participant'],
+            ['role_id', 'text', 'rules' => 'nullable|max:160', 'help' => 'Indonesian'],
+            ['description', 'textarea', 'rules' => 'nullable|max:600', 'help' => 'What you did there, English'],
+            ['description_id', 'textarea', 'rules' => 'nullable|max:600', 'help' => 'Indonesian'],
+            ['held_at', 'date', 'rules' => 'nullable|date', 'help' => 'Exact date, if known'],
+            ['year', 'number', 'rules' => 'nullable|integer|min:2000|max:2100', 'help' => 'Used for grouping and order'],
+            ['sort', 'number', 'rules' => 'nullable|integer|min:0', 'help' => 'Within the same year, lower numbers first'],
+            ['is_published', 'checkbox'],
         ],
     ],
     'gallery' => [
