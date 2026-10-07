@@ -16,6 +16,34 @@ class Seo
             .'</script>';
     }
 
+    /** Is the current host allowed to be indexed? (primary host and its www only; production without a primary host fails open) */
+    public static function isIndexableHost(): bool
+    {
+        $hosts = config('seo.indexable_hosts');
+
+        if ($hosts === []) {
+            return app()->environment('production');
+        }
+
+        return in_array(request()->getHost(), $hosts, true);
+    }
+
+    /** Public origin used in canonicals, sitemaps and structured data: the primary host over https, else the current one. */
+    public static function origin(): string
+    {
+        $primary = config('seo.primary_host');
+
+        return $primary ? 'https://'.$primary : rtrim(url('/'), '/');
+    }
+
+    /** Rewrite a URL on the current host to the primary host (no-op when no primary host is configured). */
+    public static function absolute(string $url): string
+    {
+        $primary = config('seo.primary_host');
+
+        return $primary ? preg_replace('#^https?://[^/]+#', 'https://'.$primary, $url) : $url;
+    }
+
     public static function siteScript(): string
     {
         return self::script(['@graph' => [self::person(), self::website()]]);
@@ -23,7 +51,7 @@ class Seo
 
     public static function personId(): string
     {
-        return rtrim(url('/'), '/').'/#person';
+        return rtrim(self::origin(), '/').'/#person';
     }
 
     public static function person(): array
@@ -35,8 +63,8 @@ class Seo
             '@id' => self::personId(),
             'name' => $site['name'],
             'alternateName' => $site['short_name'],
-            'url' => url('/'),
-            'image' => asset($site['og_image']),
+            'url' => self::origin(),
+            'image' => self::absolute(asset($site['og_image'])),
             'email' => $site['email'],
             'jobTitle' => \App\Models\Profile::current()->text('headline'),
             'description' => \App\Models\Profile::current()->text('intro'),
@@ -62,8 +90,8 @@ class Seo
     {
         return [
             '@type' => 'WebSite',
-            '@id' => rtrim(url('/'), '/').'/#website',
-            'url' => url('/'),
+            '@id' => rtrim(self::origin(), '/').'/#website',
+            'url' => self::origin(),
             'name' => config('site.name'),
             'inLanguage' => ['id', 'en'],
             'publisher' => ['@id' => self::personId()],

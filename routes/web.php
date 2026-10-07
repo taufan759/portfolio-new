@@ -27,6 +27,9 @@ Route::get('/', function (Request $request) {
 Route::get('sitemap.xml', [SeoController::class, 'sitemap']);
 Route::get('robots.txt', [SeoController::class, 'robots']);
 Route::get('llms.txt', [SeoController::class, 'llms']);
+Route::get('llms-full.txt', [SeoController::class, 'llmsFull']);
+Route::get('ai.txt', [SeoController::class, 'aiTxt']);
+Route::get('.well-known/ai.txt', [SeoController::class, 'aiTxt']);
 
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
 

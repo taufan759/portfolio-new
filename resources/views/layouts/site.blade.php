@@ -7,15 +7,17 @@
 
   // A page that exists in one language only points its canonical there and skips hreflang.
   $onlyLocale = trim($__env->yieldContent('only_locale'));
-  $canonical = $urlFor($onlyLocale ?: $locale);
+  $canonical = \App\Support\Seo::absolute($urlFor($onlyLocale ?: $locale));
   if ((int) request('page') > 1) {
       $canonical .= '?page='.(int) request('page');
   }
 
   $pageTitle = trim($__env->yieldContent('title')) ?: __('site.seo.default_title');
   $pageDescription = trim($__env->yieldContent('description')) ?: __('site.seo.default_description');
-  $ogImage = asset(trim($__env->yieldContent('og_image')) ?: config('site.og_image'));
-  $robots = trim($__env->yieldContent('robots')) ?: 'index,follow,max-image-preview:large';
+  $ogImage = \App\Support\Seo::absolute(asset(trim($__env->yieldContent('og_image')) ?: config('site.og_image')));
+  $robots = \App\Support\Seo::isIndexableHost()
+      ? (trim($__env->yieldContent('robots')) ?: 'index,follow,max-image-preview:large')
+      : 'noindex,nofollow';
   $ogType = trim($__env->yieldContent('og_type')) ?: 'website';
   $otherLocale = $locale === 'id' ? 'en' : 'id';
 @endphp
@@ -34,9 +36,9 @@
 <script>(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
 <link rel="canonical" href="{{ $canonical }}" />
 @unless ($onlyLocale)
-<link rel="alternate" hreflang="id" href="{{ $urlFor('id') }}" />
-<link rel="alternate" hreflang="en" href="{{ $urlFor('en') }}" />
-<link rel="alternate" hreflang="x-default" href="{{ $urlFor('en') }}" />
+<link rel="alternate" hreflang="id" href="{{ \App\Support\Seo::absolute($urlFor('id')) }}" />
+<link rel="alternate" hreflang="en" href="{{ \App\Support\Seo::absolute($urlFor('en')) }}" />
+<link rel="alternate" hreflang="x-default" href="{{ \App\Support\Seo::absolute($urlFor('en')) }}" />
 @endunless
 <meta property="og:site_name" content="{{ config('site.name') }}" />
 <meta property="og:type" content="{{ $ogType }}" />
