@@ -86,6 +86,31 @@
   </div>
 </section>
 
+@if ($github)
+<!-- ================= GITHUB ================= -->
+<section class="home-sec">
+  <div class="shell home-inner">
+    <div class="home-head">
+      <div>
+        <h2 class="home-h2">{{ __('site.about.github_h') }}</h2>
+        <p class="home-p">{{ __('site.about.github_p', ['repos' => $github['repos'], 'since' => $github['since'], 'last' => \Illuminate\Support\Carbon::parse($github['last'])->translatedFormat('F Y')]) }}</p>
+      </div>
+      <a href="{{ config('site.social.GitHub') }}" target="_blank" rel="me noopener" class="home-all">{{ __('site.about.github_open') }} ↗</a>
+    </div>
+    <ul class="repo-list">
+      @foreach ($github['items'] as $repo)
+        <li>
+          <a href="{{ $repo['url'] }}" target="_blank" rel="noopener">
+            <span class="repo-main"><strong>{{ $repo['name'] }}</strong>@if ($repo['description'])<small>{{ $repo['description'] }}</small>@endif</span>
+            <span class="repo-meta">@if ($repo['language'])<span class="repo-lang">{{ $repo['language'] }}</span>@endif<span>{{ \Illuminate\Support\Carbon::parse($repo['pushed_at'])->translatedFormat('M Y') }}</span></span>
+          </a>
+        </li>
+      @endforeach
+    </ul>
+  </div>
+</section>
+@endif
+
 <!-- ================= AT A GLANCE ================= -->
 <section class="stats-section">
   <div class="shell stats-outer">

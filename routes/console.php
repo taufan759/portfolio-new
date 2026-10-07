@@ -8,3 +8,5 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command('news:fetch')->hourly()->withoutOverlapping();
+
+Schedule::command('github:sync')->daily()->withoutOverlapping();

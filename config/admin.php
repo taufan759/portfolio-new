@@ -103,7 +103,7 @@ return [
             ['location_id', 'text', 'rules' => 'nullable|max:160'],
             ['education', 'text', 'rules' => 'nullable|max:200', 'help' => 'e.g. B.Sc. Information Systems, Universitas Bina Sarana Informatika'],
             ['education_id', 'text', 'rules' => 'nullable|max:200'],
-            ['availability', 'text', 'rules' => 'nullable|max:200', 'help' => 'Shown as "Current role", e.g. Programmer at Lunaray Beauty Factory, Bandung'],
+            ['availability', 'text', 'rules' => 'nullable|max:200', 'help' => 'Shown as "Current role", e.g. Software Engineer at Lunaray Beauty Factory, Bandung'],
             ['availability_id', 'text', 'rules' => 'nullable|max:200'],
             ['skills', 'tags', 'rules' => 'nullable|max:600', 'help' => 'Tools and technologies, comma separated. Same list for both languages'],
         ],

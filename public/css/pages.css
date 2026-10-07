@@ -483,3 +483,14 @@ html[data-theme="dark"] .hero-statusbar{border-top-color:rgb(var(--fg-rgb) / .12
 /* slider sits directly under the hero, no heading */
 .partners-sec{padding-block:2rem .5rem}
 .partners-sec .logo-slider{margin-top:0}
+
+/* ================= GITHUB ACTIVITY (About) ================= */
+.repo-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.repo-list a{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 0;border-bottom:1px solid var(--line);transition:padding .3s var(--ease-hover)}
+.repo-list a:hover{padding-left:.5rem}
+.repo-main{display:flex;flex-direction:column;gap:.125rem;min-width:0}
+.repo-main strong{font-weight:600;font-size:.9375rem}
+.repo-main small{font-size:.8125rem;color:rgb(var(--fg-rgb) / .55);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.repo-meta{display:flex;align-items:center;gap:.75rem;flex-shrink:0;font-size:.75rem;color:rgb(var(--fg-rgb) / .5)}
+.repo-lang{padding:.125rem .5rem;border:1px solid var(--line);border-radius:9999px;color:rgb(var(--fg-rgb) / .7)}
+@media (max-width:520px){.repo-lang{display:none}}

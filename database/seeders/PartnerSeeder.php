@@ -15,7 +15,7 @@ class PartnerSeeder extends Seeder
     {
         // [name, kind, role (en), role (id), logo slug]   kind: work = workplace, collab = collaboration / client / program / school
         $partners = [
-            ['Lunaray Beauty Factory', 'work', 'Programmer', 'Programmer', 'lunaray-beauty-factory'],
+            ['Lunaray Beauty Factory', 'work', 'Software Engineer', 'Software Engineer', 'lunaray-beauty-factory'],
             ['Dermond', 'collab', null, null, 'dermond'],
             ['Beautylatory', 'collab', null, null, 'beautylatory'],
             ['Cantik AI', 'collab', null, null, 'cantik-ai'],
