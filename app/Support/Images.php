@@ -43,4 +43,36 @@ class Images
 
         return "images/uploads/{$name}.webp";
     }
+
+    /**
+     * Same as storeWebp() but from raw image bytes (used when importing remote images).
+     * Returns the path relative to public/, or null when the data is not a usable image.
+     */
+    public static function storeWebpFromString(string $binary, int $maxWidth = 1400, int $quality = 78): ?string
+    {
+        $source = @imagecreatefromstring($binary);
+
+        if (! $source) {
+            return null;
+        }
+
+        $dir = public_path('images/uploads');
+        if (! is_dir($dir)) {
+            mkdir($dir, 0755, true);
+        }
+
+        if (imagesx($source) > $maxWidth) {
+            $source = imagescale($source, $maxWidth);
+        }
+
+        imagepalettetotruecolor($source);
+        imagealphablending($source, true);
+        imagesavealpha($source, true);
+
+        $name = Str::random(20);
+        imagewebp($source, "{$dir}/{$name}.webp", $quality);
+        imagedestroy($source);
+
+        return "images/uploads/{$name}.webp";
+    }
 }

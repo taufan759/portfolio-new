@@ -69,7 +69,7 @@ return [
         'order' => ['id', 'desc'],
         'columns' => ['title', 'is_published', 'published_at'],
         'fields' => [
-            ['title', 'text', 'rules' => 'required|max:200', 'help' => 'English title (main). Leave the Indonesian fields empty if the post exists in one language only'],
+            ['title', 'text', 'rules' => 'required_without:title_id|nullable|max:200', 'help' => 'English title. Leave the English fields empty if the post is written in Indonesian only'],
             ['title_id', 'text', 'rules' => 'nullable|max:200', 'help' => 'Indonesian title'],
             ['slug', 'text', 'rules' => 'nullable|max:200', 'help' => 'Leave empty to generate from the title. Same URL slug for both languages'],
             ['excerpt', 'textarea', 'rules' => 'nullable|max:400', 'help' => 'English summary, also used as the SEO description'],
@@ -77,6 +77,7 @@ return [
             ['body', 'textarea', 'rules' => 'nullable', 'rows' => 18, 'help' => 'English article, Markdown supported'],
             ['body_id', 'textarea', 'rules' => 'nullable', 'rows' => 18, 'help' => 'Indonesian article, Markdown supported'],
             ['cover', 'image', 'rules' => 'nullable'],
+            ['source_url', 'text', 'rules' => 'nullable|url|max:300', 'help' => 'Link to the original (e.g. the Medium article). Shown as "Originally published on ..."'],
             ['published_at', 'date', 'rules' => 'nullable|date'],
             ['is_published', 'checkbox'],
         ],

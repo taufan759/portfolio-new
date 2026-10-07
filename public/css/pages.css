@@ -409,3 +409,12 @@ html[data-theme="dark"] .theme-toggle .t-moon{display:block}
 .book-cover{flex-shrink:0;width:3.5rem;height:5.25rem;object-fit:cover;border-radius:.375rem;box-shadow:0 1px 3px rgba(0,0,0,.18),0 0 0 1px var(--line)}
 .book-info{min-width:0}
 .book-row.has-cover .journal-meta{margin-left:auto}
+
+/* ================= IMPORTED POSTS ================= */
+.source-note{margin:-.5rem 0 1.25rem;font-size:.8125rem;color:rgb(var(--fg-rgb) / .55)}
+.source-note a{color:var(--accent-ui);text-decoration:underline}
+.lang-tag{display:inline-block;margin-left:.5rem;padding:.0625rem .4rem;border:1px solid var(--line);border-radius:.375rem;font-size:.625rem;font-weight:600;letter-spacing:.06em;color:rgb(var(--fg-rgb) / .6);vertical-align:middle}
+.breadcrumbs li:last-child{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.breadcrumbs ol{flex-wrap:nowrap}
+.breadcrumbs li{flex-shrink:0}
+.breadcrumbs li:last-child{flex-shrink:1}

@@ -18,6 +18,8 @@
           @if ($post->cover)<img src="{{ asset($post->cover) }}" alt="" loading="lazy" decoding="async" width="800" height="450">@endif
           <div class="post-card-body">
             <time class="journal-meta" datetime="{{ $post->published_at?->toDateString() }}">{{ $post->published_at?->translatedFormat('d M Y') }}</time>
+            @php($only = \App\Support\Seo::onlyLocale($post))
+            @if ($only && $only !== app()->getLocale())<span class="lang-tag">{{ strtoupper($only) }}</span>@endif
             <h2>{{ $post->t('title') }}</h2>
             <p>{{ $post->t('excerpt') }}</p>
           </div>

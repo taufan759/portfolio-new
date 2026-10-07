@@ -78,7 +78,7 @@ return [
     'blog' => [
         'title' => 'Tulisan — Muhammad Taufan Akbar', 'description' => 'Catatan seputar pengembangan perangkat lunak, desain web, dan AI oleh Muhammad Taufan Akbar.',
         'eyebrow' => 'Tulisan', 'h1' => 'Tulisan', 'lead' => 'Catatan seputar pengembangan perangkat lunak, desain, dan teknologi.',
-        'empty' => 'Belum ada tulisan yang diterbitkan.', 'back' => '← Semua tulisan',
+        'empty' => 'Belum ada tulisan yang diterbitkan.', 'back' => '← Semua tulisan', 'originally' => 'Pertama kali terbit di :site',
     ],
     'books' => [
         'title' => 'Daftar bacaan — Muhammad Taufan Akbar', 'description' => 'Buku yang sedang dibaca, sudah selesai, atau akan dibaca Muhammad Taufan Akbar.',

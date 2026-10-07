@@ -78,7 +78,7 @@ return [
     'blog' => [
         'title' => 'Writing — Muhammad Taufan Akbar', 'description' => 'Notes on software development, web design and AI by Muhammad Taufan Akbar.',
         'eyebrow' => 'Writing', 'h1' => 'Writing', 'lead' => 'Notes on software development, design and technology.',
-        'empty' => 'No articles have been published yet.', 'back' => '← All posts',
+        'empty' => 'No articles have been published yet.', 'back' => '← All posts', 'originally' => 'Originally published on :site',
     ],
     'books' => [
         'title' => 'Reading list — Muhammad Taufan Akbar', 'description' => 'Books Muhammad Taufan Akbar is reading, has finished, or plans to read next.',

@@ -105,7 +105,7 @@ class ResourceController extends Controller
         }
 
         if (array_key_exists('slug', $data)) {
-            $data['slug'] = $this->uniqueSlug($def['model'], $data['slug'] ?: $data['title'], $item);
+            $data['slug'] = $this->uniqueSlug($def['model'], $data['slug'] ?: ($data['title'] ?? $data['title_id'] ?? ''), $item);
         }
 
         if (array_key_exists('published_at', $data) && ($data['is_published'] ?? false) && ! $data['published_at']) {
