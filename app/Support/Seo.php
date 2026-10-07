@@ -46,6 +46,11 @@ class Seo
                 'addressRegion' => $site['region'],
                 'addressCountry' => $site['country'],
             ],
+            'worksFor' => [
+                '@type' => 'Organization',
+                'name' => $site['employer'],
+                'address' => ['@type' => 'PostalAddress', 'addressLocality' => $site['city'], 'addressRegion' => $site['region'], 'addressCountry' => $site['country']],
+            ],
             'alumniOf' => ['@type' => 'CollegeOrUniversity', 'name' => $site['university']],
             'knowsAbout' => $site['knows_about'],
             'knowsLanguage' => ['id', 'en'],
