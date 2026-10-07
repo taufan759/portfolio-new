@@ -23,7 +23,7 @@ return [
     ],
     'hero' => [
         'l1' => 'Membangun produk', 'l2' => 'web yang andal,', 'l3' => 'dari hulu ke hilir.',
-        'work' => 'Lihat proyek', 'about' => 'Tentang saya',
+        'work' => 'Lihat proyek', 'about' => 'Tentang saya', 'flip' => 'Ketuk untuk ganti foto',
         'since' => 'Aktif sejak 2023', 'based' => 'Berbasis di Tegal, Indonesia',
         'loader_tag' => 'Full-Stack Developer & Penggiat AI.', 'loading' => 'Memuat',
     ],

@@ -23,7 +23,7 @@ return [
     ],
     'hero' => [
         'l1' => 'Building reliable', 'l2' => 'web products,', 'l3' => 'end to end.',
-        'work' => 'View projects', 'about' => 'About me',
+        'work' => 'View projects', 'about' => 'About me', 'flip' => 'Tap to switch photo',
         'since' => 'Active since 2023', 'based' => 'Based in Tegal, Indonesia',
         'loader_tag' => 'Full-Stack Developer & AI Enthusiast.', 'loading' => 'Loading',
     ],

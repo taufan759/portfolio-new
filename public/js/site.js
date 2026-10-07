@@ -118,7 +118,26 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
   const wrap = document.getElementById('liquid-wrap');
   if(!wrap) return;
   // The cursor-follow reveal only makes sense with a mouse; on touch it fires while scrolling.
-  if(window.matchMedia('(pointer: coarse), (max-width: 1023px)').matches) return;
+  if(window.matchMedia('(pointer: coarse), (max-width: 1023px)').matches){
+    // Touch version: tap the photo (or the button) to cross-fade between before and after.
+    const afterSrc = wrap.dataset.after;
+    if(afterSrc){
+      const after = new Image();
+      after.src = afterSrc; after.alt = ''; after.className = 'liquid-after'; after.decoding = 'async';
+      after.setAttribute('aria-hidden', 'true');
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'hero-flip';
+      btn.setAttribute('aria-label', wrap.dataset.flipLabel || 'Switch photo');
+      btn.setAttribute('aria-pressed', 'false');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg>';
+      wrap.append(after, btn);
+      wrap.addEventListener('click', ()=>{
+        const on = wrap.classList.toggle('flipped');
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    return;
+  }
   const canvas = document.getElementById('liquid-canvas');
   const ctx = canvas.getContext('2d');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -13,7 +13,7 @@
 @section('content')
 <!-- ================= HERO ================= -->
 <section id="home">
-  <div class="liquid-wrap" id="liquid-wrap" data-after="{{ asset('images/hero/after.webp') }}">
+  <div class="liquid-wrap" id="liquid-wrap" data-after="{{ asset('images/hero/after.webp') }}" data-flip-label="{{ __('site.hero.flip') }}">
     <img id="liquid-base" src="{{ asset('images/hero/before.webp') }}" alt="{{ config('site.name') }}" fetchpriority="high" />
     <canvas id="liquid-canvas" aria-hidden="true"></canvas>
   </div>

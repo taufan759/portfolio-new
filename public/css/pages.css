@@ -366,3 +366,40 @@ html[data-theme="dark"] .theme-toggle .t-moon{display:block}
   .player-info{min-width:2.25rem;height:2.5rem;padding:0 .375rem;justify-content:center}
 }
 .nav-menu-index{min-width:2.25rem}
+
+/* ================= HEADER + HERO FIXES (mobile) ================= */
+/* The scrolled header must follow the theme (it was hard-coded white, which hid the text in dark mode) */
+#site-header.scrolled{background:rgb(var(--bg-rgb) / .88);box-shadow:0 1px 0 var(--line)}
+
+@media (max-width:1023px){
+  .hero-grid{padding-bottom:.5rem}
+  .liquid-wrap{
+    order:2;position:relative;inset:auto;
+    width:min(30rem,calc(100% - 2.5rem));height:auto;aspect-ratio:1/1;
+    align-self:center;margin:1rem 0 1.5rem;
+    border-radius:1.5rem;overflow:hidden;cursor:pointer;
+    background:linear-gradient(160deg,#f4f4f3 0%,#dcdcdb 55%,#c4c4c3 100%);
+    box-shadow:0 0 0 1px rgba(17,17,17,.06),0 22px 44px -24px rgba(17,17,17,.5);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .liquid-wrap img{object-fit:cover;object-position:right bottom}
+  .liquid-after{opacity:0;transition:opacity .55s ease}
+  .liquid-wrap.flipped .liquid-after{opacity:1}
+  .hero-flip{
+    position:absolute;right:.75rem;bottom:.75rem;z-index:3;
+    display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:9999px;
+    background:rgba(255,255,255,.86);color:#111;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    animation:heroHint 2.4s ease-out 1.2s 2;
+  }
+  .hero-flip svg{width:1.125rem;height:1.125rem}
+}
+@keyframes heroHint{
+  0%{box-shadow:0 2px 10px rgba(0,0,0,.2),0 0 0 0 rgba(17,17,17,.35)}
+  80%,100%{box-shadow:0 2px 10px rgba(0,0,0,.2),0 0 0 .75rem rgba(17,17,17,0)}
+}
+@media (max-width:1023px){
+  #liquid-base{transition:opacity .55s ease}
+  .liquid-wrap.flipped #liquid-base{opacity:0}
+}
