@@ -117,6 +117,8 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
 (function liquidReveal(){
   const wrap = document.getElementById('liquid-wrap');
   if(!wrap) return;
+  // The cursor-follow reveal only makes sense with a mouse; on touch it fires while scrolling.
+  if(window.matchMedia('(pointer: coarse), (max-width: 1023px)').matches) return;
   const canvas = document.getElementById('liquid-canvas');
   const ctx = canvas.getContext('2d');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

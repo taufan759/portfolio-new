@@ -52,7 +52,7 @@
 <meta name="twitter:title" content="{{ $pageTitle }}" />
 <meta name="twitter:description" content="{{ $pageDescription }}" />
 <meta name="twitter:image" content="{{ $ogImage }}" />
-<link rel="icon" href="{{ asset('favicon.ico') }}" />
+<link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
