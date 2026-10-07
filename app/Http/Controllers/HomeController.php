@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\NewsItem;
+use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Project;
 use App\Support\NewsFetcher;
@@ -28,6 +29,7 @@ class HomeController extends Controller
         $posts = Post::where('is_published', true);
 
         return view('home', [
+            'partners' => Partner::listed()->get(),
             'projectCount' => Project::where('is_published', true)->count(),
             'projects' => $featured,
             'postCount' => (clone $posts)->count(),

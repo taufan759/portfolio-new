@@ -3,6 +3,7 @@
 use App\Models\Book;
 use App\Models\Certificate;
 use App\Models\Message;
+use App\Models\Partner;
 use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Project;
@@ -104,6 +105,22 @@ return [
             ['availability', 'text', 'rules' => 'nullable|max:200', 'help' => 'Shown as "Current role", e.g. Programmer at Lunaray Beauty Factory, Bandung'],
             ['availability_id', 'text', 'rules' => 'nullable|max:200'],
             ['skills', 'tags', 'rules' => 'nullable|max:600', 'help' => 'Tools and technologies, comma separated. Same list for both languages'],
+        ],
+    ],
+    'partners' => [
+        'model' => Partner::class,
+        'label' => 'Collaborations',
+        'order' => ['sort', 'asc'],
+        'columns' => ['name', 'kind', 'role', 'is_published'],
+        'fields' => [
+            ['name', 'text', 'rules' => 'required|max:160'],
+            ['kind', 'select', 'options' => ['work' => 'Workplace', 'collab' => 'Collaboration / client / program'], 'rules' => 'required|in:work,collab'],
+            ['role', 'text', 'rules' => 'nullable|max:160', 'help' => 'Your role or the kind of collaboration, English. Optional'],
+            ['role_id', 'text', 'rules' => 'nullable|max:160', 'help' => 'Indonesian'],
+            ['logo', 'image', 'rules' => 'nullable', 'help' => 'Logo, ideally square (a transparent PNG on a white or dark background works). Without a logo the name is shown as text'],
+            ['url', 'text', 'rules' => 'nullable|url|max:300', 'help' => 'Optional link when the logo is clicked'],
+            ['sort', 'number', 'rules' => 'nullable|integer|min:0', 'help' => 'Lower numbers first'],
+            ['is_published', 'checkbox'],
         ],
     ],
     'messages' => [

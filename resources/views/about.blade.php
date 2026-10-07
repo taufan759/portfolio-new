@@ -66,9 +66,22 @@
       @foreach ($profile->skillList() as $skill)<li>{{ $skill }}</li>@endforeach
     </ul>
 
+    @php($workplaces = $partners->where('kind', 'work'))
+    @php($others = $partners->where('kind', '!=', 'work'))
+    @if ($workplaces->isNotEmpty())
+      <h2 class="home-h2 chip-gap">{{ __('site.about.workplaces') }}</h2>
+      <ul class="chip-list">
+        @foreach ($workplaces as $p)<li>{{ $p->name }}@if (filled($p->t('role'))) <small>· {{ $p->t('role') }}</small>@endif</li>@endforeach
+      </ul>
+    @endif
+
     <h2 class="home-h2 chip-gap">{{ __('site.about.orgs') }}</h2>
     <ul class="chip-list plain">
-      @foreach (config('site.orgs') as $org)<li>{{ $org }}</li>@endforeach
+      @forelse ($others as $p)
+        <li>{{ $p->name }}</li>
+      @empty
+        @foreach (config('site.orgs') as $org)<li>{{ $org }}</li>@endforeach
+      @endforelse
     </ul>
   </div>
 </section>

@@ -64,6 +64,38 @@
   </div>
 </section>
 
+@if ($partners->isNotEmpty())
+<!-- ================= WORKPLACES & COLLABORATIONS ================= -->
+@php($reps = max(1, (int) ceil(14 / $partners->count())))
+<section class="home-sec partners-sec" id="partners" aria-labelledby="partners-h">
+  <div class="shell home-inner partners-head">
+    <h2 class="home-h2" id="partners-h">{{ __('site.home.partners_h') }}</h2>
+    <p class="home-p">{{ __('site.home.partners_p') }}</p>
+  </div>
+  <div class="logo-slider" style="--logo-speed:{{ max(40, $partners->count() * $reps * 4) }}s">
+    <div class="logo-track">
+      @foreach ([0, 1] as $copy)
+        <ul class="logo-set" @if ($copy) aria-hidden="true" @endif>
+          @for ($r = 0; $r < $reps; $r++)
+            @foreach ($partners as $partner)
+              <li class="logo-tile">
+                @if ($partner->url)<a href="{{ $partner->url }}" target="_blank" rel="noopener nofollow" @if ($copy || $r) tabindex="-1" @endif title="{{ $partner->name }}">@endif
+                @if ($partner->logo)
+                  <img src="{{ asset($partner->logo) }}" alt="{{ $copy || $r ? '' : $partner->name }}" title="{{ $partner->name }}" width="120" height="120" decoding="async" @if ($copy) loading="lazy" @endif>
+                @else
+                  <span class="logo-text">{{ $partner->name }}</span>
+                @endif
+                @if ($partner->url)</a>@endif
+              </li>
+            @endforeach
+          @endfor
+        </ul>
+      @endforeach
+    </div>
+  </div>
+</section>
+@endif
+
 <!-- ================= PROJECTS PREVIEW ================= -->
 <section class="home-sec alt" id="works">
   <div class="shell home-inner">
