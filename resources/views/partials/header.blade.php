@@ -8,7 +8,7 @@
 
     <nav class="primary-nav" aria-label="{{ __('site.nav.primary') }}">
       <ul>
-        @foreach ([['about', 'about', 'about'], ['projects.index', 'projects.*', 'projects'], ['blog.index', 'blog.*', 'blog'], ['books.index', 'books.*', 'books'], ['news.index', 'news.*', 'news']] as [$name, $pattern, $key])
+        @foreach ([['about', 'about', 'about'], ['projects.index', 'projects.*', 'projects'], ['gallery.index', 'gallery.*', 'gallery'], ['blog.index', 'blog.*', 'blog'], ['books.index', 'books.*', 'books'], ['news.index', 'news.*', 'news']] as [$name, $pattern, $key])
           <li class="hover-nav"><a class="nav-label" href="{{ route($name) }}" @if (request()->routeIs($pattern)) aria-current="page" @endif>{{ __('site.nav.'.$key) }}</a></li>
         @endforeach
       </ul>

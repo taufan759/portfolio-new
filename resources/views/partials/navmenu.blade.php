@@ -7,12 +7,12 @@
   <nav class="nm-nav" aria-label="{{ __('site.nav.overlay') }}">
     <ul>
       @php($i = 0)
-      @foreach ([['home', 'home'], ['about', 'about'], ['projects.index', 'projects'], ['blog.index', 'blog'], ['books.index', 'books'], ['news.index', 'news']] as [$name, $key])
+      @foreach ([['home', 'home'], ['about', 'about'], ['projects.index', 'projects'], ['gallery.index', 'gallery'], ['blog.index', 'blog'], ['books.index', 'books'], ['news.index', 'news']] as [$name, $key])
         @php($i++)
         <li><a class="nav-menu-item" href="{{ route($name) }}" style="transition-delay:{{ 80 + $i * 45 }}ms"><span class="nav-menu-index">{{ sprintf('%02d', $i) }}</span><span class="nav-menu-label">{{ __('site.nav.'.$key) }}</span></a></li>
       @endforeach
-      <li><a class="nav-menu-item" href="{{ config('site.resume') }}" target="_blank" rel="noopener" style="transition-delay:{{ 80 + 7 * 45 }}ms"><span class="nav-menu-index">07</span><span class="nav-menu-label">{{ __('site.nav.resume') }}</span></a></li>
-      <li><button class="nav-menu-item" type="button" data-open-modal style="transition-delay:{{ 80 + 8 * 45 }}ms"><span class="nav-menu-index">08</span><span class="nav-menu-label">{{ __('site.nav.contact') }}</span></button></li>
+      <li><a class="nav-menu-item" href="{{ config('site.resume') }}" target="_blank" rel="noopener" style="transition-delay:{{ 80 + 8 * 45 }}ms"><span class="nav-menu-index">08</span><span class="nav-menu-label">{{ __('site.nav.resume') }}</span></a></li>
+      <li><button class="nav-menu-item" type="button" data-open-modal style="transition-delay:{{ 80 + 9 * 45 }}ms"><span class="nav-menu-index">09</span><span class="nav-menu-label">{{ __('site.nav.contact') }}</span></button></li>
     </ul>
   </nav>
   <div class="shell nm-bottom">

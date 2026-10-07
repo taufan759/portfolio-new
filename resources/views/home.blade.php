@@ -114,6 +114,26 @@
   </div>
 </section>
 
+@if ($gallery->isNotEmpty())
+<!-- ================= GALLERY PREVIEW ================= -->
+<section class="home-sec" id="gallery">
+  <div class="shell home-inner">
+    <div class="home-head">
+      <div>
+        <h2 class="home-h2">{{ __('site.home.gallery_h') }}</h2>
+        <p class="home-p">{{ __('site.home.gallery_p') }}</p>
+      </div>
+      <a href="{{ route('gallery.index') }}" class="home-all">{{ __('site.home.all_count', ['count' => $galleryCount]) }} →</a>
+    </div>
+    <ul class="gal-grid">
+      @foreach ($gallery as $item)
+        <li class="reveal" style="--dy:20px" data-delay="{{ $loop->index * 60 }}">@include('gallery.item', ['item' => $item])</li>
+      @endforeach
+    </ul>
+  </div>
+</section>
+@endif
+
 <!-- ================= CURRENTLY READING ================= -->
 <section class="home-sec" id="reading">
   <div class="shell home-inner">

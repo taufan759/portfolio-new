@@ -3,7 +3,7 @@
 return [
     'skip' => 'Lewati ke konten',
     'nav' => [
-        'home' => 'Beranda', 'about' => 'Tentang', 'projects' => 'Proyek', 'blog' => 'Tulisan', 'books' => 'Daftar bacaan',
+        'home' => 'Beranda', 'about' => 'Tentang', 'projects' => 'Proyek', 'gallery' => 'Galeri', 'blog' => 'Tulisan', 'books' => 'Daftar bacaan',
         'news' => 'Berita teknologi', 'contact' => 'Kontak', 'menu' => 'Menu', 'close' => 'Tutup', 'resume' => 'CV',
         'start' => 'Kontak →', 'language' => 'Bahasa', 'primary' => 'Utama', 'overlay' => 'Navigasi situs',
     ],
@@ -33,6 +33,7 @@ return [
         'writing' => 'Tulisan', 'writing_all' => 'Semua tulisan →', 'writing_empty' => 'Tulisan pertama akan segera terbit.',
         'about_h' => 'Tentang', 'about_p' => 'Perkenalan singkat tentang latar belakang, cara kerja, dan alat yang saya gunakan.', 'about_cta' => 'Selengkapnya tentang saya',
         'projects_p' => 'Pilihan aplikasi web, desain antarmuka, dan produk berbantuan AI.',
+        'gallery_h' => 'Galeri', 'gallery_p' => 'Momen dari presentasi, acara, dan kegiatan.',
         'partners_h' => 'Tempat kerja dan kolaborasi', 'partners_p' => 'Organisasi tempat saya bekerja, berkolaborasi, atau belajar.',
         'writing_p' => 'Catatan seputar pengembangan perangkat lunak, desain, dan teknologi.', 'news_h' => 'Berita teknologi', 'news_all' => 'Semua berita →',
         'all_count' => 'Semua (:count)', 'read_more' => 'Baca', 'soon' => 'Segera hadir',
@@ -76,6 +77,13 @@ return [
         'visit' => 'Kunjungi website', 'back' => '← Semua proyek', 'tech' => 'Teknologi', 'year' => 'Tahun', 'type' => 'Jenis',
         'category' => 'Kategori', 'more' => 'Proyek lainnya', 'no_link' => 'Proyek privat atau khusus desain.',
     ],
+    'gallery' => [
+        'title' => 'Galeri — Muhammad Taufan Akbar',
+        'description' => 'Foto dari acara, presentasi, dan kegiatan Muhammad Taufan Akbar.',
+        'eyebrow' => 'Galeri', 'h1' => 'Galeri', 'lead' => 'Momen dari presentasi, acara, dan kegiatan.',
+        'empty' => 'Foto akan segera ditambahkan.', 'showing' => 'Menampilkan :from–:to dari :total',
+        'close' => 'Tutup', 'prev' => 'Foto sebelumnya', 'next' => 'Foto berikutnya',
+    ],
     'blog' => [
         'title' => 'Tulisan — Muhammad Taufan Akbar', 'description' => 'Catatan seputar pengembangan perangkat lunak, desain web, dan AI oleh Muhammad Taufan Akbar.',
         'eyebrow' => 'Tulisan', 'h1' => 'Tulisan', 'lead' => 'Catatan seputar pengembangan perangkat lunak, desain, dan teknologi.',
@@ -109,7 +117,7 @@ return [
         'close' => 'Tutup pencarian', 'loading' => 'Memuat…',
         'types' => ['page' => 'Halaman', 'project' => 'Proyek', 'blog' => 'Tulisan', 'book' => 'Buku', 'faq' => 'FAQ'],
         'page_desc' => [
-            'home' => 'Perkenalan', 'about' => 'Latar belakang, fokus, dan kredensial', 'projects' => 'Karya pilihan',
+            'home' => 'Perkenalan', 'about' => 'Latar belakang, fokus, dan kredensial', 'projects' => 'Karya pilihan', 'gallery' => 'Foto presentasi dan acara',
             'blog' => 'Catatan tentang perangkat lunak dan desain', 'books' => 'Buku yang sedang saya baca', 'news' => 'Berita teknologi pilihan',
         ],
     ],

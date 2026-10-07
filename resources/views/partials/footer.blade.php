@@ -22,7 +22,7 @@
       <div class="footer-col">
         <div class="footer-col-title">{{ __('site.footer.explore') }}</div>
         <ul>
-          @foreach ([['about', 'about'], ['projects.index', 'projects'], ['blog.index', 'blog'], ['books.index', 'books'], ['news.index', 'news']] as [$name, $key])
+          @foreach ([['about', 'about'], ['projects.index', 'projects'], ['gallery.index', 'gallery'], ['blog.index', 'blog'], ['books.index', 'books'], ['news.index', 'news']] as [$name, $key])
             <li><a href="{{ route($name) }}" class="animated-link"><span class="animated-link-inner">{{ __('site.nav.'.$key) }}</span></a></li>
           @endforeach
           <li><a href="{{ config('site.resume') }}" target="_blank" rel="noopener" class="animated-link"><span class="animated-link-inner">{{ __('site.nav.resume') }}</span></a></li>

@@ -3,7 +3,7 @@
 return [
     'skip' => 'Skip to content',
     'nav' => [
-        'home' => 'Home', 'about' => 'About', 'projects' => 'Projects', 'blog' => 'Writing', 'books' => 'Reading list',
+        'home' => 'Home', 'about' => 'About', 'projects' => 'Projects', 'gallery' => 'Gallery', 'blog' => 'Writing', 'books' => 'Reading list',
         'news' => 'Tech news', 'contact' => 'Contact', 'menu' => 'Menu', 'close' => 'Close', 'resume' => 'Résumé',
         'start' => 'Contact →', 'language' => 'Language', 'primary' => 'Primary', 'overlay' => 'Site navigation',
     ],
@@ -33,6 +33,7 @@ return [
         'writing' => 'Writing', 'writing_all' => 'All posts →', 'writing_empty' => 'The first articles will be published soon.',
         'about_h' => 'About', 'about_p' => 'A short introduction to my background, the way I work, and the tools I use.', 'about_cta' => 'Read more about me',
         'projects_p' => 'A selection of web applications, interface designs and AI-assisted products.',
+        'gallery_h' => 'Gallery', 'gallery_p' => 'Moments from talks, events and activities.',
         'partners_h' => 'Workplaces and collaborations', 'partners_p' => 'Organizations I have worked with or learned through.',
         'writing_p' => 'Notes on software development, design and technology.', 'news_h' => 'Tech news', 'news_all' => 'All news →',
         'all_count' => 'All (:count)', 'read_more' => 'Read', 'soon' => 'Coming soon',
@@ -76,6 +77,13 @@ return [
         'visit' => 'Visit website', 'back' => '← All projects', 'tech' => 'Technologies', 'year' => 'Year', 'type' => 'Type',
         'category' => 'Category', 'more' => 'More projects', 'no_link' => 'Private or design-only project.',
     ],
+    'gallery' => [
+        'title' => 'Gallery — Muhammad Taufan Akbar',
+        'description' => 'Photos from talks, events and activities of Muhammad Taufan Akbar.',
+        'eyebrow' => 'Gallery', 'h1' => 'Gallery', 'lead' => 'Moments from talks, events and activities.',
+        'empty' => 'Photos will be added soon.', 'showing' => 'Showing :from–:to of :total',
+        'close' => 'Close', 'prev' => 'Previous photo', 'next' => 'Next photo',
+    ],
     'blog' => [
         'title' => 'Writing — Muhammad Taufan Akbar', 'description' => 'Notes on software development, web design and AI by Muhammad Taufan Akbar.',
         'eyebrow' => 'Writing', 'h1' => 'Writing', 'lead' => 'Notes on software development, design and technology.',
@@ -109,7 +117,7 @@ return [
         'close' => 'Close search', 'loading' => 'Loading…',
         'types' => ['page' => 'Page', 'project' => 'Project', 'blog' => 'Writing', 'book' => 'Book', 'faq' => 'FAQ'],
         'page_desc' => [
-            'home' => 'Introduction', 'about' => 'Background, focus and credentials', 'projects' => 'Selected work',
+            'home' => 'Introduction', 'about' => 'Background, focus and credentials', 'projects' => 'Selected work', 'gallery' => 'Photos from talks and events',
             'blog' => 'Notes on software and design', 'books' => 'Books I am reading', 'news' => 'Curated technology news',
         ],
     ],

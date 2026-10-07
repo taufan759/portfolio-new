@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProjectController;
@@ -32,6 +33,7 @@ Route::post('/contact', [ContactController::class, 'store'])->middleware('thrott
 Route::prefix('{locale}')->where(['locale' => 'id|en'])->middleware(SetLocale::class)->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('about', [AboutController::class, 'index'])->name('about');
+    Route::get('gallery', [GalleryController::class, 'index'])->name('gallery.index');
     Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::get('projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
     Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
@@ -43,6 +45,7 @@ Route::prefix('{locale}')->where(['locale' => 'id|en'])->middleware(SetLocale::c
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GalleryBulkController;
 use App\Http\Controllers\Admin\ResourceController;
 
 Route::prefix('admin')->group(function () {
@@ -55,8 +58,9 @@ Route::prefix('admin')->group(function () {
         Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
         Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
         Route::post('news/fetch', [DashboardController::class, 'fetchNews'])->name('admin.news.fetch');
+        Route::post('gallery-bulk', [GalleryBulkController::class, 'store'])->name('admin.gallery.bulk');
 
-        Route::prefix('{resource}')->where(['resource' => 'projects|certificates|books|posts|profile|partners|messages'])->group(function () {
+        Route::prefix('{resource}')->where(['resource' => 'projects|certificates|books|posts|profile|gallery|partners|messages'])->group(function () {
             Route::get('/', [ResourceController::class, 'index'])->name('admin.index');
             Route::get('create', [ResourceController::class, 'create'])->name('admin.create');
             Route::post('/', [ResourceController::class, 'store'])->name('admin.store');

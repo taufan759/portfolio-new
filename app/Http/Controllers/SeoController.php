@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\URL;
 
 class SeoController extends Controller
 {
-    private const PAGES = ['home', 'about', 'projects.index', 'blog.index', 'books.index'];
+    private const PAGES = ['home', 'about', 'projects.index', 'gallery.index', 'blog.index', 'books.index'];
 
     public function robots()
     {

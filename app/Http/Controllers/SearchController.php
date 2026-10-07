@@ -14,7 +14,7 @@ class SearchController extends Controller
         $items = [];
 
         $pages = [
-            ['home', 'home'], ['about', 'about'], ['projects.index', 'projects'],
+            ['home', 'home'], ['about', 'about'], ['projects.index', 'projects'], ['gallery.index', 'gallery'],
             ['blog.index', 'blog'], ['books.index', 'books'], ['news.index', 'news'],
         ];
         foreach ($pages as [$route, $key]) {

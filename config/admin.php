@@ -2,6 +2,7 @@
 
 use App\Models\Book;
 use App\Models\Certificate;
+use App\Models\GalleryItem;
 use App\Models\Message;
 use App\Models\Partner;
 use App\Models\Post;
@@ -105,6 +106,25 @@ return [
             ['availability', 'text', 'rules' => 'nullable|max:200', 'help' => 'Shown as "Current role", e.g. Programmer at Lunaray Beauty Factory, Bandung'],
             ['availability_id', 'text', 'rules' => 'nullable|max:200'],
             ['skills', 'tags', 'rules' => 'nullable|max:600', 'help' => 'Tools and technologies, comma separated. Same list for both languages'],
+        ],
+    ],
+    'gallery' => [
+        'model' => GalleryItem::class,
+        'label' => 'Gallery',
+        'order' => ['id', 'desc'],
+        'columns' => ['title', 'location', 'taken_at', 'is_featured', 'is_published'],
+        'bulk' => true,
+        'fields' => [
+            ['image', 'image', 'rules' => 'nullable', 'help' => 'Photo (JPG, PNG or WebP), converted to WebP automatically. Tip: use the bulk upload on the list page for many photos at once'],
+            ['title', 'text', 'rules' => 'nullable|max:200', 'help' => 'Event or talk name, English. Optional'],
+            ['title_id', 'text', 'rules' => 'nullable|max:200', 'help' => 'Indonesian'],
+            ['caption', 'textarea', 'rules' => 'nullable|max:600', 'help' => 'Short description, English. Optional'],
+            ['caption_id', 'textarea', 'rules' => 'nullable|max:600', 'help' => 'Indonesian'],
+            ['location', 'text', 'rules' => 'nullable|max:160', 'help' => 'e.g. Bandung, or Zoom'],
+            ['taken_at', 'date', 'rules' => 'nullable|date', 'help' => 'Date of the event'],
+            ['sort', 'number', 'rules' => 'nullable|integer|min:0', 'help' => 'Lower numbers first. Leave 0 to order by date'],
+            ['is_published', 'checkbox'],
+            ['is_featured', 'checkbox'],
         ],
     ],
     'partners' => [
