@@ -79,8 +79,9 @@
 @include('partials.search')
 @include('partials.player')
 
+<link rel="modulepreload" href="{{ asset('js/vendor/lenis.mjs') }}">
 <script type="importmap">
-{ "imports": { "lenis": "https://unpkg.com/lenis@1.3.23/dist/lenis.mjs" } }
+{ "imports": { "lenis": "{{ asset('js/vendor/lenis.mjs') }}" } }
 </script>
 <script type="module" src="{{ asset('js/site.js') }}?v={{ filemtime(public_path('js/site.js')) }}"></script>
 <script type="module" src="{{ asset('js/extras.js') }}?v={{ filemtime(public_path('js/extras.js')) }}"></script>

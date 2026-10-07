@@ -123,7 +123,9 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
     const afterSrc = wrap.dataset.after;
     if(afterSrc){
       const after = new Image();
-      after.src = afterSrc; after.alt = ''; after.className = 'liquid-after'; after.decoding = 'async';
+      const loadAfter = () => { after.src = afterSrc; };
+      (window.requestIdleCallback || (f => setTimeout(f, 1500)))(loadAfter);
+      after.alt = ''; after.className = 'liquid-after'; after.decoding = 'async';
       after.setAttribute('aria-hidden', 'true');
       const btn = document.createElement('button');
       btn.type = 'button'; btn.className = 'hero-flip';
