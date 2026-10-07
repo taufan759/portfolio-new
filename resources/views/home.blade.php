@@ -50,17 +50,31 @@
   </div>
 </section>
 
-<!-- ================= ABOUT TEASER ================= -->
+<!-- ================= ABOUT PREVIEW ================= -->
+@php($profile = \App\Models\Profile::current())
 <section class="home-sec" id="about-teaser">
-  <div class="shell home-inner home-about">
-    <div>
-      <h2 class="home-h2">{{ __('site.home.about_h') }}</h2>
-      <p class="home-p">{{ __('site.home.about_p') }}</p>
+  <div class="shell home-inner">
+    <div class="home-head">
+      <div>
+        <h2 class="home-h2">{{ __('site.home.about_h') }}</h2>
+        <p class="home-p">{{ __('site.home.about_p') }}</p>
+      </div>
+      <a href="{{ route('about') }}" class="home-all">{{ __('site.home.about_cta') }} →</a>
     </div>
-    <a href="{{ route('about') }}" class="pill-btn dark with-arrow arrow-right hover-pill">
-      <span style="padding-left:.5rem">{{ __('site.home.about_cta') }}</span>
-      <span class="pill-arrow-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
+
+    <div class="about-preview">
+      <div class="about-preview-main">
+        <p class="about-lede">{{ $profile->text('summary') }}</p>
+        <ul class="chip-list">
+          @foreach (array_slice($profile->skillList(), 0, 8) as $skill)<li>{{ $skill }}</li>@endforeach
+        </ul>
+      </div>
+      <dl class="about-facts about-facts-stack">
+        <div><dt>{{ __('site.about.facts.availability') }}</dt><dd>{{ $profile->text('availability') }}</dd></div>
+        <div><dt>{{ __('site.about.facts.location') }}</dt><dd>{{ $profile->text('location') }}</dd></div>
+        <div><dt>{{ __('site.about.facts.education') }}</dt><dd>{{ $profile->text('education') }}</dd></div>
+      </dl>
+    </div>
   </div>
 </section>
 

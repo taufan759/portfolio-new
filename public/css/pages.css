@@ -244,9 +244,6 @@ button.animated-link{padding:0;text-align:left}
 html[data-theme="dark"]{color-scheme:dark;--bg:#1a1714;--bg-rgb:26 23 20;--alt:#201c18;--fg:#ece7e1;--fg-rgb:236 231 225;--surface:#25211d;--surface-rgb:37 33 29;--surface-2:#2f2a25;--line:#38322b;--line-rgb:56 50 43;--ink:#ece7e1;--on-ink:#1a1714;--accent-ui:#e09a64;--ok:#3ecf7a}
 body{transition:background-color .25s ease,color .25s ease}
 
-/* The hero is a light photo in both themes; keep its text and header chrome dark on top of it */
-html[data-theme="dark"] #home,
-html[data-theme="dark"] body.page-home #site-header:not(.scrolled){--bg:#fff;--bg-rgb:255 255 255;--fg:#111;--fg-rgb:17 17 17;--surface:#f1f0ee;--surface-rgb:241 240 238;--line:#e6e5e2;--line-rgb:230 229 226;--ink:#0a0a0a;--on-ink:#fff;--accent-ui:#b15f2c}
 
 /* Buttons and chips that were hard-wired dark-on-light */
 html[data-theme="dark"] .pill-btn.dark{background:var(--ink);color:var(--on-ink)}
@@ -459,3 +456,26 @@ html[data-theme="dark"] .theme-toggle .t-moon{display:block}
 .lb-prev{left:.75rem}.lb-next{right:.75rem}
 .lightbox.single .lb-prev,.lightbox.single .lb-next{display:none}
 @media (max-width:639px){.lb-prev,.lb-next{top:auto;bottom:1rem;transform:none}}
+
+/* ================= ABOUT PREVIEW (home) ================= */
+.about-preview{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media (min-width:900px){.about-preview{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:3rem;align-items:start}}
+.about-preview .about-lede{margin-top:0;font-size:1.0625rem}
+.about-preview .chip-list{margin-top:1.25rem}
+.about-facts-stack{grid-template-columns:1fr!important;gap:0!important;margin:0!important;padding:0!important;border-block:0!important;border-top:1px solid var(--line)!important}
+.about-facts-stack>div{padding:.875rem 0;border-bottom:1px solid var(--line)}
+
+/* ================= HERO FOLLOWS THE THEME ================= */
+:root{--hero-wm:rgba(255,255,255,.4)}
+html[data-theme="dark"]{--hero-wm:rgba(255,255,255,.055)}
+.hero-watermark{color:var(--hero-wm)}
+html[data-theme="dark"] #home{background:linear-gradient(180deg,#26211d 0%,#1a1714 100%)}
+html[data-theme="dark"] .hero-vignette{background:linear-gradient(to bottom,rgba(26,23,20,.55),transparent 38%,rgba(26,23,20,.55))}
+html[data-theme="dark"] .hero-eyebrow-row,
+html[data-theme="dark"] .hero-statusbar{color:rgb(var(--fg-rgb) / .62)}
+html[data-theme="dark"] .hero-eyebrow-row .dot{background:rgb(var(--fg-rgb) / .5)}
+html[data-theme="dark"] .hero-statusbar{border-top-color:rgb(var(--fg-rgb) / .12)}
+@media (max-width:1023px){
+  html[data-theme="dark"] #home{background:linear-gradient(180deg,#26211d 0%,#1d1a17 60%,#1a1714 100%)}
+  html[data-theme="dark"] .liquid-wrap{background:linear-gradient(160deg,#322d28 0%,#25211d 55%,#1c1916 100%);box-shadow:0 0 0 1px var(--line),0 22px 44px -24px rgba(0,0,0,.7)}
+}
