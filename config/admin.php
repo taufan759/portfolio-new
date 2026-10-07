@@ -112,7 +112,7 @@ return [
         'model' => GalleryItem::class,
         'label' => 'Gallery',
         'order' => ['id', 'desc'],
-        'columns' => ['title', 'location', 'taken_at', 'is_featured', 'is_published'],
+        'columns' => ['title', 'location', 'taken_at', 'is_published'],
         'bulk' => true,
         'fields' => [
             ['image', 'image', 'rules' => 'nullable', 'help' => 'Photo (JPG, PNG or WebP), converted to WebP automatically. Tip: use the bulk upload on the list page for many photos at once'],
@@ -124,7 +124,6 @@ return [
             ['taken_at', 'date', 'rules' => 'nullable|date', 'help' => 'Date of the event'],
             ['sort', 'number', 'rules' => 'nullable|integer|min:0', 'help' => 'Lower numbers first. Leave 0 to order by date'],
             ['is_published', 'checkbox'],
-            ['is_featured', 'checkbox'],
         ],
     ],
     'partners' => [

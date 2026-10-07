@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\GalleryItem;
 use App\Models\NewsItem;
 use App\Models\Partner;
 use App\Models\Post;
@@ -27,18 +26,10 @@ class HomeController extends Controller
             $featured = $featured->concat($filler);
         }
 
-        // Gallery preview: featured photos first, then the newest ones.
-        $gallery = GalleryItem::listed()->where('is_featured', true)->limit(6)->get();
-        if ($gallery->count() < 6) {
-            $gallery = $gallery->concat(GalleryItem::listed()->whereNotIn('id', $gallery->pluck('id'))->limit(6 - $gallery->count())->get());
-        }
-
         $posts = Post::where('is_published', true);
 
         return view('home', [
             'partners' => Partner::listed()->get(),
-            'gallery' => $gallery,
-            'galleryCount' => GalleryItem::where('is_published', true)->count(),
             'projectCount' => Project::where('is_published', true)->count(),
             'projects' => $featured,
             'postCount' => (clone $posts)->count(),

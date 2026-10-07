@@ -479,3 +479,7 @@ html[data-theme="dark"] .hero-statusbar{border-top-color:rgb(var(--fg-rgb) / .12
   html[data-theme="dark"] #home{background:linear-gradient(180deg,#26211d 0%,#1d1a17 60%,#1a1714 100%)}
   html[data-theme="dark"] .liquid-wrap{background:linear-gradient(160deg,#322d28 0%,#25211d 55%,#1c1916 100%);box-shadow:0 0 0 1px var(--line),0 22px 44px -24px rgba(0,0,0,.7)}
 }
+
+/* slider sits directly under the hero, no heading */
+.partners-sec{padding-block:2rem .5rem}
+.partners-sec .logo-slider{margin-top:0}
