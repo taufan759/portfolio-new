@@ -20,7 +20,8 @@ a.journal-row:hover{padding-left:.5rem}
 .journal-empty{padding:1rem 0;font-size:.875rem;color:rgb(var(--fg-rgb) / .45)}
 
 /* ================= INNER PAGES ================= */
-.page-main{padding-top:7rem;min-height:70vh;background:var(--bg)}
+.page-main{padding-top:7rem;min-height:min(70vh,26rem);background:var(--bg)}
+.page-main:has(.about-intro){min-height:0}
 .page-inner{padding-bottom:5rem}
 .page-h1{margin:1rem 0 1.5rem;font-size:2.25rem;font-weight:600;letter-spacing:-.02em;line-height:1.05;max-width:20ch}
 @media (min-width:640px){.page-h1{font-size:3.5rem}}
