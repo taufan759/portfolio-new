@@ -556,8 +556,10 @@ html[data-theme="dark"] .logo-tile img{filter:none}
 }
 /* watermark back to the original: centred behind the hero */
 @media (min-width:1024px){
-  .hero-watermark{left:0;right:0;text-align:center;bottom:7rem;font-size:11rem}
+  /* centred on the character (not on the page) and sized to her shoulders, drawn over the jacket */
+  .hero-watermark{left:14%;right:0;text-align:center;bottom:6rem;font-size:9.5vw;z-index:2;padding-left:10%}
 }
+@media (min-width:1024px) and (max-width:1279px){.hero-watermark{left:26%;font-size:9vw;padding-left:6%}}
 
 /* related-project chips under each area of focus */
 .focus-related{display:flex;flex-wrap:wrap;gap:.375rem;margin-top:.875rem}

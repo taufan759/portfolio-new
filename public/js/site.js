@@ -119,17 +119,7 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
   if(!wrap) return;
   // The cursor-follow reveal only makes sense with a mouse; on touch it fires while scrolling.
   if(window.matchMedia('(pointer: coarse), (max-width: 1023px)').matches){
-    // Touch version: tap the photo (or the button) to cross-fade between the two photos.
-    const btn = document.createElement('button');
-    btn.type = 'button'; btn.className = 'hero-flip';
-    btn.setAttribute('aria-label', wrap.dataset.flipLabel || 'Switch photo');
-    btn.setAttribute('aria-pressed', 'false');
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg>';
-    wrap.append(btn);
-    wrap.addEventListener('click', ()=>{
-      const on = wrap.classList.toggle('flipped');
-      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
+    // Touch version: the portrait follows the theme (glasses in dark, plain in light), so there is nothing to switch.
     return;
   }
   const canvas = document.getElementById('liquid-canvas');
