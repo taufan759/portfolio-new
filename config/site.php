@@ -16,6 +16,7 @@ return [
     'social' => [
         'LinkedIn' => 'https://www.linkedin.com/in/taufanhs/',
         'GitHub' => 'https://github.com/taufan759',
+        'Medium' => 'https://medium.com/@taufan759',
         'Instagram' => 'https://www.instagram.com/taufanakbr_/',
     ],
     'github' => 'taufan759',
@@ -23,5 +24,7 @@ return [
     // Shown on the About page under "Organizations and programs".
     'orgs' => ['Universitas Bina Sarana Informatika', 'GreatEdu', 'DBS Foundation', 'Dicoding Indonesia', 'Kementerian Agama', 'Adaptable Consulting', 'PT Nibras Berkah Mulia'],
     'knows_about' => ['Software Engineering', 'Laravel', 'PHP', 'React', 'Node.js', 'MySQL', 'AI Integration', 'Chatbots', 'Workflow Automation', 'n8n', 'Machine Learning', 'Web Scraping', 'Tailwind CSS', 'Figma', 'UI/UX Design'],
-    'og_image' => 'images/hero/before.webp',
+    'og_image' => 'images/og-default.jpg',
+    // Optional: Google Search Console "HTML tag" verification code (content value only).
+    'google_verification' => env('GOOGLE_SITE_VERIFICATION'),
 ];

@@ -31,6 +31,7 @@
 <meta name="description" content="{{ $pageDescription }}" />
 <meta name="robots" content="{{ $robots }}" />
 <meta name="author" content="{{ config('site.name') }}" />
+@if (config('site.google_verification'))<meta name="google-site-verification" content="{{ config('site.google_verification') }}" />@endif
 <meta name="color-scheme" content="light dark" />
 <meta name="theme-color" content="#0a0a0a" />
 <script>(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
@@ -46,6 +47,7 @@
 <meta property="og:description" content="{{ $pageDescription }}" />
 <meta property="og:url" content="{{ $canonical }}" />
 <meta property="og:image" content="{{ $ogImage }}" />
+<meta property="og:image:alt" content="{{ $pageTitle }}" />
 <meta property="og:locale" content="{{ $locale === 'id' ? 'id_ID' : 'en_US' }}" />
 @unless ($onlyLocale)
 <meta property="og:locale:alternate" content="{{ $otherLocale === 'id' ? 'id_ID' : 'en_US' }}" />

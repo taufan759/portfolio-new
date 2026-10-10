@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Middleware\SetLocale;
 use App\Models\Book;
 use App\Models\Certificate;
+use App\Models\Event;
 use App\Models\GalleryItem;
 use App\Models\Partner;
 use App\Models\Post;
@@ -250,6 +251,15 @@ class SeoController extends Controller
                     $out[] = '## '.__('site.about.certs_h');
                     foreach ($certs as $c) {
                         $out[] = '- '.$c->title.($c->issuer ? ' — '.$c->issuer : '');
+                    }
+                    $out[] = '';
+                }
+
+                $events = Event::listed()->get();
+                if ($events->isNotEmpty()) {
+                    $out[] = '## '.__('site.about.events_h');
+                    foreach ($events as $ev) {
+                        $out[] = '- '.collect([$ev->year, $ev->t('title'), $ev->t('role'), $ev->organizer, $ev->location, $ev->t('description')])->filter()->implode(' | ');
                     }
                     $out[] = '';
                 }
