@@ -41,6 +41,8 @@ class ProjectShowcaseSeeder extends Seeder
         foreach (['ptsp-sulsel', 'sd-lumingser-01', 'miton', 'senada', 'sea-catering', 'bipemas', 'greensaver'] as $slug) {
             Project::where('slug', $slug)->update(['sort' => $next++, 'is_featured' => false]);
         }
+        Project::whereIn('slug', ['senada', 'sea-catering', 'ptsp-sulsel'])->update(['year' => 2025]);
+        Project::where('slug', 'miton')->update(['year' => 2026]);
         Project::whereIn('slug', ['bipemas', 'greensaver'])->update(['categories' => json_encode(['uiux'])]);
         Project::whereIn('slug', ['ptsp-sulsel', 'sd-lumingser-01', 'miton', 'sea-catering'])->update(['categories' => json_encode(['fullstack'])]);
         Project::where('slug', 'senada')->update(['categories' => json_encode(['fullstack', 'ai'])]);
