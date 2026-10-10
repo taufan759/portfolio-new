@@ -554,3 +554,7 @@ html[data-theme="dark"] .logo-tile img{filter:none}
   .hero-h1{font-size:2.5rem}
   .hero-lead{font-size:.9375rem}
 }
+/* watermark back to the original: centred behind the hero */
+@media (min-width:1024px){
+  .hero-watermark{left:0;right:0;text-align:center;bottom:7rem;font-size:11rem}
+}
