@@ -23,6 +23,7 @@ return [
             ['title', 'text', 'rules' => 'required|max:160'],
             ['slug', 'text', 'rules' => 'nullable|max:160', 'help' => 'Leave empty to generate from the title'],
             ['category', 'select', 'options' => ['fullstack' => 'Full-Stack Development', 'uiux' => 'UI/UX Design', 'ai' => 'AI Integration'], 'rules' => 'required|in:fullstack,uiux,ai'],
+            ['categories', 'tags', 'rules' => 'nullable|max:80', 'help' => 'All categories, comma separated: fullstack, uiux, ai. A project can be in several (e.g. fullstack, ai)'],
             ['kind', 'text', 'rules' => 'nullable|max:60', 'help' => 'Short label, e.g. E-commerce'],
             ['year', 'number', 'rules' => 'nullable|integer|min:2000|max:2100'],
             ['description', 'textarea', 'rules' => 'nullable|max:600', 'help' => 'English (main). Used on cards and as the SEO description'],

@@ -13,13 +13,12 @@ class ProjectController extends Controller
     {
         $category = in_array(request('category'), self::CATEGORIES, true) ? request('category') : null;
 
-        $counts = Project::where('is_published', true)
-            ->selectRaw('category, count(*) as total')
-            ->groupBy('category')
-            ->pluck('total', 'category');
+        // A project can sit in several categories, so count each category over all published projects.
+        $all = Project::where('is_published', true)->get(['id', 'category', 'categories']);
+        $counts = collect(self::CATEGORIES)->mapWithKeys(fn ($c) => [$c => $all->filter(fn ($p) => in_array($c, $p->allCategories(), true))->count()]);
 
         $projects = Project::listed()
-            ->when($category, fn ($q) => $q->where('category', $category))
+            ->when($category, fn ($q) => $q->where(fn ($w) => $w->where('category', $category)->orWhereJsonContains('categories', $category)))
             ->paginate(self::PER_PAGE)
             ->withQueryString();
 
@@ -27,7 +26,7 @@ class ProjectController extends Controller
             'projects' => $projects,
             'category' => $category,
             'counts' => $counts,
-            'total' => $counts->sum(),
+            'total' => $all->count(),
         ]);
     }
 

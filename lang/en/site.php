@@ -75,7 +75,7 @@ return [
         'description' => 'Selected web development, UI/UX design and AI projects by Muhammad Taufan Akbar: e-commerce, education, government systems and more, built with Laravel and React.',
         'eyebrow' => 'Projects', 'h1' => 'Projects',
         'lead' => 'A selection of web applications, interface designs and AI-assisted products, built for clients and as part of my continuous learning.',
-        'all' => 'All', 'fullstack' => 'Full-stack development', 'uiux' => 'UI/UX design', 'ai' => 'AI integration',
+        'all' => 'All', 'fullstack' => 'Web development', 'uiux' => 'UI/UX design', 'ai' => 'AI integration',
         'empty' => 'No projects in this category yet.',
         'showing' => 'Showing :from–:to of :total',
         'visit' => 'Visit website', 'back' => '← All projects', 'tech' => 'Technologies', 'year' => 'Year', 'type' => 'Type',

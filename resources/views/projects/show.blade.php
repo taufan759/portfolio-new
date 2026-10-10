@@ -2,7 +2,7 @@
   $locale = app()->getLocale();
   $title = $project->title;
   $description = $project->t('description');
-  $categoryLabel = __('site.projects.'.$project->category);
+  $categoryLabel = collect($project->allCategories())->map(fn ($c) => __('site.projects.'.$c))->implode(' · ');
 @endphp
 @extends('layouts.site')
 @section('title', $title.' — '.$categoryLabel.' | '.config('site.name'))
@@ -46,7 +46,7 @@
       <div><dt>{{ __('site.projects.tech') }}</dt><dd>{{ implode(', ', $project->tags ?? []) }}</dd></div>
     </dl>
 
-    <img class="article-cover" src="{{ asset($project->image) }}" alt="{{ $title }}" width="1200" height="630" decoding="async" fetchpriority="high">
+    <img class="article-cover" src="{{ asset($project->image) }}" alt="{{ $title }}" width="1400" height="933" decoding="async" fetchpriority="high">
 
     @if (filled($project->t('details')))
       <div class="prose">{!! \Illuminate\Support\Str::markdown($project->t('details'), ['html_input' => 'strip', 'allow_unsafe_links' => false]) !!}</div>

@@ -503,3 +503,6 @@ html[data-theme="dark"] .hero-statusbar{border-top-color:rgb(var(--fg-rgb) / .12
 .event-meta{margin-top:.125rem;font-size:.8125rem;color:rgb(var(--fg-rgb) / .55)}
 .event-body p:not(.event-meta){margin-top:.5rem;max-width:44rem;font-size:.9375rem;line-height:1.55;color:rgb(var(--fg-rgb) / .75)}
 @media (max-width:520px){.event-list li{grid-template-columns:1fr;gap:.25rem}}
+
+/* project mockups are 3:2 and carry content across the whole frame, so show them uncropped */
+.mini-card img{aspect-ratio:3/2;object-position:center}

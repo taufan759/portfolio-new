@@ -75,7 +75,7 @@ return [
         'description' => 'Proyek pilihan pengembangan web, desain UI/UX, dan AI oleh Muhammad Taufan Akbar: e-commerce, pendidikan, sistem pemerintahan, dan lainnya, dibangun dengan Laravel dan React.',
         'eyebrow' => 'Proyek', 'h1' => 'Proyek',
         'lead' => 'Pilihan aplikasi web, desain antarmuka, dan produk berbantuan AI yang dibangun untuk klien maupun sebagai bagian dari proses belajar berkelanjutan.',
-        'all' => 'Semua', 'fullstack' => 'Pengembangan full-stack', 'uiux' => 'Desain UI/UX', 'ai' => 'Integrasi AI',
+        'all' => 'Semua', 'fullstack' => 'Pengembangan web', 'uiux' => 'Desain UI/UX', 'ai' => 'Integrasi AI',
         'empty' => 'Belum ada proyek di kategori ini.',
         'showing' => 'Menampilkan :from–:to dari :total',
         'visit' => 'Kunjungi website', 'back' => '← Semua proyek', 'tech' => 'Teknologi', 'year' => 'Tahun', 'type' => 'Jenis',
