@@ -80,6 +80,38 @@ Dibangun dengan Laravel dan integrasi AI. Sisanya lebih menarik dilihat langsung
 MD,
             ],
             [
+                'slug' => 'lunaray-beauty-factory', 'title' => 'Lunaray Beauty Factory', 'categories' => ['ai', 'fullstack'], 'kind' => 'AI-Powered Corporate Platform', 'year' => 2026,
+                'tags' => ['Laravel', 'AI Assistant', 'SEO/AEO/GEO', 'Content Automation'], 'url' => 'https://lunaray.id/',
+                'en' => 'A cosmetics factory\'s website that answers back, writes, and publishes on its own.',
+                'id' => 'Website pabrik kosmetik yang bisa menjawab, menulis, dan terbit dengan sendirinya.',
+                'details_en' => <<<'MD'
+More than a company profile: a digital home where service information, an education hub and AI live together, so a visitor can explore, ask and get connected to the team.
+
+#### A glimpse
+
+- **AILUNA**, an assistant that knows Lunaray and points visitors the right way.
+- **An AI ecosystem** tying the Product Concept Simulator, Skin Analyzer, AI Wellness and Cantik.ai into one journey.
+- **Beautyversity**, an education hub fed by an editorial content pipeline.
+- **Found by people and machines**, with SEO, AEO and GEO built in.
+- **A custom admin portal** to run it all.
+
+Laravel, MySQL and several AI providers working behind the scenes.
+MD,
+                'details_id' => <<<'MD'
+Lebih dari sekadar company profile: rumah digital tempat informasi layanan, pusat edukasi, dan AI hidup berdampingan, sehingga pengunjung bisa menjelajah, bertanya, dan terhubung dengan tim.
+
+#### Sekilas
+
+- **AILUNA**, asisten yang mengenal Lunaray dan mengarahkan pengunjung ke tempat yang tepat.
+- **Ekosistem AI** yang menyatukan Product Concept Simulator, Skin Analyzer, AI Wellness, dan Cantik.ai dalam satu perjalanan.
+- **Beautyversity**, pusat edukasi yang disuplai pipeline konten editorial.
+- **Mudah ditemukan manusia dan mesin**, dengan SEO, AEO, dan GEO bawaan.
+- **Portal admin kustom** untuk mengelola semuanya.
+
+Laravel, MySQL, dan beberapa penyedia AI yang bekerja di balik layar.
+MD,
+            ],
+            [
                 'slug' => 'baleide', 'title' => 'Baleide', 'categories' => ['fullstack', 'ai'], 'kind' => 'E-commerce + AI', 'year' => 2026,
                 'tags' => ['Laravel', 'MySQL', 'Midtrans', 'AI Chatbot'], 'url' => 'https://baleide.my.id/',
                 'en' => 'A bookstore that talks back. Browse, ask, and let the right book find you.',
@@ -105,6 +137,32 @@ Baleide adalah tempat membaca bertemu percakapan. Buku digital, pembelian yang m
 - **Checkout aman** lewat Midtrans.
 
 Laravel, MySQL, dan sedikit sihir AI.
+MD,
+            ],
+            [
+                'slug' => 'raystore', 'title' => 'RayStore', 'categories' => ['fullstack', 'ai'], 'kind' => 'Multi-Role E-commerce', 'year' => 2026,
+                'tags' => ['Laravel', 'Midtrans', 'Multi-Role', 'AI Shopping Assistant'], 'url' => 'https://store.raylife.id/store',
+                'en' => 'Not just a shop. Customers, affiliates, distributors and dropshippers each walk in through a different door.',
+                'id' => 'Bukan sekadar toko. Pelanggan, affiliate, distributor, dan dropshipper masuk lewat pintu yang berbeda.',
+                'details_en' => <<<'MD'
+A beauty and wellness store where every role gets the experience built for it, from checkout to the dashboard behind it.
+
+#### A glimpse
+
+- **Many roles, one system**, each with its own view.
+- **Midtrans checkout** and shipping costs worked out for you.
+- **An AI shopping assistant** that helps find the right product.
+- **Connected to the company's operations** to keep orders simple.
+MD,
+                'details_id' => <<<'MD'
+Toko kecantikan dan wellness tempat setiap peran mendapat pengalaman yang dirancang untuknya, dari checkout hingga dashboard di baliknya.
+
+#### Sekilas
+
+- **Banyak peran, satu sistem**, masing-masing dengan tampilannya sendiri.
+- **Checkout Midtrans** dan ongkos kirim yang dihitung otomatis.
+- **Asisten belanja AI** yang membantu menemukan produk yang cocok.
+- **Terhubung ke operasional perusahaan** agar pesanan tetap sederhana.
 MD,
             ],
             [
