@@ -44,7 +44,7 @@
     ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 <IfModule mod_headers.c>
-    <FilesMatch "\.(webp|svg|png|jpe?g|ico|css|js|mjs|woff2)$">
+    <FilesMatch "\.(webp|svg|png|jpe?g|ico|css|js|woff2)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
     Header always set X-Content-Type-Options "nosniff"

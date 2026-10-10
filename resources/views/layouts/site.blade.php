@@ -81,9 +81,9 @@
 @include('partials.search')
 @include('partials.player')
 
-<link rel="modulepreload" href="{{ asset('js/vendor/lenis.mjs') }}">
+<link rel="modulepreload" href="{{ asset('js/vendor/lenis.js') }}">
 <script type="importmap">
-{ "imports": { "lenis": "{{ asset('js/vendor/lenis.mjs') }}" } }
+{ "imports": { "lenis": "{{ asset('js/vendor/lenis.js') }}" } }
 </script>
 <script type="module" src="{{ asset('js/site.js') }}?v={{ filemtime(public_path('js/site.js')) }}"></script>
 <script type="module" src="{{ asset('js/extras.js') }}?v={{ filemtime(public_path('js/extras.js')) }}"></script>
