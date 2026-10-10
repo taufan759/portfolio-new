@@ -13,8 +13,9 @@
 @section('content')
 <!-- ================= HERO ================= -->
 <section id="home">
-  <div class="liquid-wrap" id="liquid-wrap" data-after="{{ asset('images/hero/after.webp') }}" data-flip-label="{{ __('site.hero.flip') }}">
-    <img id="liquid-base" src="{{ asset('images/hero/before.webp') }}" alt="{{ config('site.name') }}" fetchpriority="high" />
+  <div class="liquid-wrap" id="liquid-wrap" data-before="{{ asset('images/hero/before.webp') }}" data-after="{{ asset('images/hero/after.webp') }}" data-flip-label="{{ __('site.hero.flip') }}">
+    <img id="liquid-base" src="{{ asset('images/hero/before.webp') }}" alt="{{ config('site.name') }}" width="1341" height="1173" fetchpriority="high" />
+    <img id="liquid-alt" src="{{ asset('images/hero/after.webp') }}" alt="" aria-hidden="true" width="1254" height="1254" fetchpriority="high" />
     <canvas id="liquid-canvas" aria-hidden="true"></canvas>
   </div>
   <div class="hero-vignette"></div>

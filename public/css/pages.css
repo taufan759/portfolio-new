@@ -506,3 +506,28 @@ html[data-theme="dark"] .hero-statusbar{border-top-color:rgb(var(--fg-rgb) / .12
 
 /* project mockups are 3:2 and carry content across the whole frame, so show them uncropped */
 .mini-card img{aspect-ratio:3/2;object-position:center}
+
+/* ================= HERO PHOTOS: follow the theme, keep the face clear of the text ================= */
+.liquid-wrap img{transition:opacity .45s ease}
+#liquid-alt{opacity:0}
+html[data-theme="dark"] #liquid-base{opacity:0}
+html[data-theme="dark"] #liquid-alt{opacity:1}
+
+@media (min-width:1024px){
+  /* photo lives in the right half; the head sits at roughly 61% to 87% of the hero width */
+  .liquid-wrap{left:auto;right:0;width:56%}
+  .hero-left{max-width:34rem}
+  /* decorative name: left aligned and smaller so it never crosses the face */
+  .hero-watermark{inset-inline:auto;left:max(1.5rem,calc((100% - 72rem) / 2 + 2rem));bottom:6rem;text-align:left;font-size:7rem}
+}
+@media (min-width:1500px){.hero-watermark{font-size:8.5rem}}
+
+/* phone card: flipping swaps which photo is on top, in both themes */
+@media (max-width:1023px){
+  .liquid-wrap.flipped #liquid-base{opacity:0}
+  .liquid-wrap.flipped #liquid-alt{opacity:1}
+  html[data-theme="dark"] .liquid-wrap.flipped #liquid-base{opacity:1}
+  html[data-theme="dark"] .liquid-wrap.flipped #liquid-alt{opacity:0}
+  .liquid-after{display:none}
+}
+html[data-theme="dark"] .logo-tile img{filter:none}

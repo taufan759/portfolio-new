@@ -119,25 +119,17 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
   if(!wrap) return;
   // The cursor-follow reveal only makes sense with a mouse; on touch it fires while scrolling.
   if(window.matchMedia('(pointer: coarse), (max-width: 1023px)').matches){
-    // Touch version: tap the photo (or the button) to cross-fade between before and after.
-    const afterSrc = wrap.dataset.after;
-    if(afterSrc){
-      const after = new Image();
-      const loadAfter = () => { after.src = afterSrc; };
-      (window.requestIdleCallback || (f => setTimeout(f, 1500)))(loadAfter);
-      after.alt = ''; after.className = 'liquid-after'; after.decoding = 'async';
-      after.setAttribute('aria-hidden', 'true');
-      const btn = document.createElement('button');
-      btn.type = 'button'; btn.className = 'hero-flip';
-      btn.setAttribute('aria-label', wrap.dataset.flipLabel || 'Switch photo');
-      btn.setAttribute('aria-pressed', 'false');
-      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg>';
-      wrap.append(after, btn);
-      wrap.addEventListener('click', ()=>{
-        const on = wrap.classList.toggle('flipped');
-        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-    }
+    // Touch version: tap the photo (or the button) to cross-fade between the two photos.
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'hero-flip';
+    btn.setAttribute('aria-label', wrap.dataset.flipLabel || 'Switch photo');
+    btn.setAttribute('aria-pressed', 'false');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg>';
+    wrap.append(btn);
+    wrap.addEventListener('click', ()=>{
+      const on = wrap.classList.toggle('flipped');
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
     return;
   }
   const canvas = document.getElementById('liquid-canvas');
@@ -145,7 +137,8 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced) return;
 
-  const AFTER_SRC = wrap.dataset.after;
+  // Light theme shows the plain portrait and reveals the glasses one; dark theme is the other way round.
+  const revealSrc = () => document.documentElement.getAttribute('data-theme') === 'dark' ? wrap.dataset.before : wrap.dataset.after;
   const brushRadius = 143;
   const decay = 0.016;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -158,7 +151,8 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
   let afterImg = new Image();
   let afterLoaded = false;
   afterImg.onload = ()=>{ afterLoaded = true; drawCover(); };
-  afterImg.src = AFTER_SRC;
+  afterImg.src = revealSrc();
+  new MutationObserver(()=>{ afterLoaded = false; afterImg.src = revealSrc(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   function drawCover(){
     if(!afterLoaded || cw === 0 || ch === 0) return;
