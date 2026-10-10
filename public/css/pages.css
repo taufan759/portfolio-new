@@ -558,3 +558,8 @@ html[data-theme="dark"] .logo-tile img{filter:none}
 @media (min-width:1024px){
   .hero-watermark{left:0;right:0;text-align:center;bottom:7rem;font-size:11rem}
 }
+
+/* related-project chips under each area of focus */
+.focus-related{display:flex;flex-wrap:wrap;gap:.375rem;margin-top:.875rem}
+.focus-related a{padding:.1875rem .625rem;border:1px solid var(--line);border-radius:9999px;font-size:.75rem;color:rgb(var(--fg-rgb) / .7);transition:background .25s,color .25s,border-color .25s}
+.focus-related a:hover{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}

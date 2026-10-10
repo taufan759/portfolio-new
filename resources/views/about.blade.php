@@ -52,6 +52,13 @@
           <span class="focus-index">{{ sprintf('%02d', $i + 1) }}</span>
           <h3>{{ $name }}</h3>
           <p>{{ $desc }}</p>
+          @if (($focusProjects[$i] ?? collect())->isNotEmpty())
+            <div class="focus-related" aria-label="{{ __('site.about.related') }}">
+              @foreach ($focusProjects[$i] as $rp)
+                <a href="{{ route('projects.show', ['slug' => $rp->slug]) }}">{{ $rp->title }}</a>
+              @endforeach
+            </div>
+          @endif
         </li>
       @endforeach
     </ul>
@@ -139,7 +146,7 @@
     <div class="stats-panel reveal" style="--dy:40px;--sc:.99">
       <div class="eyebrow light">{{ __('site.about.stats') }}</div>
       <ul class="stats-grid">
-        @foreach ([25, 13, 2, 20] as $i => $n)
+        @foreach ($stats as $i => $n)
           <li class="reveal" style="--dy:20px" data-delay="{{ $i * 90 }}">
             <div class="stat-number"><span class="stat-count" data-target="{{ $n }}">{{ $n }}</span>+</div>
             <div class="stat-label">{{ __('site.about.stat_items')[$i] }}</div>

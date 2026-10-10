@@ -136,7 +136,7 @@ class SeoController extends Controller
 
             $out[] = "# {$site['name']}";
             $out[] = '';
-            $out[] = "> Portfolio of {$site['name']}, a software engineer and AI enthusiast based in {$site['city']}, {$site['region']}, Indonesia, working at {$site['employer']}. Software built across web and apps, with Laravel and React, interface design in Figma, and practical AI integration. The site is available in Indonesian (/id) and English (/en).";
+            $out[] = "> Portfolio of {$site['name']}, a software engineer and AI enthusiast based in {$site['city']}, {$site['region']}, Indonesia, working at {$site['employer']}. Software across web and apps with Laravel and React; AI products such as a social-listening platform, an adaptive AI wellness analyzer, a product concept simulator and chatbots; n8n automation and sitemap content pipelines; Midtrans payments; and technical SEO / LLM discoverability. The site is available in Indonesian (/id) and English (/en).";
             $out[] = '';
 
             $out[] = '## Key facts';
