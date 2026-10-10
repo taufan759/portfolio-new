@@ -137,8 +137,8 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced) return;
 
-  // Light theme shows the plain portrait and reveals the glasses one; dark theme is the other way round.
-  const revealSrc = () => document.documentElement.getAttribute('data-theme') === 'dark' ? wrap.dataset.before : wrap.dataset.after;
+  // Desktop hero is theme-independent: the plain portrait, with the glasses version revealed under the cursor.
+  const revealSrc = () => wrap.dataset.after;
   const brushRadius = 143;
   const decay = 0.016;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -152,7 +152,6 @@ document.querySelectorAll('.reveal:not([data-hero-delay])').forEach(el=> io.obse
   let afterLoaded = false;
   afterImg.onload = ()=>{ afterLoaded = true; drawCover(); };
   afterImg.src = revealSrc();
-  new MutationObserver(()=>{ afterLoaded = false; afterImg.src = revealSrc(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   function drawCover(){
     if(!afterLoaded || cw === 0 || ch === 0) return;

@@ -531,3 +531,26 @@ html[data-theme="dark"] #liquid-alt{opacity:1}
   .liquid-after{display:none}
 }
 html[data-theme="dark"] .logo-tile img{filter:none}
+
+/* ================= DESKTOP HERO: always the plain portrait on a light stage, in both site themes ================= */
+@media (min-width:1024px){
+  html[data-theme="dark"] #home,
+  html[data-theme="dark"] body.page-home #site-header:not(.scrolled){
+    --bg:#fff;--bg-rgb:255 255 255;--fg:#111;--fg-rgb:17 17 17;--surface:#f1f0ee;--surface-rgb:241 240 238;
+    --line:#e6e5e2;--line-rgb:230 229 226;--ink:#0a0a0a;--on-ink:#fff;--accent-ui:#b15f2c;--hero-wm:rgba(255,255,255,.4);
+  }
+  html[data-theme="dark"] #home{background:#c9c9c9;color:#111}
+  html[data-theme="dark"] .hero-vignette{background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent,rgba(255,255,255,.35))}
+  html[data-theme="dark"] #liquid-base{opacity:1}
+  html[data-theme="dark"] #liquid-alt{opacity:0}
+  /* photo back near the middle (slightly right of centre); the text column is narrow enough to stay clear of the face */
+  .liquid-wrap{left:14%;right:0;width:auto}
+  .hero-left{max-width:26rem}
+}
+/* narrower desktops/tablets landscape: the photo is relatively larger, so give the face more room */
+@media (min-width:1024px) and (max-width:1279px){
+  .liquid-wrap{left:26%}
+  .hero-left{max-width:21rem}
+  .hero-h1{font-size:2.5rem}
+  .hero-lead{font-size:.9375rem}
+}
