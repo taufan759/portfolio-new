@@ -250,7 +250,7 @@ class SeoController extends Controller
                 if ($certs->isNotEmpty()) {
                     $out[] = '## '.__('site.about.certs_h');
                     foreach ($certs as $c) {
-                        $out[] = '- '.$c->title.($c->issuer ? ' — '.$c->issuer : '');
+                        $out[] = '- '.$c->label().($c->issuer ? ' — '.$c->issuer : '');
                     }
                     $out[] = '';
                 }

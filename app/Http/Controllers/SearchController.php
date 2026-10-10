@@ -25,7 +25,7 @@ class SearchController extends Controller
             $items[] = $this->item($p->title, (string) $p->t('description'), route('projects.show', ['slug' => $p->slug]), 'project', implode(' ', $p->tags ?? []).' '.$p->kind);
         }
 
-        foreach (Post::where('is_published', true)->latest('published_at')->get() as $post) {
+        foreach (Post::where('is_published', true)->forLocale()->latest('published_at')->get() as $post) {
             $items[] = $this->item((string) $post->t('title'), (string) $post->t('excerpt'), route('blog.show', ['slug' => $post->slug]), 'blog');
         }
 

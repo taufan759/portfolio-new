@@ -26,7 +26,7 @@ class HomeController extends Controller
             $featured = $featured->concat($filler);
         }
 
-        $posts = Post::where('is_published', true);
+        $posts = Post::where('is_published', true)->forLocale();
 
         return view('home', [
             'partners' => Partner::listed()->get(),

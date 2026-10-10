@@ -41,7 +41,7 @@ class EventSeeder extends Seeder
             [
                 'title' => 'Pertamina workshop with Danantara',
                 'title_id' => 'Workshop Pertamina bersama Danantara',
-                'organizer' => 'Pertamina and Danantara', 'location' => 'CX 100', 'year' => 2026, 'sort' => 3,
+                'organizer' => 'Pertamina & Danantara', 'location' => 'CX 100', 'year' => 2026, 'sort' => 3,
                 'role' => 'Participant', 'role_id' => 'Peserta',
                 'description' => 'Attended the Pertamina workshop together with Danantara at CX 100.',
                 'description_id' => 'Mengikuti workshop Pertamina bersama Danantara di CX 100.',

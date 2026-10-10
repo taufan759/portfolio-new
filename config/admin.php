@@ -44,7 +44,8 @@ return [
         'order' => ['sort', 'asc'],
         'columns' => ['title', 'issuer'],
         'fields' => [
-            ['title', 'text', 'rules' => 'required|max:160'],
+            ['title', 'text', 'rules' => 'required|max:160', 'help' => 'Official name (shown on the Indonesian pages)'],
+            ['title_en', 'text', 'rules' => 'nullable|max:160', 'help' => 'English name, shown on the English pages. Leave empty to use the official name'],
             ['issuer', 'text', 'rules' => 'nullable|max:160'],
             ['image', 'image', 'rules' => 'nullable'],
             ['url', 'text', 'rules' => 'nullable|url|max:300'],

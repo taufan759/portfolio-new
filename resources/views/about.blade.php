@@ -159,8 +159,8 @@
       @foreach ($certificates as $i => $cert)
         <li class="reveal" style="--dy:24px" data-delay="{{ min($i, 11) * 60 }}">
           <div class="cert-card">
-            <div class="cert-image"><img src="{{ asset($cert->image) }}" alt="{{ $cert->title }} — {{ $cert->issuer }}" width="800" height="600" loading="lazy" decoding="async" /></div>
-            <div class="cert-info"><h3>{{ $cert->title }}</h3><p>{{ $cert->issuer }}</p></div>
+            <div class="cert-image"><img src="{{ asset($cert->image) }}" alt="{{ $cert->label() }} — {{ $cert->issuer }}" width="800" height="600" loading="lazy" decoding="async" /></div>
+            <div class="cert-info"><h3>{{ $cert->label() }}</h3><p>{{ $cert->issuer }}</p></div>
           </div>
         </li>
       @endforeach

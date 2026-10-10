@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PartnerSeeder::class);
         $this->call(EventSeeder::class);
         $this->call(PostSeeder::class);
+        $this->call(PostTranslationSeeder::class);
     }
 }
