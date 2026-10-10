@@ -36,7 +36,7 @@ class NewsFetcher
                     continue;
                 }
 
-                $report[$name] = $this->store($name, $response->body(), $source['filter'] ?? true).' new';
+                $report[$name] = $this->store($name, $response->body(), $source['filter'] ?? true, $source['lang'] ?? 'id').' new';
             } catch (\Throwable $e) {
                 $report[$name] = $e->getMessage();
             }
@@ -71,14 +71,14 @@ class NewsFetcher
         }
     }
 
-    private function isRelevant(string $text): bool
+    private function isRelevant(string $text, string $lang): bool
     {
-        $words = array_map(fn ($w) => preg_quote($w, '/'), config('news.keywords'));
+        $words = array_map(fn ($w) => preg_quote($w, '/'), config($lang === 'en' ? 'news.keywords_en' : 'news.keywords'));
 
         return (bool) preg_match('/\b('.implode('|', $words).')\b/iu', $text);
     }
 
-    private function store(string $source, string $xmlBody, bool $filter): int
+    private function store(string $source, string $xmlBody, bool $filter, string $lang): int
     {
         $previous = libxml_use_internal_errors(true);
         $xml = simplexml_load_string($xmlBody, \SimpleXMLElement::class, LIBXML_NONET | LIBXML_NOCDATA);
@@ -108,7 +108,7 @@ class NewsFetcher
             $summary = (string) ($item->description ?? $item->summary ?? $item->content ?? '');
             $summary = Str::limit(trim(preg_replace('/\s+/', ' ', strip_tags(html_entity_decode($summary)))), 280);
 
-            if ($filter && ! $this->isRelevant($title.' '.$summary)) {
+            if ($filter && ! $this->isRelevant($title.' '.$summary, $lang)) {
                 continue;
             }
 
@@ -124,7 +124,7 @@ class NewsFetcher
 
             $record = NewsItem::firstOrCreate(
                 ['url' => $link],
-                ['title' => Str::limit($title, 250, ''), 'source' => $source, 'summary' => $summary ?: null, 'published_at' => $publishedAt]
+                ['title' => Str::limit($title, 250, ''), 'lang' => $lang, 'source' => $source, 'summary' => $summary ?: null, 'published_at' => $publishedAt]
             );
 
             if ($record->wasRecentlyCreated) {

@@ -35,7 +35,7 @@ class HomeController extends Controller
             'postCount' => (clone $posts)->count(),
             'posts' => $posts->latest('published_at')->limit(4)->get(),
             'books' => Book::where('status', 'reading')->latest('id')->limit(2)->get(),
-            'news' => NewsItem::latest('published_at')->limit(4)->get(),
+            'news' => NewsItem::forLocale()->latest('published_at')->limit(4)->get(),
         ]);
     }
 }

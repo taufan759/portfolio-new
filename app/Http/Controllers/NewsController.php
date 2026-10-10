@@ -12,7 +12,7 @@ class NewsController extends Controller
         app()->terminating(fn () => app(NewsFetcher::class)->refreshIfStale());
 
         return view('news.index', [
-            'news' => NewsItem::latest('published_at')->paginate(20),
+            'news' => NewsItem::forLocale()->latest('published_at')->paginate(20),
         ]);
     }
 }

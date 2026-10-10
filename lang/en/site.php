@@ -100,7 +100,7 @@ return [
     ],
     'news' => [
         'title' => 'Tech news — Muhammad Taufan Akbar', 'eyebrow' => 'Tech news', 'h1' => 'Tech news',
-        'lead' => 'Headlines collected automatically from Indonesian technology media and filtered for web development, AI and UI/UX. Each link opens the original publisher.',
+        'lead' => 'Headlines collected automatically from international technology media on AI, software engineering, web development and design. Each link opens the original publisher.',
         'empty' => 'No headlines yet. This list updates automatically.',
     ],
     'footer' => [
