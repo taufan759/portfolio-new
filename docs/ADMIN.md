@@ -37,11 +37,14 @@ Untuk menambah admin lain, di tinker: `\App\Models\User::create(['name' => 'Nama
 | Menu | Fungsi |
 |---|---|
 | Dashboard | Ringkasan dan tombol **Fetch headlines now** (ambil berita teknologi sekarang) |
-| Profile | Teks perkenalan Anda: headline, intro beranda, ringkasan dan cerita di halaman About, lokasi, pendidikan, ketersediaan, dan daftar skill |
-| Projects | Tambah, ubah, hapus proyek. Satu proyek = satu halaman `/projects/{slug}` |
-| Certificates | Sertifikat yang tampil di halaman About |
-| Books | Daftar buku. Status `reading` tampil di beranda sebagai "Sedang dibaca" |
-| Blog posts | Tulisan blog (Markdown) |
+| Profile | Teks perkenalan Anda: headline, intro beranda, ringkasan dan cerita di About, lokasi, pendidikan, peran saat ini, dan daftar skill |
+| Projects | Proyek: kategori ganda (mis. `fullstack, ai`), `sort`, `is_featured` (4 proyek di beranda), studi kasus Markdown EN/ID |
+| Events | Event dan kegiatan di halaman About |
+| Gallery | Foto event. Gunakan **Bulk upload** untuk banyak foto sekaligus |
+| Collaborations | Logo slider di beranda dan daftar tempat kerja/kolaborasi |
+| Certificates | Sertifikat (kolom `title_en` untuk nama versi Inggris) |
+| Books | Daftar buku. Status `reading` tampil di beranda |
+| Blog posts | Tulisan (Markdown). Isi kolom Inggris dan/atau Indonesia |
 | Messages | Pesan dari form kontak (hanya baca) |
 
 ## Profile (teks tentang Anda)
@@ -90,3 +93,32 @@ Buat ulang tabel dari nol (menghapus semua data): `php artisan migrate:fresh --s
 
 - Berita teknologi diperbarui tiap jam lewat cron `schedule:run`, dan juga otomatis saat beranda atau `/news` dibuka jika datanya lebih dari 60 menit.
 - Ambil manual: `php artisan news:fetch`
+
+## Konten per bahasa
+
+- **Tulisan blog:** sebuah tulisan hanya tampil di bahasa yang kolom judulnya terisi. Judul Inggris kosong = hanya di halaman Indonesia (dan sebaliknya). Alamat di bahasa yang tidak tersedia otomatis dialihkan.
+- **Berita:** halaman Inggris memakai sumber internasional, halaman Indonesia memakai sumber Indonesia. Daftar sumber dan kata kunci ada di `config/news.php` (kunci `lang` per sumber).
+
+## Perintah yang berguna (Terminal / SSH)
+
+```bash
+php artisan medium:import @taufan759      # tarik tulisan baru dari Medium (tanpa duplikat)
+php artisan news:fetch                    # ambil berita sekarang
+php artisan github:sync                   # perbarui aktivitas GitHub di About
+php artisan db:seed --class=PostTranslationSeeder --force   # isi terjemahan Inggris tulisan (hanya kolom yang kosong)
+php artisan db:seed --class=ProjectShowcaseSeeder --force   # reset 14 proyek unggulan ke versi terkurasi (menimpa editan proyek itu)
+```
+
+## Memperbarui server setelah push
+
+```bash
+cd ~/portfolio-new && git pull
+php artisan migrate --force
+php artisan config:cache && php artisan route:cache && php artisan view:cache
+```
+
+## SEO
+
+- Isi `SEO_PRIMARY_HOST=taufanakbr.my.id` di `.env` server. Hanya host ini yang diindeks; alamat lain otomatis `noindex`.
+- Kode verifikasi Google Search Console: `GOOGLE_SITE_VERIFICATION=kode` di `.env`.
+- Berkas otomatis: `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/llms-full.txt`, `/ai.txt`.
