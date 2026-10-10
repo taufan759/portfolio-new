@@ -11,7 +11,7 @@ use App\Support\NewsFetcher;
 
 class HomeController extends Controller
 {
-    private const FEATURED = 4;
+    private const FEATURED = 6;
 
     public function index()
     {

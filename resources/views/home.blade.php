@@ -120,7 +120,7 @@
       </div>
       <a href="{{ route('projects.index') }}" class="home-all">{{ __('site.home.all_count', ['count' => $projectCount]) }} →</a>
     </div>
-    <ul class="mini-grid four">
+    <ul class="mini-grid">
       @foreach ($projects as $i => $project)
         @include('projects.mini', ['project' => $project, 'i' => $i])
       @endforeach

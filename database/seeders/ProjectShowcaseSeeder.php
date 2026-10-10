@@ -32,7 +32,7 @@ class ProjectShowcaseSeeder extends Seeder
                 'url' => $p['url'] ?? null,
                 'sort' => $i,
                 'is_published' => true,
-                'is_featured' => $i < 4,
+                'is_featured' => $i < 6,
             ]);
         }
 
