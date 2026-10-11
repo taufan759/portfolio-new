@@ -7,6 +7,6 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Schedule::command('news:fetch')->hourly()->withoutOverlapping();
+Schedule::command('news:fetch')->everyThreeHours()->withoutOverlapping();
 
 Schedule::command('github:sync')->daily()->withoutOverlapping();

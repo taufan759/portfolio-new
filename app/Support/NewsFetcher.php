@@ -25,7 +25,26 @@ class NewsFetcher
 
         $report = [];
 
-        foreach ($sources as $name => $source) {
+        // At most daily_limit new headlines per language per day, however often this runs. Sources are visited
+        // in random order and each adds only a couple, so a day's five come from a mix of outlets.
+        $remaining = [];
+        foreach (['id', 'en'] as $lang) {
+            $today = NewsItem::where('lang', $lang)->where('created_at', '>=', now()->startOfDay())->count();
+            $remaining[$lang] = max(0, config('news.daily_limit') - $today);
+        }
+
+        $names = array_keys($sources);
+        shuffle($names);
+
+        foreach ($names as $name) {
+            $source = $sources[$name];
+            $lang = $source['lang'] ?? 'id';
+
+            if ($remaining[$lang] <= 0) {
+                $report[$name] = 'daily limit reached';
+                continue;
+            }
+
             try {
                 $response = Http::timeout(config('news.timeout'))
                     ->withUserAgent('TaufanPortfolioBot/1.0 (+https://github.com/taufan759/portfolio-new)')
@@ -36,7 +55,9 @@ class NewsFetcher
                     continue;
                 }
 
-                $report[$name] = $this->store($name, $response->body(), $source['filter'] ?? true, $source['lang'] ?? 'id').' new';
+                $added = $this->store($name, $response->body(), $source['filter'] ?? true, $lang, min($remaining[$lang], config('news.per_source_new')));
+                $remaining[$lang] -= $added;
+                $report[$name] = $added.' new';
             } catch (\Throwable $e) {
                 $report[$name] = $e->getMessage();
             }
@@ -78,7 +99,7 @@ class NewsFetcher
         return (bool) preg_match('/\b('.implode('|', $words).')\b/iu', $text);
     }
 
-    private function store(string $source, string $xmlBody, bool $filter, string $lang): int
+    private function store(string $source, string $xmlBody, bool $filter, string $lang, int $max): int
     {
         $previous = libxml_use_internal_errors(true);
         $xml = simplexml_load_string($xmlBody, \SimpleXMLElement::class, LIBXML_NONET | LIBXML_NOCDATA);
@@ -94,7 +115,7 @@ class NewsFetcher
         $seen = 0;
 
         foreach ($items as $item) {
-            if ($seen++ >= config('news.per_source')) {
+            if ($new >= $max || $seen++ >= config('news.per_source')) {
                 break;
             }
 

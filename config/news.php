@@ -42,9 +42,12 @@ return [
 
     // Max items read per source per fetch, and how long old items are retained.
     'per_source' => 15,
-    'keep_days' => 30,
+    // New headlines stored per language per day (so 5 Indonesian + 5 English), at most this many from one source.
+    'daily_limit' => 5,
+    'per_source_new' => 2,
+    'keep_days' => 14,
     'timeout' => 10,
 
     // Auto refresh when someone opens the site and data is older than this (minutes). Works without cron.
-    'refresh_minutes' => 60,
+    'refresh_minutes' => 360,
 ];
