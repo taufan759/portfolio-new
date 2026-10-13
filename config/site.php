@@ -17,7 +17,7 @@ return [
         'LinkedIn' => 'https://www.linkedin.com/in/taufanhs/',
         'GitHub' => 'https://github.com/taufan759',
         'Medium' => 'https://medium.com/@taufan759',
-        'Instagram' => 'https://www.instagram.com/taufanakbr_/',
+        'Instagram' => 'https://www.instagram.com/taufannhs_/',
     ],
     'github' => 'taufan759',
     'skills' => ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'React.js', 'Node.js', 'Express.js', 'AI integration', 'Chatbots', 'n8n', 'Midtrans', 'Technical SEO', 'Machine learning', 'Tailwind CSS', 'Bootstrap', 'Firebase', 'Figma', 'Git & GitHub'],
