@@ -222,7 +222,7 @@ Dibuat untuk tim produk di Lunaray.
 MD,
             ],
             [
-                'slug' => 'ray-academy', 'title' => 'Ray Academy', 'categories' => ['fullstack'], 'kind' => 'Learning Platform', 'year' => null,
+                'slug' => 'ray-academy', 'title' => 'Ray Academy', 'categories' => ['fullstack'], 'kind' => 'Learning Platform', 'year' => 2026,
                 'tags' => ['Laravel', 'Midtrans', 'Admin Dashboard', 'LMS'], 'url' => 'https://rayacademy.id/',
                 'en' => 'A place to learn, a place to teach, and everything in between handled quietly behind the scenes.',
                 'id' => 'Tempat untuk belajar, tempat untuk mengajar, dan semua yang di antaranya diurus diam-diam di belakang layar.',
@@ -294,7 +294,7 @@ Toko roti online yang membiarkan produknya yang membujuk. Brownies, hampers, dan
 MD,
             ],
             [
-                'slug' => 'kang-wendra', 'title' => 'Kang Wendra', 'categories' => ['ai', 'fullstack'], 'kind' => 'AI Content Pipeline', 'year' => null,
+                'slug' => 'kang-wendra', 'title' => 'Kang Wendra', 'categories' => ['ai', 'fullstack'], 'kind' => 'AI Content Pipeline', 'year' => 2026,
                 'tags' => ['Full-stack', 'AI Integration', 'Sitemap Pipeline', 'Content Automation'], 'url' => 'https://kangwendra.com/',
                 'en' => 'A brand site that keeps writing itself a little smarter every day.',
                 'id' => 'Website brand yang setiap hari menulis dirinya sedikit lebih cerdas.',
@@ -318,7 +318,7 @@ Kang Wendra memadukan website personal brand dengan pipeline konten otomatis. Id
 MD,
             ],
             [
-                'slug' => 'raylife', 'title' => 'Raylife', 'categories' => ['fullstack', 'ai'], 'kind' => 'Discovery Platform', 'year' => null,
+                'slug' => 'raylife', 'title' => 'Raylife', 'categories' => ['fullstack', 'ai'], 'kind' => 'Discovery Platform', 'year' => 2026,
                 'tags' => ['Frontend', 'AI Tools', 'Platform Integration', 'Responsive'], 'url' => 'https://raylife.id/',
                 'en' => 'One doorway to a whole world of wellness tools.',
                 'id' => 'Satu pintu menuju dunia alat wellness.',
@@ -342,7 +342,7 @@ Raylife menghimpun pengalaman wellness, sebagian berbasis AI, di balik satu pint
 MD,
             ],
             [
-                'slug' => 'custom-photo-booth', 'title' => 'Custom Photo Booth', 'categories' => ['fullstack'], 'kind' => 'Web App', 'year' => null,
+                'slug' => 'custom-photo-booth', 'title' => 'Custom Photo Booth', 'categories' => ['fullstack'], 'kind' => 'Web App', 'year' => 2026,
                 'tags' => ['Full-stack', 'Camera API', 'Image Processing', 'Admin Dashboard'], 'url' => 'https://photobooth.rayandra.com/',
                 'en' => 'A photo booth with no booth. Just a browser and a good moment.',
                 'id' => 'Photo booth tanpa booth. Cukup browser dan momen yang pas.',
@@ -366,7 +366,7 @@ Buka, senyum, selesai. Photo booth yang hidup di browser dan bisa didandani untu
 MD,
             ],
             [
-                'slug' => 'lain-dunia', 'title' => 'Lain Dunia — Harry Pantja', 'categories' => ['fullstack', 'uiux'], 'kind' => 'Editorial Platform', 'year' => null,
+                'slug' => 'lain-dunia', 'title' => 'Lain Dunia — Harry Pantja', 'categories' => ['fullstack', 'uiux'], 'kind' => 'Editorial Platform', 'year' => 2026,
                 'tags' => ['Web Development', 'UI/UX', 'Editorial', 'Community Submission'], 'url' => 'https://www.laindunia.com/',
                 'en' => 'Photography, told like a film. Scroll slowly.',
                 'id' => 'Fotografi yang dituturkan seperti film. Scroll pelan-pelan.',
@@ -390,7 +390,7 @@ Lain Dunia adalah rumah editorial bagi karya Harry Pantja, dirancang untuk diala
 MD,
             ],
             [
-                'slug' => 'dian-indah-abadi', 'title' => 'Dian Indah Abadi', 'categories' => ['fullstack', 'ai'], 'kind' => 'Corporate Website + SEO', 'year' => null,
+                'slug' => 'dian-indah-abadi', 'title' => 'Dian Indah Abadi', 'categories' => ['fullstack', 'ai'], 'kind' => 'Corporate Website + SEO', 'year' => 2026,
                 'tags' => ['AI-assisted Development', 'Technical SEO', 'llms.txt', 'Responsive'], 'url' => 'https://www.dianindahabadi.com',
                 'en' => 'A corporate website made to be found, by people and by AI.',
                 'id' => 'Website korporat yang dibuat agar ditemukan, oleh manusia maupun AI.',
@@ -414,7 +414,7 @@ Kehadiran perusahaan yang dibangun dengan mata pada pencarian, termasuk generasi
 MD,
             ],
             [
-                'slug' => 'apotek-parahyangan-suite', 'title' => 'Apotek Parahyangan Suite', 'categories' => ['fullstack', 'uiux'], 'kind' => 'Business Website', 'year' => null,
+                'slug' => 'apotek-parahyangan-suite', 'title' => 'Apotek Parahyangan Suite', 'categories' => ['fullstack', 'uiux'], 'kind' => 'Business Website', 'year' => 2026,
                 'tags' => ['Frontend', 'Responsive Design', 'UI Implementation', 'Maps'], 'url' => 'https://apotekparahyangansuite.com/',
                 'en' => 'A pharmacy website that feels more like a boutique.',
                 'id' => 'Website apotek yang terasa seperti butik.',
@@ -438,7 +438,7 @@ Terpercaya tanpa terasa kaku. Website yang bersih dan tenang untuk apotek lingku
 MD,
             ],
             [
-                'slug' => 'dermond-official', 'title' => 'DERMOND Official', 'categories' => ['fullstack', 'uiux'], 'kind' => 'Link-in-Bio Website', 'year' => null,
+                'slug' => 'dermond-official', 'title' => 'DERMOND Official', 'categories' => ['fullstack', 'uiux'], 'kind' => 'Link-in-Bio Website', 'year' => 2026,
                 'tags' => ['Frontend', 'Video Background', 'Custom UI', 'Responsive'], 'url' => 'https://official.dermond.id/',
                 'en' => 'A link-in-bio that behaves like a brand film.',
                 'id' => 'Link-in-bio yang tampil seperti film brand.',
