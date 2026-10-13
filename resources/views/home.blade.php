@@ -14,8 +14,8 @@
 <!-- ================= HERO ================= -->
 <section id="home">
   <div class="liquid-wrap" id="liquid-wrap" data-before="{{ asset('images/hero/before.webp') }}" data-after="{{ asset('images/hero/after.webp') }}" data-flip-label="{{ __('site.hero.flip') }}">
-    <img id="liquid-base" src="{{ asset('images/hero/before.webp') }}" alt="{{ config('site.name') }}" width="1341" height="1173" fetchpriority="high" />
-    <img id="liquid-alt" src="{{ asset('images/hero/after.webp') }}" alt="" aria-hidden="true" width="1254" height="1254" fetchpriority="high" />
+    <img id="liquid-base" src="{{ asset('images/hero/before.webp') }}" srcset="{{ asset('images/hero/before-sm.webp') }} 640w, {{ asset('images/hero/before.webp') }} 1341w" sizes="(max-width:1023px) 640px, 1341px" alt="{{ config('site.name') }}" width="1341" height="1173" fetchpriority="high" />
+    <img id="liquid-alt" src="{{ asset('images/hero/after.webp') }}" srcset="{{ asset('images/hero/after-sm.webp') }} 640w, {{ asset('images/hero/after.webp') }} 1254w" sizes="(max-width:1023px) 640px, 1254px" alt="" aria-hidden="true" width="1254" height="1254" fetchpriority="high" />
     <canvas id="liquid-canvas" aria-hidden="true"></canvas>
   </div>
   <div class="hero-vignette"></div>
@@ -65,7 +65,7 @@
               <li class="logo-tile">
                 @if ($partner->url)<a href="{{ $partner->url }}" target="_blank" rel="noopener nofollow" @if ($copy || $r) tabindex="-1" @endif title="{{ $partner->name }}">@endif
                 @if ($partner->logo)
-                  <img src="{{ asset($partner->logo) }}" alt="{{ $copy || $r ? '' : $partner->name }}" title="{{ $partner->name }}" width="120" height="120" decoding="async" @if ($copy) loading="lazy" @endif>
+                  <img src="{{ asset($partner->logo) }}" alt="{{ $copy || $r ? '' : $partner->name }}" title="{{ $partner->name }}" width="120" height="120" decoding="async" loading="lazy">
                 @else
                   <span class="logo-text">{{ $partner->name }}</span>
                 @endif
