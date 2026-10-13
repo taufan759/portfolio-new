@@ -77,7 +77,15 @@ class SeoController extends Controller
         return $this->text(implode("\n", $lines)."\n", 86400);
     }
 
+    /** Cached for an hour so crawlers always get a fast answer, even when the server is slow. */
     public function sitemap()
+    {
+        $xml = Cache::remember('sitemap.xml:'.Seo::origin(), 3600, fn () => $this->buildSitemap());
+
+        return response($xml, 200, ['Content-Type' => 'application/xml; charset=UTF-8', 'Cache-Control' => 'public, max-age=3600']);
+    }
+
+    private function buildSitemap(): string
     {
         $entries = [];
 
@@ -122,7 +130,7 @@ class SeoController extends Controller
             }
         }
 
-        return response($xml.'</urlset>', 200, ['Content-Type' => 'application/xml; charset=UTF-8', 'Cache-Control' => 'public, max-age=3600']);
+        return $xml.'</urlset>';
     }
 
     /** Short index for AI crawlers (llms.txt convention). */
