@@ -33,7 +33,7 @@ Route::get('.well-known/ai.txt', [SeoController::class, 'aiTxt']);
 
 Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
 
-Route::prefix('{locale}')->where(['locale' => 'id|en'])->middleware(SetLocale::class)->group(function () {
+Route::prefix('{locale}')->where(['locale' => 'id|en'])->middleware([SetLocale::class, \App\Http\Middleware\TrackVisit::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('about', [AboutController::class, 'index'])->name('about');
     Route::get('gallery', [GalleryController::class, 'index'])->name('gallery.index');
