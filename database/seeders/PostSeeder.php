@@ -125,6 +125,200 @@ Kalau Anda hanya melakukan yang pertama dan dua terakhir, Anda sudah lebih maju 
 MD,
             ],
             [
+                'slug' => 'menerima-pembayaran-midtrans-di-laravel-yang-perlu-diperhatikan',
+                'title' => 'Accepting Midtrans Payments in Laravel: What Is Worth Getting Right',
+                'title_id' => 'Menerima Pembayaran Midtrans di Laravel: Hal yang Perlu Dibenahi Sejak Awal',
+                'excerpt' => 'Showing a payment page is the easy part. Notes from building several Laravel shops and platforms on Midtrans: confirm payments on the server, verify the signature and expect the same notification twice.',
+                'excerpt_id' => 'Menampilkan halaman pembayaran itu bagian yang mudah. Catatan dari beberapa toko dan platform Laravel yang saya bangun dengan Midtrans: konfirmasi pembayaran di server, verifikasi signature, dan siap menerima notifikasi yang sama dua kali.',
+                'published_at' => Carbon::parse('2026-10-15 09:00:00'),
+                'body' => <<<'MD'
+I have built several products on Midtrans with Laravel: an e-book store, a learning platform, an event-ticketing site, an online bakery and a multi-role beauty store. The checkout page always looks like the hard part. It is not. The parts that decide whether the money and the orders agree with each other are quieter.
+
+#### The browser is not the source of truth
+
+After paying, the customer is sent back to your site. It is tempting to mark the order as paid right there. Do not. A customer can close the tab, lose signal or hit back before the redirect happens, and a redirect can be forged by anyone. The payment status should come from Midtrans telling your server directly, through the notification (webhook) endpoint.
+
+#### Verify the notification
+
+Anyone can send a request to your notification URL. Midtrans includes a `signature_key` that is a SHA-512 hash of the order id, status code, gross amount and your server key. Recompute it and compare before trusting anything in the request. If it does not match, ignore it. As an extra check, you can ask Midtrans for the transaction status with the order id and compare.
+
+#### Expect the same notification more than once
+
+Notifications can arrive twice, late or out of order. Your handler should be idempotent: running it again must not ship a second parcel, add stock twice or send two emails. A simple rule that works is to only move an order forward (pending to paid, never paid back to pending) and to record that the side effects already ran.
+
+#### Make order ids and amounts boring
+
+Use an order id that is unique per attempt and tied to your own order record. Keep the amount in whole rupiah and calculate it on the server, never from a hidden form field. If a customer retries payment on the same order, decide in advance whether that creates a new Midtrans order id.
+
+#### Test the unhappy paths
+
+Sandbox makes the happy path easy. Spend the time on the others: expired payments, cancelled payments, a closed tab, a notification that arrives before the customer is redirected, and a webhook that is down for a minute. Those are the cases a real shop meets in its first week.
+
+#### Keep keys and environments apart
+
+Server keys belong in the environment file, never in the repository or the front end. Keep sandbox and production keys clearly separated and double check which one a deployment is using before launch day.
+
+None of this is exotic. It is a short checklist, and it is the difference between a checkout that looks finished and one that quietly stays correct.
+MD,
+                'body_id' => <<<'MD'
+Saya sudah membangun beberapa produk dengan Midtrans di Laravel: toko e-book, platform belajar, situs tiket event, toko roti online, dan toko kecantikan multi-peran. Halaman checkout selalu terlihat seperti bagian tersulit. Padahal bukan. Bagian yang menentukan apakah uang dan pesanan saling cocok justru lebih sunyi.
+
+#### Browser bukan sumber kebenaran
+
+Setelah membayar, pelanggan dikembalikan ke situs Anda. Godaan terbesarnya menandai pesanan sebagai lunas di situ. Jangan. Pelanggan bisa menutup tab, kehilangan sinyal, atau menekan kembali sebelum redirect terjadi, dan redirect bisa dipalsukan siapa saja. Status pembayaran harus datang dari Midtrans yang memberi tahu server Anda langsung, lewat endpoint notifikasi (webhook).
+
+#### Verifikasi notifikasinya
+
+Siapa pun bisa mengirim permintaan ke URL notifikasi Anda. Midtrans menyertakan `signature_key`, yaitu hash SHA-512 dari order id, status code, gross amount, dan server key Anda. Hitung ulang dan bandingkan sebelum memercayai apa pun di dalam permintaan itu. Kalau tidak cocok, abaikan. Sebagai pemeriksaan tambahan, Anda bisa menanyakan status transaksi ke Midtrans dengan order id dan membandingkannya.
+
+#### Siap menerima notifikasi yang sama lebih dari sekali
+
+Notifikasi bisa datang dua kali, terlambat, atau tidak berurutan. Handler Anda harus idempoten: dijalankan lagi tidak boleh mengirim paket kedua, menambah stok dua kali, atau mengirim dua email. Aturan sederhana yang berfungsi: hanya majukan pesanan ke status berikutnya (pending ke lunas, tidak pernah lunas kembali ke pending) dan catat bahwa efek sampingnya sudah dijalankan.
+
+#### Buat order id dan nominal yang membosankan
+
+Pakai order id yang unik per percobaan dan terhubung ke catatan pesanan Anda sendiri. Simpan nominal dalam rupiah utuh dan hitung di server, jangan pernah dari kolom form tersembunyi. Kalau pelanggan mencoba bayar ulang pada pesanan yang sama, putuskan lebih dulu apakah itu membuat order id Midtrans baru.
+
+#### Uji jalur yang tidak menyenangkan
+
+Sandbox membuat jalur yang lancar mudah. Habiskan waktu untuk jalur lainnya: pembayaran kedaluwarsa, pembayaran dibatalkan, tab ditutup, notifikasi yang tiba sebelum pelanggan dialihkan, dan webhook yang mati semenit. Itulah kasus yang ditemui toko sungguhan pada minggu pertamanya.
+
+#### Pisahkan kunci dan lingkungan
+
+Server key ada di file environment, bukan di repositori atau di front end. Pisahkan kunci sandbox dan produksi dengan jelas, dan periksa kembali mana yang dipakai deployment sebelum hari peluncuran.
+
+Tidak ada yang eksotis di sini. Ini daftar periksa singkat, dan itulah beda antara checkout yang tampak selesai dan yang diam-diam tetap benar.
+MD,
+            ],
+            [
+                'slug' => 'pelajaran-membangun-aplikasi-ai-untuk-industri-kecantikan',
+                'title' => 'Lessons from Building AI Tools for the Beauty Industry',
+                'title_id' => 'Pelajaran dari Membangun Alat AI untuk Industri Kecantikan',
+                'excerpt' => 'An adaptive wellness analyzer, a product concept simulator and a team of AI assistants for experts. What changes when AI meets a domain with real consequences, and why a good conversation beats a long form.',
+                'excerpt_id' => 'Analyzer wellness adaptif, simulator konsep produk, dan tim asisten AI untuk para ahli. Apa yang berubah ketika AI bertemu bidang dengan konsekuensi nyata, dan mengapa percakapan yang baik mengalahkan formulir panjang.',
+                'published_at' => Carbon::parse('2026-10-15 10:00:00'),
+                'body' => <<<'MD'
+At Lunaray Beauty Factory in Bandung I work on software, and increasingly on AI tools for a cosmetics business. Two of them are the Cantik.AI Wellness Analyzer and an AI Product Concept Simulator, and we introduced Cantik.ai at Cosmobeauty. Here is what I took away from building them.
+
+#### A conversation beats a long form
+
+A wellness analysis normally starts with a long questionnaire. People abandon those. The analyzer instead asks a few questions and decides what to ask next based on the previous answers, wired together with n8n workflows. The visitor feels they are talking, not filling in boxes, and the result still has enough information behind it. The lesson: make the interface as short as the situation allows, and let the logic do the branching.
+
+#### The domain sets the rules, not the model
+
+Skin and wellness are areas where a confident wrong answer is worse than no answer. That changes how the tool is written. It should stay inside what the product knows, say plainly when something is outside its scope, and avoid claiming medical results. The expert in the room, a formulator or a brand specialist, sets those boundaries. My job is to turn them into prompts, data and checks.
+
+#### AI that supports experts, not AI that replaces them
+
+The concept simulator takes a rough product idea and walks it through guided steps toward a structured concept with a price simulation and a report. It does not decide what to make. It saves the first hours of structuring so the specialists can spend their time on judgement. The most useful AI tools I have built are the ones that make a skilled person faster.
+
+#### Show it to real people early
+
+Seeing visitors use the analyzer at a trade show taught me more than a week of testing at my desk. People type unexpected things, switch language halfway and put the phone down mid-conversation. A tool that survives that is a product.
+
+#### What I would repeat
+
+1. Start from the user's shortest path to a useful answer.
+2. Let the domain expert define what the tool must never say.
+3. Use automation (n8n) for the plumbing and keep the prompts small and testable.
+4. Put it in front of real users as soon as it is safe to do so.
+MD,
+                'body_id' => <<<'MD'
+Di Lunaray Beauty Factory, Bandung, saya mengerjakan perangkat lunak, dan semakin banyak alat AI untuk bisnis kosmetik. Dua di antaranya adalah Cantik.AI Wellness Analyzer dan AI Product Concept Simulator, dan Cantik.ai kami perkenalkan di Cosmobeauty. Inilah yang saya bawa pulang dari membangunnya.
+
+#### Percakapan mengalahkan formulir panjang
+
+Analisis wellness biasanya diawali kuesioner panjang. Orang meninggalkannya. Analyzer ini justru mengajukan beberapa pertanyaan lalu menentukan pertanyaan berikutnya dari jawaban sebelumnya, dirangkai dengan workflow n8n. Pengunjung merasa sedang berbicara, bukan mengisi kotak, dan hasilnya tetap punya cukup informasi. Pelajarannya: buat antarmuka sependek yang diizinkan situasinya, dan biarkan logika yang bercabang.
+
+#### Bidangnya yang menentukan aturan, bukan modelnya
+
+Kulit dan wellness adalah area di mana jawaban salah yang percaya diri lebih buruk daripada tidak menjawab. Itu mengubah cara alat ini ditulis. Ia harus tetap di dalam yang diketahui produk, berkata terus terang saat sesuatu di luar cakupannya, dan tidak mengklaim hasil medis. Ahli di ruangan itu, formulator atau spesialis brand, yang menetapkan batasnya. Tugas saya menerjemahkannya menjadi prompt, data, dan pemeriksaan.
+
+#### AI yang mendukung ahli, bukan menggantikannya
+
+Simulator konsep mengambil ide produk yang kasar dan membawanya lewat langkah terarah menuju konsep terstruktur dengan simulasi harga dan laporan. Ia tidak memutuskan apa yang dibuat. Ia menghemat jam-jam pertama penyusunan sehingga para spesialis bisa memakai waktunya untuk pertimbangan. Alat AI paling berguna yang pernah saya bangun adalah yang membuat orang terampil menjadi lebih cepat.
+
+#### Perlihatkan ke orang sungguhan sejak dini
+
+Melihat pengunjung memakai analyzer di pameran mengajarkan saya lebih banyak daripada seminggu menguji di meja. Orang mengetik hal tak terduga, berganti bahasa di tengah jalan, dan meletakkan ponsel di tengah percakapan. Alat yang bertahan menghadapi itu adalah produk.
+
+#### Yang akan saya ulangi
+
+1. Mulai dari jalur terpendek pengguna menuju jawaban yang berguna.
+2. Biarkan ahli bidang menentukan apa yang tidak boleh pernah dikatakan alat itu.
+3. Pakai otomasi (n8n) untuk pipanya dan jaga prompt tetap kecil dan bisa diuji.
+4. Hadapkan ke pengguna nyata secepat aman dilakukan.
+MD,
+            ],
+            [
+                'slug' => 'membuat-situs-dwibahasa-dengan-laravel',
+                'title' => 'Building a Bilingual Website with Laravel: Lessons from This Portfolio',
+                'title_id' => 'Membuat Situs Dwibahasa dengan Laravel: Pelajaran dari Portofolio Ini',
+                'excerpt' => 'Language in the URL, a column per language in the database, separate content per language and hreflang for search engines. How this portfolio serves Indonesian and English without mixing them.',
+                'excerpt_id' => 'Bahasa di URL, satu kolom per bahasa di database, konten terpisah per bahasa, dan hreflang untuk mesin pencari. Cara portofolio ini melayani Indonesia dan Inggris tanpa mencampurkannya.',
+                'published_at' => Carbon::parse('2026-10-15 11:00:00'),
+                'body' => <<<'MD'
+This portfolio is available in Indonesian and English, and the two are meant to stay separate: an English page should not contain Indonesian text, and the other way round. Getting there in Laravel took a handful of decisions that I would make the same way again.
+
+#### Put the language in the URL
+
+Every public page lives under `/id/...` or `/en/...`. A visitor, a link and a search engine can all tell which language a page is in just by reading the address. The root URL simply redirects to the right one using a saved choice first, then the browser's language, then Indonesian as the default. A small middleware sets the application locale from the URL and makes the language part of every generated link, so the code never has to pass it around by hand.
+
+#### One column per language
+
+For content stored in the database, such as projects, certificates, events and articles, each translatable field has an English base column and an `_id` column. A small trait returns the version for the current language and tells you whether a translation exists. That keeps the admin form simple: two fields side by side, no separate translation tables.
+
+#### Do not show what you cannot translate
+
+The easy mistake is falling back to the other language when a translation is missing. That is how Indonesian text ends up on an English page. Here, lists and pages only show content that exists in the page language, and an article that exists in one language redirects from the other language's address instead of showing a mix.
+
+#### Tell search engines about the pair
+
+With two versions of a page, search engines need to know they belong together. Each page declares its canonical address and an `hreflang` link to both versions, and the sitemap lists every version with its alternates. That is how an Indonesian searcher is shown the Indonesian page and an English one the English page.
+
+#### Translate the small things too
+
+Page titles, meta descriptions, form messages, dates and even the names of certificates need a version per language. They are easy to forget and obvious to a reader.
+
+#### What I would tell someone starting out
+
+1. Decide the URL structure first and keep it consistent.
+2. Keep translations next to the content, not in a separate system.
+3. Prefer showing less in one language over showing a mix.
+4. Add `hreflang` and canonical links from day one.
+MD,
+                'body_id' => <<<'MD'
+Portofolio ini tersedia dalam bahasa Indonesia dan Inggris, dan keduanya sengaja dipisah: halaman Inggris tidak boleh berisi teks Indonesia, begitu pula sebaliknya. Untuk mencapainya di Laravel, ada beberapa keputusan yang akan saya ambil lagi dengan cara yang sama.
+
+#### Taruh bahasa di URL
+
+Setiap halaman publik berada di bawah `/id/...` atau `/en/...`. Pengunjung, tautan, dan mesin pencari bisa tahu bahasa halaman hanya dari membaca alamatnya. URL akar cukup mengalihkan ke yang tepat dengan memakai pilihan yang tersimpan lebih dulu, lalu bahasa browser, lalu Indonesia sebagai bawaan. Sebuah middleware kecil menetapkan locale aplikasi dari URL dan menjadikan bahasa bagian dari setiap tautan yang dihasilkan, sehingga kode tidak perlu meneruskannya secara manual.
+
+#### Satu kolom per bahasa
+
+Untuk konten di database, seperti proyek, sertifikat, event, dan artikel, setiap kolom yang bisa diterjemahkan punya kolom dasar bahasa Inggris dan kolom `_id`. Sebuah trait kecil mengembalikan versi untuk bahasa saat ini dan memberi tahu apakah terjemahannya ada. Itu menjaga formulir admin tetap sederhana: dua kolom berdampingan, tanpa tabel terjemahan terpisah.
+
+#### Jangan tampilkan yang tidak bisa diterjemahkan
+
+Kesalahan yang mudah adalah beralih ke bahasa lain saat terjemahan tidak ada. Begitulah teks Indonesia berakhir di halaman Inggris. Di sini, daftar dan halaman hanya menampilkan konten yang ada dalam bahasa halaman, dan artikel yang hanya ada dalam satu bahasa dialihkan dari alamat bahasa lain, bukan menampilkan campuran.
+
+#### Beri tahu mesin pencari tentang pasangannya
+
+Dengan dua versi sebuah halaman, mesin pencari perlu tahu bahwa keduanya berpasangan. Setiap halaman menyatakan alamat kanonisnya dan tautan `hreflang` ke kedua versi, dan sitemap mencantumkan setiap versi beserta alternatifnya. Begitulah pencari berbahasa Indonesia diperlihatkan halaman Indonesia dan pencari berbahasa Inggris halaman Inggris.
+
+#### Terjemahkan juga hal-hal kecil
+
+Judul halaman, deskripsi meta, pesan formulir, tanggal, bahkan nama sertifikat butuh versi per bahasa. Mudah terlupa dan jelas terlihat oleh pembaca.
+
+#### Yang akan saya sampaikan kepada pemula
+
+1. Tentukan struktur URL lebih dulu dan jaga konsistensinya.
+2. Simpan terjemahan di samping kontennya, bukan di sistem terpisah.
+3. Lebih baik menampilkan lebih sedikit dalam satu bahasa daripada menampilkan campuran.
+4. Pasang `hreflang` dan tautan kanonis sejak hari pertama.
+MD,
+            ],
+            [
                 'slug' => 'chatbot-ai-yang-berguna-bukan-yang-terdengar-pintar',
                 'title_id' => 'Chatbot AI yang Berguna, Bukan yang Sekadar Terdengar Pintar',
                 'excerpt_id' => 'Menghubungkan model AI ke aplikasi itu mudah. Membuat chatbot yang benar-benar menyelesaikan masalah pengguna jauh lebih sulit, dan di situlah pekerjaannya.',
