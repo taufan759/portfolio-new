@@ -23,6 +23,108 @@ class PostSeeder extends Seeder
     {
         return [
             [
+                'slug' => 'seo-aeo-geo-membuat-situs-terbaca-mesin-pencari-dan-ai',
+                'title' => 'SEO, AEO and GEO: Making a Site Readable to Search Engines and AI Answer Engines',
+                'title_id' => 'SEO, AEO, dan GEO: Membuat Situs Terbaca oleh Mesin Pencari dan Mesin Jawaban AI',
+                'excerpt' => 'People now get answers from search results and from AI assistants. A short, practical look at what I set up so a site can be found and understood by both, and what no setup can promise.',
+                'excerpt_id' => 'Orang kini mendapat jawaban dari hasil pencarian dan dari asisten AI. Catatan singkat tentang apa yang saya siapkan agar sebuah situs bisa ditemukan dan dipahami keduanya, dan apa yang tidak bisa dijanjikan oleh pengaturan apa pun.',
+                'published_at' => Carbon::parse('2026-10-15 08:00:00'),
+                'body' => <<<'MD'
+Search used to mean ten blue links. Today a question can be answered by a search engine, by a summary above the results, or by an AI assistant that never shows a list at all. A site that wants to be found has to be readable to all three. The three abbreviations people use for this are simple once you strip the jargon.
+
+- **SEO** (search engine optimisation): help search engines find, understand and rank your pages.
+- **AEO** (answer engine optimisation): make your content easy to quote as a direct answer.
+- **GEO** (generative engine optimisation): make your content easy for AI systems to read, trust and attribute.
+
+I rebuilt my own portfolio with all three in mind. Here is what actually went in, and what I would tell a friend doing the same.
+
+#### Start with content a person can understand
+
+No technical setting rescues a page that says nothing clear. Each page should answer one question in plain words: who this is, what the project does, what the article covers. Short headings that read like the questions people ask help both humans and machines. Everything below only makes good content easier to find; it does not replace it.
+
+#### Tell machines what the page is
+
+Structured data (JSON-LD) is a small block of text that says, in a format every engine understands, "this page is a person", "this is an article", "this is a list of questions and answers". On this site the home page describes me as a person with a role and links to my profiles. Articles are marked as articles, project pages as creative works, and the About page carries a short FAQ. It costs a few lines per page and removes guesswork for the crawler.
+
+#### Make the basics boring and correct
+
+- **One address per page.** A canonical link says which URL is the real one, so the same page is never counted twice.
+- **Two languages, declared.** With an Indonesian and an English version, `hreflang` tells search engines which version belongs to which reader, so people see their own language.
+- **A real sitemap.** It lists every page and every language version, and updates itself when I publish something new.
+- **A clean robots.txt.** It says what may be crawled and points to the sitemap. Admin pages stay out.
+- **Speed and mobile.** A slow or broken phone layout hurts people first and rankings second. Image sizes, self-hosted fonts and lazy loading did more for this than any clever trick.
+
+#### Speak to AI systems directly
+
+Two plain text files are becoming common for this. `llms.txt` is a short, readable summary of the site for language models, with links to the most useful pages. `ai.txt` states how AI crawlers may use the content, for example with attribution. I added both, plus a longer version of the summary, and listed the major AI crawlers in robots.txt so the rules are explicit.
+
+An honest note: these files are conventions, not guarantees. No major platform has promised to rank or quote a site because of them. I treat them as cheap, harmless and clear, not as a switch.
+
+#### What no setup can promise
+
+None of this guarantees a position in search or a mention in an AI answer. Indexing can take days or weeks, rankings depend on competition and on whether other sites link to you, and AI systems decide for themselves what to quote. What you can control is that nothing technical stands in the way: pages load fast, say what they are, exist in the right language and can be crawled. After that it is about being worth quoting.
+
+#### A small checklist
+
+1. Every page answers one clear question.
+2. Structured data on the home, article and project pages.
+3. Canonical links and `hreflang` if you have more than one language.
+4. Sitemap and robots.txt that are correct and current.
+5. Fast on a phone, with sensible image sizes.
+6. Verified in Search Console, sitemap submitted, key pages requested for indexing.
+7. Optionally `llms.txt` and `ai.txt`, without expecting miracles.
+
+If you do only the first and the last two, you are already ahead of most sites.
+MD,
+                'body_id' => <<<'MD'
+Dulu pencarian berarti sepuluh tautan biru. Sekarang satu pertanyaan bisa dijawab oleh mesin pencari, oleh ringkasan di atas hasil, atau oleh asisten AI yang sama sekali tidak menampilkan daftar. Situs yang ingin ditemukan harus bisa dibaca ketiganya. Tiga singkatan yang dipakai untuk ini sebenarnya sederhana kalau istilahnya dibuang.
+
+- **SEO** (search engine optimisation): membantu mesin pencari menemukan, memahami, dan memeringkat halaman Anda.
+- **AEO** (answer engine optimisation): membuat konten mudah dikutip sebagai jawaban langsung.
+- **GEO** (generative engine optimisation): membuat konten mudah dibaca, dipercaya, dan disebutkan sumbernya oleh sistem AI.
+
+Saya membangun ulang portofolio saya dengan ketiganya dalam pikiran. Berikut yang benar-benar saya pasang, dan yang akan saya sarankan kepada teman yang melakukan hal serupa.
+
+#### Mulai dari konten yang bisa dipahami manusia
+
+Tidak ada pengaturan teknis yang menyelamatkan halaman yang tidak jelas isinya. Setiap halaman sebaiknya menjawab satu pertanyaan dengan kata-kata sederhana: siapa ini, apa yang dilakukan proyek ini, apa isi artikel ini. Judul bagian yang pendek dan terbaca seperti pertanyaan yang diajukan orang membantu manusia maupun mesin. Semua yang di bawah ini hanya membuat konten yang baik lebih mudah ditemukan, bukan menggantikannya.
+
+#### Beri tahu mesin halaman itu apa
+
+Data terstruktur (JSON-LD) adalah blok teks kecil yang menyatakan, dalam format yang dipahami semua mesin, "halaman ini adalah seseorang", "ini artikel", "ini daftar pertanyaan dan jawaban". Di situs ini, beranda menggambarkan saya sebagai seseorang dengan peran dan tautan ke profil saya. Artikel ditandai sebagai artikel, halaman proyek sebagai karya kreatif, dan halaman Tentang memuat FAQ singkat. Biayanya beberapa baris per halaman, dan menghilangkan tebak-tebakan bagi crawler.
+
+#### Buat dasar-dasarnya membosankan dan benar
+
+- **Satu alamat untuk satu halaman.** Tautan kanonis menyatakan URL mana yang asli, sehingga halaman yang sama tidak dihitung dua kali.
+- **Dua bahasa, dinyatakan.** Dengan versi Indonesia dan Inggris, `hreflang` memberi tahu mesin pencari versi mana untuk pembaca mana, sehingga orang melihat bahasanya sendiri.
+- **Sitemap yang sungguhan.** Berisi semua halaman dan semua versi bahasa, dan memperbarui dirinya sendiri saat saya menerbitkan sesuatu.
+- **robots.txt yang bersih.** Menyatakan apa yang boleh dirayapi dan menunjuk ke sitemap. Halaman admin tetap di luar.
+- **Kecepatan dan tampilan ponsel.** Halaman lambat atau tata letak ponsel yang rusak merugikan orang lebih dulu, baru peringkat. Ukuran gambar, font yang dihosting sendiri, dan pemuatan malas membantu lebih banyak daripada trik apa pun.
+
+#### Berbicara langsung kepada sistem AI
+
+Dua berkas teks biasa mulai umum untuk ini. `llms.txt` adalah ringkasan singkat yang mudah dibaca tentang situs untuk model bahasa, dengan tautan ke halaman yang paling berguna. `ai.txt` menyatakan bagaimana crawler AI boleh memakai konten, misalnya dengan menyebutkan sumber. Saya menambahkan keduanya, ditambah versi ringkasan yang lebih panjang, dan mencantumkan crawler AI utama di robots.txt supaya aturannya eksplisit.
+
+Catatan jujur: berkas-berkas ini adalah konvensi, bukan jaminan. Tidak ada platform besar yang berjanji memeringkat atau mengutip situs karena berkas itu. Saya memperlakukannya sebagai hal yang murah, tidak berbahaya, dan jelas, bukan sebagai tombol ajaib.
+
+#### Yang tidak bisa dijanjikan oleh pengaturan apa pun
+
+Semua ini tidak menjamin posisi di pencarian atau sebutan dalam jawaban AI. Pengindeksan bisa memakan waktu berhari-hari sampai berminggu-minggu, peringkat bergantung pada persaingan dan pada apakah situs lain menautkan Anda, dan sistem AI menentukan sendiri apa yang dikutip. Yang bisa Anda kendalikan adalah memastikan tidak ada hambatan teknis: halaman cepat dimuat, jelas isinya, ada dalam bahasa yang tepat, dan bisa dirayapi. Setelah itu, soal apakah isinya layak dikutip.
+
+#### Daftar periksa singkat
+
+1. Setiap halaman menjawab satu pertanyaan yang jelas.
+2. Data terstruktur di beranda, artikel, dan halaman proyek.
+3. Tautan kanonis dan `hreflang` jika lebih dari satu bahasa.
+4. Sitemap dan robots.txt yang benar dan terkini.
+5. Cepat di ponsel, dengan ukuran gambar yang wajar.
+6. Terverifikasi di Search Console, sitemap terkirim, halaman penting diminta untuk diindeks.
+7. Opsional `llms.txt` dan `ai.txt`, tanpa mengharapkan keajaiban.
+
+Kalau Anda hanya melakukan yang pertama dan dua terakhir, Anda sudah lebih maju daripada kebanyakan situs.
+MD,
+            ],
+            [
                 'slug' => 'chatbot-ai-yang-berguna-bukan-yang-terdengar-pintar',
                 'title_id' => 'Chatbot AI yang Berguna, Bukan yang Sekadar Terdengar Pintar',
                 'excerpt_id' => 'Menghubungkan model AI ke aplikasi itu mudah. Membuat chatbot yang benar-benar menyelesaikan masalah pengguna jauh lebih sulit, dan di situlah pekerjaannya.',
